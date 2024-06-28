@@ -13,7 +13,7 @@
         static function editor(){
             require_once("./vista/editor.php");
         }
-        static function cerrar_secion(){
+        static function cerrar(){
             require_once("./vista/cerrar_secion.php");
         }
     }
