@@ -37,7 +37,7 @@ $(document).ready(function(){
             dni:$('#dni').val(),
             contrasenia:$("#contra").val()
         };
-        let direccion = `./modelo/task-kill/${(elemento_click)?"logeo_datos.php":"registro_datos.php"}`;
+        let direccion = `./modelo/tareas-date/${(elemento_click)?"logeo_datos.php":"registro_datos.php"}`;
         // console.log(direccion);
         // return;
         $.post(direccion,postdata,function(response){

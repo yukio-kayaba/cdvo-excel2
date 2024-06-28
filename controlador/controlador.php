@@ -13,5 +13,8 @@
         static function editor(){
             require_once("./vista/editor.php");
         }
+        static function cerrar_secion(){
+            require_once("./vista/cerrar_secion.php");
+        }
     }
 ?>

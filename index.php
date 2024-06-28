@@ -10,7 +10,7 @@
                 ModeloControlador::error_pagina();
             }
         }else{
-            ModeloControlador::inicio();
+            ModeloControlador::editor();
         }
     }else{
         ModeloControlador::editor();
