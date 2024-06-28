@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="./vista/css/components/vistaTabla.css">
   <link rel="stylesheet" href="./vista/css/editor.css">
   <script defer src="./vista/js/puppet-principal.js"></script>
+  <script defer src="./vista/js/principal._date.js"></script>
 </head>
 <body>
     <?php include("./vista/layout/nav.php"); ?>
@@ -16,21 +17,21 @@
       <div class="conteiner-fotoUsuario">
         <img src="./vista/icon/usuario.png" alt="foto de perfil del usuario">
       </div>
-      <p>Nombre Del Usuario</p>
+      <p id="nombre_user">Nombre Del Usuario</p>
     </section>
 
     <section class="tablas_disponibles">
       <?php
-      vistaTabla("comida del dia");
-      vistaTabla("compras");
-      vistaTabla("noticias");
+        vistaTabla("comida del dia",1);
+        vistaTabla("compras",2);
+        vistaTabla("noticias",4);
       ?>
 
-      <div class="tablas_opciones">
-        <a id="agregar_archivo1" href="#">agregar excel .xlsx</a>
-        <a id="agregar_archivo2" href="#">agregar excel .sslx</a>
-      </div>
-    </section>
+</section>
+<div class="tablas_opciones">
+  <a id="agregar_archivo1" href="#">agregar excel .xlsx</a>
+  <a id="agregar_archivo2" href="#">agregar excel .sslx</a>
+</div>
 
   <!-- todo sobre el puppet -->
   <section class="sombra_puppet" id="sombra_puppet"></section>

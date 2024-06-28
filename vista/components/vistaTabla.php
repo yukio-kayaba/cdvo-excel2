@@ -1,7 +1,7 @@
-<?php function vistaTabla($nombre){ ?>
+<?php function vistaTabla($nombre,$id){ ?>
 
   <article class="vistaTabla">
-    <p>
+    <p name="<?php echo $id;?>">
       <?php echo($nombre); ?>
     </p>
     <div>
