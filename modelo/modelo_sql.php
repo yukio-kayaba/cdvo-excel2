@@ -9,10 +9,14 @@
             $this->dbdatos = new PDO("mysql:host=localhost;dbname=$base_datos",$usuario,$password);
         }
         public function get_tabla_colum($consulta){
-            $this->sql = $consulta;
-            $resultado = $this->dbdatos->prepare($this->sql);
-            $resultado->execute();
-            return $resultado->fetchAll(PDO::FETCH_COLUMN);
+            try {
+                $this->sql = $consulta;
+                $resultado = $this->dbdatos->prepare($this->sql);
+                $resultado->execute();
+                return $resultado->fetchAll(PDO::FETCH_COLUMN);
+            } catch (PDOException $e) {
+                return -1;
+            }
         }
         public function validador_cuenta($dni,$contra){
             $this->sql = "select validador_cuenta('$dni', '$contra');";
@@ -54,6 +58,31 @@
             $resultado->execute();
             $resultado->closeCursor();
             // return $datos;
+        }
+        public function ejecutar1(){
+            $datos = [];
+            $resultado = $this->dbdatos->prepare($this->sql);
+            $resultado->execute();
+            foreach ($resultado as $key => $value) {
+                $datos[] = $value;
+            }
+            $resultado->closeCursor();
+            return $datos;
+        }
+        public function get_datos($tabla,$condicion){
+            $this->sql = "SELECT * FROM $tabla $condicion;";
+            return $this->ejecutar1();
+        }
+        public function agregar_valores($tabla,$datos,$parametros){
+            $codigo_parametros = "";
+            foreach ($datos as $key => $value) {
+                $codigo_parametros .= "'".$value."',";
+            }
+            $codigo_parametros = substr($codigo_parametros,0,-1);
+            // $codigo_valores = substr($parametros,0,-1);
+            $this->sql = "INSERT INTO $tabla($parametros) VALUES ($codigo_parametros)";
+            // print_r($this->sql);
+            $this->ejecutar();
         }
     };
 ?>

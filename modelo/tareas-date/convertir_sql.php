@@ -6,40 +6,71 @@
         $datos = json_decode($_POST['datos']);
         $titulo = $_POST['titulo'];
         $opcion = $_POST['opcion'];
-        $datos_inicio = $datos[0];
+        $id_user = $_POST['user_date'];
+        
+        $datos_titulo;
+        
+
+        $titulo_t = $titulo.$id_user."z";
+        // verificando si la tabla existe;
+
+        $acceso = true;
+        if($opcion == 1){
+            $validador = $conexion->get_tabla_colum("SELECT id FROM $titulo_t WHERE id = 1;");
+            if($validador == -1){
+                print("acceso");
+                $acceso = true;
+                $datos_titulo = $datos[0];
+                $conexion->crear_tabla($titulo_t,$datos[0],$id_user);
+            }else{
+                print("negado");
+                $acceso = false;
+            }
+        }else if($opcion == 2){
+            // print("editable");
+            $datos_titulo = $conexion->get_datos($titulo_t,"WHERE id=1;")[0];
+            // print_r($datos_titulo);
+            $acceso = true;
+        }
+
         $codigo_parametro = "";
 
-        // verificando si la tabla existe;
-        $validador = $conexion->get_tabla_colum("SELECT id FROM $titulo WHERE id = 0;");
+        if($acceso){
 
-        if($validador > 0){
-            echo "el archivo si existe";
-            if($opcion == 1){
-                echo "NO SE PUDO CREAR , LA TABLA YA EXISTE";
-                return;
+            $cantidad_max_date = 0;
+            foreach ($datos_titulo as $key => $value){
+                if($key != 0){
+                    if(is_numeric($key)){
+                        // print($key " - ".$value."<br/>");
+                        $codigo_parametro .= "`".$value."`,";
+                        $cantidad_max_date += 1;
+                    }
+                }
             }
+
+
+
+            $codigo_parametro = substr($codigo_parametro,0,-1);
+            // echo $codigo_parametro;
+            // print($cantidad_max_date);
+
+            foreach ($datos as $key => $value){
+                if(count($value)  == $cantidad_max_date){
+                    if($opcion == 1){
+                        if($key != 0){
+                            // print_r($value);
+                            $conexion->agregar_valores($titulo_t,$value,$codigo_parametro);
+                        }
+                    }else{
+                        // print_r($value);
+                        $conexion->agregar_valores($titulo_t,$value,$codigo_parametro);
+                    }
+                }
+            }
+            print("exito");
         }
 
 
-        // foreach ($datos[0] as $key => $value) {
-        //     $codigo_parametro .= "`".$value."`,";
-        // }
-        // $codigo_parametro = substr($codigo_parametro,0,-1);
-        // // print_r($datos);
-        // foreach ($datos as $key => $value) {
-        //     if($key == 0){
-        //         print("creando  tabla");
-        //         // $valor = $conexion->crear_tabla($titulo,$value);
-        //         $valor = 1;
-        //         if($valor != 1){
-        //             echo "error al crear el archivo";
-        //         }else{
-        //             echo "tabla creado con exito";
-        //         }
-        //     }else{
-        //         // print_r($value);
-        //         $conexion->agregar_valores($titulo,$value,$codigo_parametro);
-        //     }
-        // }
+
     }
 ?>

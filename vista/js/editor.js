@@ -15,7 +15,8 @@ $(document).ready(function(){
         let dato_prueba = {
             "datos":elementos,
             "titulo":"archivo_excel",
-            "opcion":1
+            "opcion":1,
+            "user_date":1
         };
         console.log(dato_prueba);
         // return;
