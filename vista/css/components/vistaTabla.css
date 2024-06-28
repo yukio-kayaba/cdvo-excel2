@@ -1,0 +1,24 @@
+.vistaTabla{
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  background-color: rgb(165, 165, 165);
+  overflow: hidden;
+  min-width: 200px;
+
+  cursor: pointer;
+  transition-duration: 0.5s;
+}
+.vistaTabla:hover{
+  filter: invert(0.1);
+}
+.vistaTabla p{
+  text-align: center;
+  text-transform: capitalize;
+  background-color: black;
+  color:white;
+  padding: 10px;
+}
+.vistaTabla div{
+  height: 100px;
+}

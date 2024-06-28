@@ -13,6 +13,7 @@
             ModeloControlador::inicio();
         }
     }else{
-        ModeloControlador::login();
+        ModeloControlador::editor();
+        //ModeloControlador::login();
     }
 ?>

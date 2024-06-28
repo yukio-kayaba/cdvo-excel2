@@ -1,0 +1,42 @@
+.barra_navegacion{
+  background-color: black;
+  color: white;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+
+
+/* --------------PARTE 1------------------ */
+.parte1{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+}
+
+.parte1 img{
+  object-fit: cover;
+  height: 100%;
+  max-width: 80px;
+}
+
+/* --------------PARTE 2------------------ */
+.parte2{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.parte2 a{
+  color:white;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+}
+.parte2 a:hover{
+  background-color: white;
+  color: black;
+}
