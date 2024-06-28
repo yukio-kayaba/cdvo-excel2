@@ -12,12 +12,12 @@
                 ModeloControlador::error_pagina();
             }
         }else{
-            ModeloControlador::editor();
+            ModeloControlador::inicio();
         }
     }else{
         // ModeloControlador::inicio();
         // ModeloControlador::editor();
         ModeloControlador::login();
-        
+
     }
 ?>
