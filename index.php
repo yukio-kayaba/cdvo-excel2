@@ -13,7 +13,8 @@
             ModeloControlador::editor();
         }
     }else{
-        ModeloControlador::editor();
-        //ModeloControlador::login();
+        ModeloControlador::inicio();
+        // ModeloControlador::editor();
+        // ModeloControlador::login();
     }
 ?>
