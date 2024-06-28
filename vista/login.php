@@ -15,7 +15,7 @@
     <div class="container">
         <div class="container--profile">
             <span class="logo">
-                <img src="./vista/imagenes/CDVO.jpg" alt="">
+                <img src="./vista/img/CDVO.jpg" alt="">
             </span>
         </div>
         <div class="container-form">
