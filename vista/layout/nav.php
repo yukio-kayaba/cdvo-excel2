@@ -5,7 +5,7 @@
   </section>
 
   <section class="parte2">
-    <a href="#">
+    <a href="cerrar">
       <p>Cerrar Sesión</p>
     </a>
     <a href="#">
