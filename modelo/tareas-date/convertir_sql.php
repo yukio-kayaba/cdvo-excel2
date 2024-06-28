@@ -23,7 +23,7 @@
                 $datos_titulo = $datos[0];
                 $conexion->crear_tabla($titulo_t,$datos[0],$id_user);
             }else{
-                print("negado");
+                print("negado"); 
                 $acceso = false;
             }
         }else if($opcion == 2){

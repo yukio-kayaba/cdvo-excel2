@@ -14,7 +14,7 @@ $(document).ready(function(){
                 // console.log(response);
                 if(response != ""){
                     const datos_tabla = JSON.parse(response);
-                    console.log(datos_tabla);
+                    // console.log(datos_tabla);
                     let texto = "";
                     datos_tabla.forEach(element => {
                         texto += `
@@ -28,7 +28,7 @@ $(document).ready(function(){
                             </article>
                         `;
                     });
-                    console.log(texto);
+                    // console.log(texto);
                     
                     datos_tablas.innerHTML = texto;
                 }
@@ -43,7 +43,7 @@ $(document).ready(function(){
             type:"POST",
             data:{valores},
             success:function(response){
-                console.log(response);
+                // console.log(response);
                 $("#nombre_user").html(`Bienvenido ${response}`);
             }    
         })

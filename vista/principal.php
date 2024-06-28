@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="./vista/css/principal.css">
   <link rel="stylesheet" href="./vista/css/components/vistaTabla.css">
   <link rel="stylesheet" href="./vista/css/editor.css">
+  <script src="https://unpkg.com/read-excel-file@5.x/bundle/read-excel-file.min.js"></script>
   <script defer src="./vista/js/puppet-principal.js"></script>
   <script defer src="./vista/js/principal._date.js"></script>
 </head>
@@ -29,7 +30,9 @@
 
 </section>
 <div class="tablas_opciones">
-  <a id="agregar_archivo1" href="#">agregar excel .xlsx</a>
+  <!-- <a id="agregar_archivo1" href="#">agregar excel .xlsx</a> -->
+   <label for="agregar_archivo1">Agregar excel.xlsx</label>
+   <input  type="file" name="" id="agregar_archivo1" hidden>
   <a id="agregar_archivo2" href="#">agregar excel .sslx</a>
 </div>
 

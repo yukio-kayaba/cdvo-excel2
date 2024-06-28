@@ -43,7 +43,7 @@ body{
   width: 90%;
   display: flex;
   justify-content:center;
-  height: 500px;
+  height: 550px;
   overflow-y: auto;
   background-color: black;
 }
