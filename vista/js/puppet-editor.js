@@ -6,9 +6,6 @@ let botones_tabla = document.querySelector("#botones_tabla");
 
 let btn_agregar = document.querySelector("#btn_agregar");
 
-let btn_agregar1 = document.querySelector("#agregar_archivo1");
-let btn_agregar2 = document.querySelector("#agregar_archivo2");
-
 function visibilidadElementos(estado){
   puppetTabla.style.display = estado;
   sombraTabla.style.display = estado;
@@ -17,17 +14,6 @@ function visibilidadElementos(estado){
 }
 
 visibilidadElementos("none");
-
-btn_agregar1.addEventListener("click",function(e){
-  visibilidadElementos("flex");
-  e.stopPropagation();
-})
-
-
-btn_agregar2.addEventListener("click", function(e){
-  visibilidadElementos("flex");
-  e.stopPropagation();
-})
 
 
 btn_agregar.addEventListener("click", function(e){

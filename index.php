@@ -15,8 +15,9 @@
             ModeloControlador::editor();
         }
     }else{
-        ModeloControlador::inicio();
+        // ModeloControlador::inicio();
         // ModeloControlador::editor();
-        // ModeloControlador::login();
+        ModeloControlador::login();
+        
     }
 ?>
