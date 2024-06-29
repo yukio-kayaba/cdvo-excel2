@@ -188,7 +188,7 @@ tabla_contenido.addEventListener("click",function(e){
   e.stopPropagation();
 })
 botones_tabla.addEventListener("click",function(e){
-    let titulo_Date = document.getElementById("titulo_archivo_date");
+    let dato = document.getElementById("dato_id_archivo");
     let valor_aux = localStorage.getItem("valor_aux");
     let dato_activo = false;
     let datos;
@@ -196,16 +196,34 @@ botones_tabla.addEventListener("click",function(e){
         if(element == "datos_escribidos") dato_activo=true;
     });
     console.log(dato_activo);
-
+    let url = "";
     if(dato_activo){
         datos = obtencion_datos_input();
         let datos_2 = {
-            "archivo":titulo_Date.innerHTML,
+            "archivo":dato.innerHTML,
             "informacion":JSON.stringify(datos),
             "date_user":valor_aux
         };
-        console.log(datos_2);
+        datos = datos_2;
+        url = './modelo/tareas-date/enviar_datos_per.php';
+        console.log(datos);
+    }else{
+
     }
+    $.ajax({
+        url: url,
+        type: 'POST', 
+        data: datos, 
+        success: function(response){
+            if(response == "enviado"){
+                console.log('Respuesta del servidor:', response);
+                alert("EL ARCHIVO SE SUBIO CON EXITO");
+            }else{
+                alert("error data");
+            }
+            location.reload();
+        }
+    })
 
   e.stopPropagation();
 })

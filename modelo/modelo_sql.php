@@ -84,5 +84,13 @@
             // print_r($this->sql);
             $this->ejecutar();
         }
+        public function insertar_datos($tabla,$parametros,$valores){
+            $this->sql = "INSERT INTO $tabla ($parametros) VALUES ($valores);";
+            $this->ejecutar();
+        }
+        public function insert_valores($codigo){
+            $this->sql = $codigo;
+            $this->ejecutar();
+        }
     };
 ?>
