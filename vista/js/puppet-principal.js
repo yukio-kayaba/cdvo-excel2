@@ -32,19 +32,19 @@ function visibilidadElementos(estado){
 // var archivos;
 visibilidadElementos("none");
 
-const excel_input = document.getElementById("agregar_archivo1");
+const excel_input = document.getElementById("archivo_xlsx");
 
 excel_input.addEventListener("change",async function(e){
     const elemento = await readXlsxFile(excel_input.files[0]);
     // console.log(elemento);
     const excel = new Excel(elemento);
     const datos_excel = excel.content;
-    // archivos = datos_excel;
+    archivos = datos_excel;
     convertidor_datos(datos_excel);
     vista_previa_datos();
 });
 // btn_agregar1.addEventListener("click",function(e){
-//   // visibilidadElementos("flex");
+//   visibilidadElementos("flex");
 //   e.stopPropagation();
 // })
 
@@ -91,7 +91,7 @@ botones_tabla.addEventListener("click",function(e){
       success: function(response){
           if(response == "negado"){
               alert(`El nombre ${nombre_archivo} ya esta en uso , eliga otro por favor`);
-          }else {
+          }else if(response == "exito"){
             alert("Subido con exito");
             location.reload();
           }
@@ -111,19 +111,6 @@ class Excel{
       this.content = content;
   }
 }
-
-// function subir_archivos(){
-//   const excel_input = document.getElementById("archivo");
-//   excel_input.addEventListener("change",async function(e){
-//       const elemento = await readXlsxFile(excel_input.files[0]);
-//       // console.log(elemento);
-//       const excel = new Excel(elemento);
-//       const datos_excel = excel.content;
-//       // archivos = datos_excel;
-//       convertidor_datos(datos_excel);
-//       vista_previa_datos();
-//   });
-// }
 
 function convertidor_datos(datos_excel){
   let datos = [];
@@ -159,7 +146,7 @@ function convertidor_datos(datos_excel){
       campo_vacio = 0;
   }
   archivos = datos;
-
+  // console.log(archivos);
 }
 function vista_previa_datos(){
   let tabla = document.createElement("table");

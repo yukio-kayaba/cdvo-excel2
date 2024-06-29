@@ -1,6 +1,6 @@
-// const { saveAs } = require("./vista/js/fileSaver.js");
 
 var informacion_archivos;
+var archivos;
 $(document).ready(function(){
     carga_tablero();
     agregar_titulo();
@@ -70,7 +70,20 @@ $(document).ready(function(){
         })
     }
 
-})
+    
+});
+
+const excel_input = document.getElementById("btn-subirArchivo");
+
+excel_input.addEventListener("change",async function(e){
+    const elemento = await readXlsxFile(excel_input.files[0]);
+    // console.log(elemento);
+    const excel = new Excel(elemento);
+    const datos_excel = excel.content;
+    // archivos = datos_excel;
+    convertidor_datos(datos_excel);
+    vista_previa_datos(datos_excel,"tabla_contenido");
+});
 
 function vista_previa_datos(archivos,id_dato){
     let tabla = document.createElement("table");
@@ -268,3 +281,45 @@ function autocompletado(){
         input_date[key].value = valores_repeat[key];
     }
 }
+class Excel{
+    constructor(content){
+        this.content = content;
+    }
+  }
+
+function convertidor_datos(datos_excel){
+    let datos = [];
+  
+    for (let i = 0; i < datos_excel.length; i++){
+        let datos_aux = [];
+        let activador = true;
+        let cant_espacios = 0;
+        let campo_vacio = 0;
+  
+        for (let u = 0; u < datos_excel[i].length; u++){
+  
+            if(activador){
+                if(datos_excel[i][u] === null){
+                    cant_espacios ++;
+                }else{
+                    activador = false;
+                }
+            }
+  
+            if(datos_excel[i][u] != null && u >= cant_espacios){
+                datos_aux.push(datos_excel[i][u]);
+            }else if(datos_excel[i][u] == null && u >= cant_espacios ){
+                datos_excel[i][u] = "10101z";
+                datos_aux.push(datos_excel[i][u]);
+  
+            }
+            
+        }
+        if(datos_aux.length != 0){
+            datos.push(datos_aux);
+        }
+        campo_vacio = 0;
+    }
+    archivos = datos;
+  
+  }
