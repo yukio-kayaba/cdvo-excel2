@@ -1,7 +1,7 @@
 <?php include("./vista/components/vistaTabla.php"); ?>
 
   <?php include_once("./vista/layout/head.php");?>
-  <title>GDVO - EXCEL</title>
+  <title>CDVO - Saturno</title>
   <script src="https://unpkg.com/read-excel-file@5.x/bundle/read-excel-file.min.js"></script>
   <script src="https://unpkg.com/tableexport@latest/dist/js/tableexport.min.js"></script>
   <script src="https://unpkg.com/file-saverjs@latest/FileSaver.min.js"></script>

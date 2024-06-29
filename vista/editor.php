@@ -6,7 +6,7 @@
     }
 ?>
 <?php include_once("./vista/layout/head.php") ?>
-  <title>Editor de Excel</title>
+  <title>CDVO || EDITAR</title>
   <script src="https://unpkg.com/xlsx@0.16.9/dist/xlsx.full.min.js"></script>
   <script src="https://unpkg.com/read-excel-file@5.x/bundle/read-excel-file.min.js"></script>
 

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GDVO</title>
+    <title>CDVO</title>
     <!-- <link rel="stylesheet" href="./vista/css/bulma.min.css"> -->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" defer></script>
     <!-- <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script> -->
