@@ -9,6 +9,7 @@ body{
   justify-content: space-between;
   padding: 10px 5px;
   visibility: visible;
+  height: 30px;
 }
 
 .conteiner_btnCambio a{

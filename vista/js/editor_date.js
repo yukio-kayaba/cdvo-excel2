@@ -3,6 +3,7 @@
 var informacion_archivos;
 $(document).ready(function(){
     carga_tablero();
+    agregar_titulo();
     let activo = true;
     function carga_tablero(){
         let dato = document.getElementById("dato_id_archivo");
@@ -47,6 +48,28 @@ $(document).ready(function(){
             activo = true;
         }
     });
+
+    function agregar_titulo(){
+        const elemento_title = document.getElementById("titulo_archivo_date");
+        let dato = document.getElementById("dato_id_archivo");
+        let valor_aux = localStorage.getItem("valor_aux");
+        const datos = {
+            "archivo":dato.innerHTML,
+            "valores":valor_aux
+        }
+        $.ajax({
+            url: './modelo/tareas-date/get_titulo_archivo.php',
+            type: 'POST', 
+            data: datos, 
+            success: function(response){
+                // console.log('Respuesta del servidor:', response);
+                if(response != ""){
+                    elemento_title.innerHTML = response;
+                }
+            }
+        })
+    }
+
 })
 
 function vista_previa_datos(archivos,id_dato){
@@ -55,9 +78,6 @@ function vista_previa_datos(archivos,id_dato){
     tabla.id = "tabla";
     let datos = archivos;
     let contenido  = `
-                    <caption>
-                        Vista previa de datos
-                    </caption>
                     <thead class="table-dark">
                         <tr>
                 `;
@@ -87,6 +107,7 @@ function vista_previa_datos(archivos,id_dato){
 function descargar_archivos(){
     const EXCEL_TYPE = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8";
     const EXCEL_EXTENCION = ".xlsx";
+    let titulo_Date = document.getElementById("titulo_archivo_date");
     const worshet = XLSX.utils.json_to_sheet(informacion_archivos);
     const workbook = {Sheets:{
         'data':worshet
@@ -94,12 +115,12 @@ function descargar_archivos(){
 
     const excelBuffer = XLSX.write(workbook,{bookType:"xlsx",type:"array"});
     console.log(excelBuffer);
-    guardar_excel(excelBuffer,"myfile_prueba");
+    guardar_excel(excelBuffer,titulo_Date.innerHTML);
 }
 function guardar_excel(buffer,filename){
     const EXCEL_EXTENCION = ".xlsx";
     const EXCEL_TYPE = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8";
 
     const data = new Blob([buffer],{type:EXCEL_TYPE});
-    saveAs(data,filename + new Date().getTime()+EXCEL_EXTENCION);
+    saveAs(data,filename +EXCEL_EXTENCION);
 }

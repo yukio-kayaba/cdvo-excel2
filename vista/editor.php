@@ -36,6 +36,13 @@
         <a id="btnExportar" class="boton_editar_efecto" href="#">exportar</a>
       </div>
     </section>
+    <div class="container px-4 text-center">
+      <div class="row gx-5">
+        <div class="col">
+          <div class="p-3" id="titulo_archivo_date">Titulo del archivo</div>
+        </div>
+      </div>
+    </div>
     <section id="tabla_datos_principal">
       <table id="tabla" class="table">
         <thead>
