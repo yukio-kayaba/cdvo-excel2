@@ -1,7 +1,25 @@
 $(document).ready(function(){
     valores_usuario();
     nombre_user();
+
+    let activo = true;
     
+    $(document).on("click",".boton_redondo_datos1",function(){
+        // (activo)?false:true;
+        let dato_info = document.getElementsByClassName("boton_redondo_datos1")[0];
+        let casillas = document.getElementsByClassName("tablas_opciones");
+        console.log("cliekado");
+        if(activo){
+            dato_info.innerHTML = "-";
+            casillas[0].style.visibility = "visible";
+            activo = false;
+        }else{
+            dato_info.innerHTML = "+";
+            casillas[0].style.visibility = "hidden";
+            activo = true;
+        }
+    });
+
     function valores_usuario(){
         const valores = localStorage.getItem("valor_aux");
         const datos_tablas = document.getElementsByClassName("tablas_disponibles")[0];

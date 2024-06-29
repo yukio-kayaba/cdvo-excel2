@@ -10,6 +10,8 @@
   <link rel="stylesheet" href="./vista/css/principal.css">
   <link rel="stylesheet" href="./vista/css/components/vistaTabla.css">
   <link rel="stylesheet" href="./vista/css/editor.css">
+  <script defer src="./vista/js/principal._date.js"></script>
+  <script defer src="./vista/js/puppet-principal.js"></script>
 </head>
 <body>
     <?php include("./vista/layout/nav.php"); ?>
@@ -28,18 +30,24 @@
           vistaTabla("noticias",4);
         ?>
   
+        </section>
         <div class="tablas_opciones">
           <label for="archivo_xlsx">
-            <a id="agregar_archivo1">agregar excel .xlsx</a>
+            <a id="agregar_archivo1">Agregar excel .xlsx</a>
             <input type="file" id="archivo_xlsx" name="archivo_excel_xlsx" accept=".xlsx" hidden >
           </label>
-  
+
           <label for="archivo_csv">
-            <a id="agregar_archivo2">agregar excel .csv</a>
+            <a id="agregar_archivo2">Agregar excel .csv</a>
             <input type="file" id="archivo_csv" name="archivo_excel_csv" accept=".csv" hidden >
           </label>
+
+          <label for="archivo_csv">
+            <a id="agregar_archivo3">Crear hoja</a>
+            <!-- <input type="file" id="archivo_csv" name="archivo_excel_csv" accept=".csv" hidden > -->
+          </label>
         </div>
-      </section>
+        <div class="boton_redondo_datos1">+</div>
     </div>
 </body>
 </html>
