@@ -34,33 +34,34 @@
       <a id="btnExportar" href="#">exportar</a>
     </div>
   </section>
-
-  <table id="tabla" class="table">
-    <thead>
-      <tr>
-        <th>#</th>
-        <th>First</th>
-        <th>Last</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>@mdo</td>
-      </tr>
-      <tr>
-        <td>Jacob</td>
-        <td>Thornton</td>
-        <td>@fat</td>
-      </tr>
-      <tr>
-        <td>Larry the Bird</td>
-        <td>Larry</td>
-        <td>@twitter</td>
-      </tr>
-    </tbody>
-  </table>
+  <section id="tabla_datos_principal">
+    <table id="tabla" class="table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>First</th>
+          <th>Last</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Mark</td>
+          <td>Otto</td>
+          <td>@mdo</td>
+        </tr>
+        <tr>
+          <td>Jacob</td>
+          <td>Thornton</td>
+          <td>@fat</td>
+        </tr>
+        <tr>
+          <td>Larry the Bird</td>
+          <td>Larry</td>
+          <td>@twitter</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
   <section class="sombra_puppet" id="sombra_puppet"></section>
   <section class="tabla_puppet" id="puppet-tabla">
     <section class="conteiner_auxiliar" id="tabla_contenido">
