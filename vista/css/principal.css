@@ -64,10 +64,13 @@ body{
   bottom: -40px;
   right: 0px;
 }
-.tablas_opciones a{
+.tablas_opciones a,label{
   text-transform:capitalize;
   background-color: black;
+  cursor: pointer;
   color: white;
   padding: 7px 13px;
   border-radius: 5px;
 }
+
+/* -------------- efectos ------------ */

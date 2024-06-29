@@ -2,7 +2,7 @@ var archivos;
 $(document).ready(function(){
     console.log("conectado");
     // console.log(archivos);
-    subir_archivos();
+    // subir_archivos();
 
     $(document).on("click","#servidor",function(){
         console.log("enviando");

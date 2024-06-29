@@ -1,12 +1,21 @@
+<?php
+    $dato = "";
+    if(isset($_GET['archivo'])){
+      // echo "si existe";
+      $dato = $_GET['archivo'];
+    }
+?>
 <?php include_once("./vista/layout/head.php") ?>
   <title>Editor de Excel</title>
   <link rel="stylesheet" href="./vista/css/layout-nav.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   <link rel="stylesheet" href="./vista/css/editor.css">
   <script defer src="./vista/js/puppet-editor.js"></script>
+  <script defer src="./vista/js/editor_date.js"></script>
 </head>
 <body>
   <?php include_once("./vista/layout/nav.php") ?>
+  <p id="dato_id_archivo" hidden><?php echo $dato; ?></p>
   <section class="conteiner_btnCambio">
 
     <div>

@@ -22,7 +22,7 @@ $(document).ready(function(){
                                 <p name="${element[0]}">
                                 ${element[1]}
                                 </p>
-                                <div>
+                                <div name="${element[0]}">
                                 <!-- esto siempre está vacio -->
                                 </div>
                             </article>
