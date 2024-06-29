@@ -15,12 +15,9 @@
   <link rel="stylesheet" href="./vista/css/layout-nav.css">
   <link rel="stylesheet" href="./vista/css/editor.css">
   <script defer src="./vista/js/puppet-editor.js"></script>
-<<<<<<< HEAD
+
   <script defer src="./vista/js/editor_date.js"></script>
-=======
   <script defer src="./vista/js/editor-ExportarExcel.js"></script>
-  
->>>>>>> c9c9d8b8295be031e5bb8f222fa881e47762dabb
 </head>
 <body>
   <?php include_once("./vista/layout/nav.php") ?>
