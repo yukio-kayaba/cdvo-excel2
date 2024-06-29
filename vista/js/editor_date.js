@@ -124,3 +124,129 @@ function guardar_excel(buffer,filename){
     const data = new Blob([buffer],{type:EXCEL_TYPE});
     saveAs(data,filename +EXCEL_EXTENCION);
 }
+
+let puppetTabla = document.querySelector("#puppet-tabla");
+let sombraTabla = document.querySelector("#sombra_puppet");
+let tabla_contenido = document.querySelector("#tabla_contenido");
+let botones_tabla = document.querySelector("#botones_tabla");
+
+let btn_agregar = document.querySelector("#btn_agregar");
+
+function visibilidadElementos(estado){
+  puppetTabla.style.display = estado;
+  sombraTabla.style.display = estado;
+  tabla_contenido.style.display = estado;
+  botones_tabla.style.display = estado;
+}
+
+visibilidadElementos("none");
+
+btn_agregar.addEventListener("click", function(e){
+    const element_date = document.createElement("div");
+    let titulo_Date = document.getElementById("titulo_archivo_date");
+    element_date.classList.add("modales");
+
+    let texto = `
+        <div class="mb-3 celda_datos">${titulo_Date.innerHTML}</div>
+        <br/>
+    `;
+    // let dato_value = (valores_repeat != "" && indice - 1 == valores_key[indice])? valores_repeat[indice - 1]:"";
+    informacion_archivos[0].forEach((element,indice) => {
+        if(indice!= 0){
+            texto += `
+                <div class="mb-3 celda_datos">
+                    <label for="inputPassword${indice}" class="col-form-label">${element}</label>
+                    <input type="text" id="inputPassword${indice}" name="${indice}" class="form-control datos_input_date" aria-describedby="passwordHelpInline" >
+                    <div class="form-check">
+                        <input class="radio_duple_save" class="form-check-input" type="checkbox" name="${indice}" value="" id="flexCheckDefault${indice}">
+                        <label class="form-check-label" for="flexCheckDefault${indice}">
+                            Repetir
+                        </label>
+                    </div>
+                </div>
+            `;
+        }
+    });
+
+
+    element_date.innerHTML = texto;
+    tabla_contenido.innerHTML ="";
+    tabla_contenido.appendChild(element_date);
+    botones_tabla.classList.add("datos_escribidos");
+  visibilidadElementos("flex");
+  autocompletado();
+  e.stopPropagation();
+})
+
+sombraTabla.addEventListener("click", function(e){
+  puppetTabla.style.display = "none";
+  sombraTabla.style.display = "none";
+  e.stopPropagation();
+});
+
+tabla_contenido.addEventListener("click",function(e){
+  e.stopPropagation();
+})
+botones_tabla.addEventListener("click",function(e){
+    let titulo_Date = document.getElementById("titulo_archivo_date");
+    let valor_aux = localStorage.getItem("valor_aux");
+    let dato_activo = false;
+    let datos;
+    botones_tabla.classList.forEach(element => {
+        if(element == "datos_escribidos") dato_activo=true;
+    });
+    console.log(dato_activo);
+
+    if(dato_activo){
+        datos = obtencion_datos_input();
+        let datos_2 = {
+            "archivo":titulo_Date.innerHTML,
+            "informacion":JSON.stringify(datos),
+            "date_user":valor_aux
+        };
+        console.log(datos_2);
+    }
+
+  e.stopPropagation();
+})
+function obtencion_datos_input(){
+    const radios_date = document.getElementsByClassName("radio_duple_save");
+    const input_date = document.getElementsByClassName("datos_input_date");
+    let datos = [];
+    let radios ={};
+    for (let i = 0; i < input_date.length; i++){
+        datos.push(input_date[i].value);   
+        if(radios_date[i].checked){
+            radios[i] = input_date[i].value;
+        }
+    }
+    localStorage.setItem("valores_repeat",JSON.stringify(radios));
+    return datos;
+}
+puppetTabla.addEventListener("click", function(e){
+
+  sombraTabla.style.display = "none";
+  puppetTabla.style.display = "none";
+  e.stopPropagation();
+});
+
+
+function autocompletado(){
+    const radios_date = document.getElementsByClassName("radio_duple_save");
+    const input_date = document.getElementsByClassName("datos_input_date");
+    let valores_repeat = "";
+    let valores_key = "";
+    try {
+        valores_repeat = localStorage.getItem("valores_repeat");
+        valores_repeat = JSON.parse(valores_repeat);
+        valores_key = Object.keys(valores_repeat);
+    } catch (e) {
+        valores_repeat = "";
+    }
+    // console.log(valores_repeat);
+
+    for (const key in valores_repeat) {
+        radios_date[key].checked = true;
+        input_date[key].value = valores_repeat[key];
+    }
+}

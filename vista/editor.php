@@ -15,7 +15,7 @@
   <link rel="stylesheet" href="./vista/css/layout-nav.css">
   <link rel="stylesheet" href="./vista/css/editor.css">
   <script src="./vista/js/fileSaver.js"></script>
-  <script defer src="./vista/js/puppet-editor.js"></script>
+  <!-- <script defer src="./vista/js/puppet-editor.js"></script> -->
   <script defer src="./vista/js/editor_date.js"></script>
   <!-- <script defer src="./vista/js/editor-ExportarExcel.js"></script> -->
 </head>
@@ -32,7 +32,7 @@
   
       <div>
         <a id="btn_guardar" class="boton_editar_efecto" href="#">guardar</a>
-        <a id="btn_agregar" class="boton_editar_efecto" href="#">agregar</a>
+        <a id="btn_agregar" class="boton_editar_efecto" href="#">Agregar</a>
         <a id="btnExportar" class="boton_editar_efecto" href="#">exportar</a>
       </div>
     </section>
