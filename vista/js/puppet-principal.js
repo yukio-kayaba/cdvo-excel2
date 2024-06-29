@@ -10,31 +10,7 @@ $(document).ready(function(){
       console.log("clickeado");
       location.href=`editor?archivo=${name}`;
     });
-    // $(document).on("click","#servidor",function(){
-    //     console.log("enviando");
-    //     if(archivos == null){
-    //         alert("Archivo vacio");
-    //         return;
-    //     }
-    //     const elementos = JSON.stringify(archivos);
 
-    //     let dato_prueba = {
-    //         "datos":elementos,
-    //         "titulo":"archivo_excel",
-    //         "opcion":1,
-    //         "user_date":1
-    //     };
-    //     console.log(dato_prueba);
-    //     // return;
-    //     $.ajax({
-    //         url: './modelo/tareas-date/convertir_sql.php',
-    //         type: 'POST', 
-    //         data: dato_prueba, 
-    //         success: function(response){
-    //             console.log('Respuesta del servidor:', response);
-    //         }
-    //     });
-    // }); 
 });
 
 
