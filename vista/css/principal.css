@@ -26,6 +26,7 @@ body{
   gap: 10px;
   justify-content: center;
 
+  flex-wrap: wrap;
   position: relative;
 }
 
@@ -59,16 +60,23 @@ body{
   display:flex;
   flex-direction: row;
   gap: 5px;
-
   position: absolute;
   bottom: -40px;
   right: 0px;
+  color:white;
+  padding: 0px 20px;
 }
+<<<<<<< HEAD
 .tablas_opciones a,label{
   text-transform:capitalize;
   background-color: black;
   cursor: pointer;
   color: white;
+=======
+.tablas_opciones label a{
+  text-transform:capitalize;
+  background-color: black;
+>>>>>>> c9c9d8b8295be031e5bb8f222fa881e47762dabb
   padding: 7px 13px;
   border-radius: 5px;
 }

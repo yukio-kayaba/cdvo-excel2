@@ -15,7 +15,10 @@ function visibilidadElementos(estado){
 
 visibilidadElementos("none");
 
+<<<<<<< HEAD
+=======
 
+>>>>>>> 6824628932d22510504cec6b21ea33d8fd408a5a
 btn_agregar.addEventListener("click", function(e){
   visibilidadElementos("flex");
   e.stopPropagation();

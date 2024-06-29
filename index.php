@@ -16,8 +16,7 @@
         }
     }else{
         // ModeloControlador::inicio();
-        // ModeloControlador::editor();
+        // ModeloContro lador::editor();
         ModeloControlador::login();
-
     }
 ?>
