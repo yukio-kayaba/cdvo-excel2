@@ -80,7 +80,7 @@ botones_tabla.addEventListener("click",function(e){
       "datos":elementos,
       "titulo":nombre_archivo,
       "opcion":1,
-      "user_date":1
+      "user_date":localStorage.getItem("valor_aux")
   };
   console.log(dato_prueba);
   // return;

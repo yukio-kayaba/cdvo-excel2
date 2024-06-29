@@ -47,8 +47,11 @@ $(document).ready(function(){
                 alert("datos correctos");
                 localStorage.setItem("valor_aux",datos);
                 window.location.reload();
+            }else if(datos == -3){
+                alert("DNI en uso");
             }else{
                 alert("datos incorrectos");
+                
             }
         });
     });

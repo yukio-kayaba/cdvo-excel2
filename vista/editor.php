@@ -8,6 +8,8 @@
 <?php include_once("./vista/layout/head.php") ?>
   <title>Editor de Excel</title>
   <script src="https://unpkg.com/xlsx@0.16.9/dist/xlsx.full.min.js"></script>
+  <script src="https://unpkg.com/read-excel-file@5.x/bundle/read-excel-file.min.js"></script>
+
   <script src="https://unpkg.com/file-saverjs@latest/FileSaver.min.js"></script>
   <script src="https://unpkg.com/tableexport@latest/dist/js/tableexport.min.js"></script>
 

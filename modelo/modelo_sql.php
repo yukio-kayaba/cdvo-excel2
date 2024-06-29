@@ -19,7 +19,7 @@
             }
         }
         public function validador_cuenta($dni,$contra){
-            $this->sql = "select validador_cuenta('$dni', '$contra');";
+            $this->sql = "select validador_cuenta('$dni','$contra');";
             $resultado = $this->dbdatos->prepare($this->sql);
             $resultado->execute();
             return $resultado->fetchAll(PDO::FETCH_COLUMN);
@@ -91,6 +91,13 @@
         public function insert_valores($codigo){
             $this->sql = $codigo;
             $this->ejecutar();
+        }
+        public function insertando_usuario($codigo){
+            $this->sql = $codigo;
+            $resultado = $this->dbdatos->prepare($this->sql);
+            $resultado->execute();
+            $resultado->closeCursor();
+            return $this->dbdatos->lastInsertId();
         }
     };
 ?>

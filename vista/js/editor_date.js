@@ -76,13 +76,17 @@ $(document).ready(function(){
 const excel_input = document.getElementById("btn-subirArchivo");
 
 excel_input.addEventListener("change",async function(e){
+    let botones_tabla1 = document.getElementById("botones_tabla");
     const elemento = await readXlsxFile(excel_input.files[0]);
     // console.log(elemento);
     const excel = new Excel(elemento);
     const datos_excel = excel.content;
-    // archivos = datos_excel;
+    archivos = datos_excel;
     convertidor_datos(datos_excel);
     vista_previa_datos(datos_excel,"tabla_contenido");
+    visibilidadElementos("flex");
+    botones_tabla1.classList.remove("datos_escribidos");
+    botones_tabla1.classList.add("botones_input_grade");
 });
 
 function vista_previa_datos(archivos,id_dato){
@@ -121,7 +125,16 @@ function descargar_archivos(){
     const EXCEL_TYPE = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8";
     const EXCEL_EXTENCION = ".xlsx";
     let titulo_Date = document.getElementById("titulo_archivo_date");
-    const worshet = XLSX.utils.json_to_sheet(informacion_archivos);
+    let elementos = [];
+    for (let i = 0; i < informacion_archivos.length; i++) {
+        let elemento_aux = [];
+        for (let u = 1; u < informacion_archivos[i].length; u++) {
+            elemento_aux.push(informacion_archivos[i][u]); 
+        }
+        elementos.push(elemento_aux);
+    }
+    console.log(elementos);
+    const worshet = XLSX.utils.json_to_sheet(elementos);
     const workbook = {Sheets:{
         'data':worshet
     },SheetNames:['data']};
@@ -220,8 +233,16 @@ botones_tabla.addEventListener("click",function(e){
         datos = datos_2;
         url = './modelo/tareas-date/enviar_datos_per.php';
         console.log(datos);
+        botones_tabla.classList.remove("datos_escribidos");
     }else{
-
+        let datos_2 = {
+            "titulo":dato.innerHTML,
+            "datos":JSON.stringify(archivos),
+            "user_date":valor_aux,
+            "opcion":2
+        };
+        url = './modelo/tareas-date/convertir_sql.php';
+        datos = datos_2;
     }
     $.ajax({
         url: url,
@@ -234,7 +255,7 @@ botones_tabla.addEventListener("click",function(e){
             }else{
                 alert("error data");
             }
-            location.reload();
+            // location.reload();
         }
     })
 
@@ -287,7 +308,7 @@ class Excel{
     }
   }
 
-function convertidor_datos(datos_excel){
+  function convertidor_datos(datos_excel){
     let datos = [];
   
     for (let i = 0; i < datos_excel.length; i++){
@@ -321,5 +342,5 @@ function convertidor_datos(datos_excel){
         campo_vacio = 0;
     }
     archivos = datos;
-  
+    // console.log(archivos);
   }
