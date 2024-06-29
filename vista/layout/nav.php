@@ -5,11 +5,20 @@
   </section>
 
   <section class="parte2">
-    <a href="cerrar">
+    <!-- <a href="cerrar">
       <p>Cerrar Sesión</p>
-    </a>
-    <a href="#">
+    </a> 
+    
+     <a href="#">
       <p>Opciones</p>
-    </a>
+    </a> -->
+    <div class="dropdown">
+      <button class="dropdown-toggle">Opciones</button>
+      <div class="dropdown-options">
+        <a href="#">ver</a>
+        <a href="inicios">Inicio</a>
+        <a href="cerrar">Cerrar Secion</a>
+      </div>
+    </div>
   </section>
 </nav>

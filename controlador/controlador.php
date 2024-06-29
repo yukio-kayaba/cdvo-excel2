@@ -5,6 +5,9 @@
         static function inicio(){
             require_once("./vista/principal.php");
         }
+        static function inicios(){
+            require_once("./vista/inicio_date_reload.php");
+        }
         static function login(){
             require_once("./vista/login.php");
         }

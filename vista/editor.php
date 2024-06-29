@@ -21,177 +21,121 @@
 </head>
 <body>
   <?php include_once("./vista/layout/nav.php") ?>
-  <p id="dato_id_archivo" hidden><?php echo $dato; ?></p>
-  <section class="conteiner_btnCambio">
+  <div id="contenido">
 
-    <div>
-      <a id="btn-subirArchivo" href="#">subir archivo</a>
-    </div>
-
-    <div>
-      <a id="btn_guardar" href="#">guardar</a>
-      <a id="btn_agregar" href="#">agregar</a>
-      <a id="btnExportar" href="#">exportar</a>
-    </div>
-  </section>
-  <section id="tabla_datos_principal">
-    <table id="tabla" class="table">
-      <thead>
-        <tr>
-          <th>#</th>
-          <th>First</th>
-          <th>Last</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Mark</td>
-          <td>Otto</td>
-          <td>@mdo</td>
-        </tr>
-        <tr>
-          <td>Jacob</td>
-          <td>Thornton</td>
-          <td>@fat</td>
-        </tr>
-        <tr>
-          <td>Larry the Bird</td>
-          <td>Larry</td>
-          <td>@twitter</td>
-        </tr>
-      </tbody>
-    </table>
-  </section>
-  <section class="sombra_puppet" id="sombra_puppet"></section>
-  <section class="tabla_puppet" id="puppet-tabla">
-    <section class="conteiner_auxiliar" id="tabla_contenido">
-      <table class="table tabla_dato">
+    <p id="dato_id_archivo" hidden><?php echo $dato; ?></p>
+    <section class="conteiner_btnCambio">
+  
+      <div>
+        <a id="btn-subirArchivo" class="boton_editar_efecto" href="#">subir archivo</a>
+      </div>
+  
+      <div>
+        <a id="btn_guardar" class="boton_editar_efecto" href="#">guardar</a>
+        <a id="btn_agregar" class="boton_editar_efecto" href="#">agregar</a>
+        <a id="btnExportar" class="boton_editar_efecto" href="#">exportar</a>
+      </div>
+    </section>
+    <section id="tabla_datos_principal">
+      <table id="tabla" class="table">
         <thead>
           <tr>
-            <th scope="col">#</th>
-            <th scope="col">First</th>
-            <th scope="col">Last</th>
-            <th scope="col">Handle</th>
+            <th>#</th>
+            <th>First</th>
+            <th>Last</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <th scope="row">1</th>
             <td>Mark</td>
             <td>Otto</td>
             <td>@mdo</td>
           </tr>
           <tr>
-            <th scope="row">2</th>
             <td>Jacob</td>
             <td>Thornton</td>
             <td>@fat</td>
           </tr>
           <tr>
-            <th scope="row">3</th>
             <td>Larry the Bird</td>
             <td>Larry</td>
             <td>@twitter</td>
           </tr>
-          <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-          </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td>Larry the Bird</td>
-            <td>Larry</td>
-            <td>@twitter</td>
-          </tr>
-          <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-          </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td>Larry the Bird</td>
-            <td>Larry</td>
-            <td>@twitter</td>
-          </tr>
-          <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-          </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td>Larry the Bird</td>
-            <td>Larry</td>
-            <td>@twitter</td>
-          </tr>
-          <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-          </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-  
-            <td>Larry the Bird</td>
-            <td>Larry</td>
-            <td>@twitter</td>
-          </tr>
-          <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-          </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td>Larry the Bird</td>
-            <td>Larry</td>
-            <td>@twitter</td>
-          </tr>
-  
         </tbody>
       </table>
     </section>
-    <section class="botones_tabla" id="botones_tabla">
-      <a href="#">subir a la nube</a>
+    <section class="sombra_puppet" id="sombra_puppet"></section>
+    <section class="tabla_puppet" id="puppet-tabla">
+      <section class="conteiner_auxiliar" id="tabla_contenido">
+        <table class="table tabla_dato">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">First</th>
+              <th scope="col">Last</th>
+              <th scope="col">Handle</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">1</th>
+              <td>Mark</td>
+              <td>Otto</td>
+              <td>@mdo</td>
+            </tr>
+            <tr>
+              <th scope="row">2</th>
+              <td>Jacob</td>
+              <td>Thornton</td>
+              <td>@fat</td>
+            </tr>
+            <tr>
+              <th scope="row">3</th>
+              <td>Larry the Bird</td>
+              <td>Larry</td>
+              <td>@twitter</td>
+            </tr>
+            <tr>
+              <th scope="row">1</th>
+              <td>Mark</td>
+              <td>Otto</td>
+              <td>@mdo</td>
+            </tr>
+            <tr>
+              <th scope="row">2</th>
+              <td>Jacob</td>
+              <td>Thornton</td>
+              <td>@fat</td>
+            </tr>
+            <tr>
+              <th scope="row">3</th>
+              <td>Larry the Bird</td>
+              <td>Larry</td>
+              <td>@twitter</td>
+            </tr>
+            <tr>
+              <th scope="row">1</th>
+              <td>Mark</td>
+              <td>Otto</td>
+              <td>@mdo</td>
+            </tr>
+            <tr>
+              <th scope="row">2</th>
+              <td>Jacob</td>
+              <td>Thornton</td>
+              <td>@fat</td>
+            </tr>
+    
+          </tbody>
+        </table>
+      </section>
+      <section class="botones_tabla" id="botones_tabla">
+        <a href="#">subir a la nube</a>
+      </section>
     </section>
-  </section>
-
+    <div class="boton_redondo_datos">
+        +
+    </div>
+  </div>
 </body>
 </html>

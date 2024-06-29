@@ -1,6 +1,6 @@
 $(document).ready(function(){
     carga_tablero();
-
+    let activo = true;
     function carga_tablero(){
         let dato = document.getElementById("dato_id_archivo");
         let valor_aux = localStorage.getItem("valor_aux");
@@ -22,7 +22,22 @@ $(document).ready(function(){
         })
         // console.log(dato.innerHTML);
 
-    }    
+    }
+
+    $(document).on("click",".boton_redondo_datos",function(){
+        // (activo)?false:true;
+        let dato_info = document.getElementsByClassName("boton_redondo_datos")[0];
+        let casillas = document.getElementsByClassName("conteiner_btnCambio");
+        if(activo){
+            dato_info.innerHTML = "-";
+            casillas[0].style.visibility = "visible";
+            activo = false;
+        }else{
+            dato_info.innerHTML = "+";
+            casillas[0].style.visibility = "hidden";
+            activo = true;
+        }
+    });
 })
 
 function vista_previa_datos(archivos,id_dato){
@@ -34,7 +49,7 @@ function vista_previa_datos(archivos,id_dato){
                     <caption>
                         Vista previa de datos
                     </caption>
-                    <thead>
+                    <thead class="table-dark">
                         <tr>
                 `;
     for (let i = 1; i < datos[0].length ; i++) {
@@ -46,7 +61,7 @@ function vista_previa_datos(archivos,id_dato){
         <tbody>
     `;
     for (let i = 1; i < datos.length; i++){
-        let contenido_dato = `<tr class='${datos[0][i]}'>`;
+        let contenido_dato = `<tr class='${datos[i][0]}'>`;
         datos[i].forEach((element,indice)=> {
             if(indice != 0){
                 contenido_dato += `<td>${(element == "10101z")?"":element }</td>`;  
