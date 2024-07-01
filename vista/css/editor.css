@@ -70,8 +70,13 @@ body{
   width: 100%;
   display: flex;
   flex-wrap: wrap;
-  align-content: center;
+  align-content:space-around;
   justify-content: center;
+  overflow: auto;
+  height: 430px;
+  align-items: center;
+
+
 }
 #tabla{
   width: 90%;
@@ -98,6 +103,10 @@ body{
   font-size: 20px;
 }
 
+.tabla_dato_cabecera{
+  position: sticky;
+  top: 0;
+}
 
 @media (max-width: 768px) {
   .boton_redondo_datos{
