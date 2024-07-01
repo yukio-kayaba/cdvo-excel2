@@ -218,7 +218,7 @@ botones_tabla.addEventListener("click",function(e){
     let valor_aux = localStorage.getItem("valor_aux");
     let dato_activo = false;
     let datos;
-    let notificacion = new notificacion("contenido");
+    let notificacion = new notficacion("contenedor-toast_date");
     console.log(notificacion.get_iconos_date());
 
     botones_tabla.classList.forEach(element => {

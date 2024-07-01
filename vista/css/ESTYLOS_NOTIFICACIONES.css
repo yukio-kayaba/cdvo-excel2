@@ -14,12 +14,13 @@
     /* background: #ccc; */
     position: fixed;
     right: 40px;
-    bottom: 40px;
+    /* bottom: 40px; */
     width: 100%;
     max-width: 400px;
     display: flex;
-    flex-direction: column-reverse;
+    flex-direction: column;
     gap: 20px;
+    top: 20px;
 }
 .notificacion{
     background: #ccc;

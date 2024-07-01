@@ -18,11 +18,8 @@
   <link rel="stylesheet" href="./vista/css/editor.css">
   <link rel="stylesheet" href="./vista/css/ESTYLOS_NOTIFICACIONES.css">
 
-  <!-- <script src="./vista/js/fileSaver.js"></script> -->
-  <!-- <script defer src="./vista/js/puppet-editor.js"></script> -->
   <script defer src="./vista/js/editor_date.js"></script>
   <script defer src="./vista/js/notificaciones.js"></script>
-  <!-- <script defer src="./vista/js/editor-ExportarExcel.js"></script> -->
 </head>
 <body>
   <?php include_once("./vista/layout/nav.php") ?>
@@ -91,6 +88,7 @@
         +
     </div>
   </div>
+  <div class="contenedor-toast_date" id="contenedor-toast_date"></div>
 <?php
   require_once("./vista/layout/footer.php");
 ?>
