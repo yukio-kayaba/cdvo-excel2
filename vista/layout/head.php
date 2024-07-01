@@ -16,3 +16,4 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" defer></script>
     <link rel="stylesheet" href="./vista/css/main.css">
+    <script defer src="./vista/js/APP.js"></script>

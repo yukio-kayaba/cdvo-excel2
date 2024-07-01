@@ -6,3 +6,31 @@
 a{
   text-decoration: none;
 }
+#carga_dato_archivo{
+  width: 100%;
+  height: 100vh;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0; 
+  left: 0;
+  background-color: #00000087;
+  backdrop-filter: blur(10px);
+}
+#carga_dato_archivo > img{
+  border-radius: 30px; 
+  animation: mover 2s ease-in-out infinite
+}
+
+@keyframes mover {
+  0% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(100px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}

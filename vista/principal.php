@@ -119,5 +119,6 @@
     </section>
         <div class="boton_redondo_datos1">+</div>
     </div>
-</body>
-</html>
+<?php
+  require_once("./vista/layout/footer.php");
+?>
