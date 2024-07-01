@@ -18,7 +18,7 @@
                 <img src="./vista/img/CDVO.jpg" alt="">
             </span>
         </div>
-        <div class="container-form">
+        <div class="container-form cuadro_texto">
             <form id="login-form" class="form">
                 <input type="text" name="" id="dni" placeholder="dni">
                 <input type="password" name="" id="contra" placeholder="contraseña">

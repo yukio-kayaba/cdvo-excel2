@@ -19,10 +19,11 @@ $(document).ready(function(){
             <p class="create-pages" id="create_count"><i>Iniciar secion</i></p>
         `;
         if(elemento_click){
+            document.getElementsByClassName("cuadro_texto")[0].style.height = "70%";
             document.getElementById("login-form").innerHTML = texto1;
             elemento_click = false;
         }else{
-            
+            document.getElementsByClassName("cuadro_texto")[0].style.height = "60%";
             document.getElementById("login-form").innerHTML = texto;
             elemento_click = true;
         }
@@ -41,17 +42,22 @@ $(document).ready(function(){
         // console.log(direccion);
         // return;
         $.post(direccion,postdata,function(response){
-            console.log(response);
+            console.warn("error al iniciar la secion");
             const datos = response;
             if(datos > 0){
-                alert("datos correctos");
+                document.getElementsByClassName("border")[0].innerHTML = "Datos Correctos";
                 localStorage.setItem("valor_aux",datos);
                 window.location.reload();
+            }else if(datos == -2){
+                document.getElementsByClassName("border")[0].innerHTML = "DNI Incorrecto";
             }else if(datos == -3){
-                alert("DNI en uso");
-            }else{
-                alert("datos incorrectos");
-                
+                document.getElementsByClassName("border")[0].innerHTML = "Este DNI ya esta en uso";
+            }else if(datos == -4){
+                document.getElementsByClassName("border")[0].innerHTML = "Datos Incorrectos";
+            }else if(datos == -5){
+                document.getElementsByClassName("border")[0].innerHTML = "No es un DNI";
+            } else{
+                window.location.reload();
             }
         });
     });
