@@ -1,0 +1,123 @@
+:root{
+    --exito:#3ab65c;
+    --error:#bf333b;
+    --informacion:#1898c0;
+    --peligro:#bc8c12;
+    --exito-hover:#2d8a46;
+    --error-hover:#962a31;
+    --informacion-hover:#147fa0;
+    --peligro-hover:#9b7512;
+}
+
+/* estilos de notificaciones */
+.contenedor-toast_date{
+    /* background: #ccc; */
+    position: fixed;
+    right: 40px;
+    bottom: 40px;
+    width: 100%;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 20px;
+}
+.notificacion{
+    background: #ccc;
+    display: flex;
+    justify-content: space-between;
+    border-radius: 10px;
+    animation-name: apertura;
+    animation-duration: 200ms;
+    animation-timing-function: ease-out;
+    position: relative;
+    overflow: hidden;
+}
+
+.notificacion.exito{
+    background: var(--exito);
+}
+.notificacion.error{
+    background: var(--error);
+}.notificacion.informacion{
+    background: var(--informacion);
+}.notificacion.peligro{
+    background: var(--peligro);
+}
+
+.notificacion .contenido{
+    display: grid;
+    grid-template-columns: 30px auto;
+    align-items: center;
+    gap: 15px;
+    padding: 15px;
+
+}
+
+.notificacion .icono{
+    background: rgba(0, 0, 0,0.04);
+}
+
+.notificacion .titulo{
+    font-size: 20px;
+    font-weight: 600;
+
+}
+
+.notificacion .btn-cerrar{
+    background: rgba(0, 0, 0,0.1);
+    border: none;
+    cursor: pointer;
+    padding: 0px 5px;
+    transition: .3s ease all;
+}
+
+.notificacion .btn-cerrar:hover{
+    background: rgba(0, 0, 0,0.3);
+}
+.notificacion .btn-cerrar .icono{
+    width: 20px;
+    height: 20px;
+}
+
+
+@keyframes apertura{
+    from{
+        transform: translateY(100px);
+        opacity: 0;
+    }to{
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+.notificacion.cerrando{
+    animation-name: cierre;
+    animation-duration: 200ms;
+    animation-timing-function: ease-out;
+    animation-fill-mode: forwards;
+}
+@keyframes cierre{
+    from{
+        transform: translateX(0);
+    }to{
+        transform: translateX(calc(100% + 40px));
+    }
+}
+.notificacion.auto-cierre::after{
+    content: "";
+    width: 100%;
+    height: 5px;
+    background: rgba(0, 0, 0,0.5);
+    position: absolute;
+    bottom: 0;
+    animation-name: autocierre;
+    animation-duration: 7s;
+    animation-timing-function: ease-out;
+    animation-fill-mode: forwards;
+}
+@keyframes autocierre{
+    from{
+        width: 100%;
+    }to{
+        width: 0;
+    }
+}
