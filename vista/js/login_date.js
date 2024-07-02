@@ -58,7 +58,7 @@ $(document).ready(function(){
             }else if(datos == -5){
                 document.getElementsByClassName("border")[0].innerHTML = "No es un DNI";
             } else{
-                // window.location.reload();
+                window.location.reload();
             }
         });
     });
