@@ -1,13 +1,21 @@
+<?php
+    //impedir el guardado del caché del navegador
+    header("Cache-Control: no-cache, must-revalidate"); // HTTP/1.1
+    header("Expires: Sat, 1 Jul 2000 05:00:00 GMT"); // Fecha en el pasado
+?>
 <!DOCTYPE html>
-<html lang="es" id="pagina_no_tocar" data-theme="light">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
+
+    <!-- metas para impedir el guardado del caché del navegador -->
+    <meta http-equiv="Expires" content="0">
+    <meta http-equiv="Last-Modified" content="0">
+    <meta http-equiv="Cache-Control" content="no-cache, mustrevalidate">
+    <meta http-equiv="Pragma" content="no-cache">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CDVO</title>
-    <!-- <link rel="stylesheet" href="./vista/css/bulma.min.css"> -->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" defer></script>
-    <!-- <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script> -->
-    <!-- <script src="./controlador/app.js" defer></script> -->
     <link rel="stylesheet" href="./vista/css/stylos.css">
     <link rel="stylesheet" href="./vista/css/main.css">
     <script  src="./vista/js/APP.js" defer></script>
@@ -15,15 +23,14 @@
 </head>
 <body>
     <div class="container">
-        <div class="container--profile">
-            <span class="logo">
-                <img src="./vista/img/CDVO.jpg" alt="">
-            </span>
-        </div>
-        <div class="container-form cuadro_texto">
+        <section class="conteiner-img">
+            <img src="./vista/img/CDVO.jpg" alt="">
+        </section>
+
+        <div class="cuadro_texto">
             <form id="login-form" class="form">
-                <input type="text" name="" id="dni" placeholder="dni">
-                <input type="password" name="" id="contra" placeholder="contraseña">
+                <input type="text" id="dni" placeholder="dni">
+                <input type="password" id="contra" placeholder="contraseña">
 
                 <input type="submit" value="Iniciar Secion">
                 <div class="border"></div>

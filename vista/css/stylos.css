@@ -1,23 +1,22 @@
 body{
     background-color: black;
 }
-
 .container{
-    height: 100%;
-    position: fixed;
-    padding: 1rem;
-    display: flex;
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    align-content: center;
-    justify-content: space-evenly;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     align-items: center;
+    justify-items: center;
+    height: 100vh;
+    overflow-y: auto;
+    width: 100vw;
 }
-.logo img{
-    display: block;
-    margin: auto;
-    width: 400px;
+
+.conteiner-img{
+    width:100%;
+}
+.container img{
+    object-fit: cover;
+    width: 100%;
 }
 #create_count{
     cursor: pointer;
@@ -105,30 +104,26 @@ body{
 }
 
 .cuadro_texto {
-    height: 60%;
+    width: 400px;
     transition:height 0.3s ease;
 }
-@media screen and (min-width:300px){
-    .logo img{
-        width: 300px;
-    }
-    .connect--fiends{
-        font-size: 1.5rem;
-    }
-    .form input::placeholder{
-        font-size: 1rem;
-    }
-    .form input[type="submit"]{
-        font-size: 1.2rem;
-
+@media (width < 400px){
+    .cuadro_texto {
+        width: 95vw;
+        margin: 0px 10px;
     }
 }
-@media screen and (min-width:700px){
-    .logo img{
-        display: inline-block;
-        margin: 0;
+@media (width < 700px){
+    .container{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-items: center;
     }
-    .form{
-        width: 400px;
+    .cuadro_texto {
+        height: 45vh;
+    }
+    .conteiner-img{
+        width: 45vh;
     }
 }
