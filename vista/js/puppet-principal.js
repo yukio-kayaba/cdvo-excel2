@@ -13,26 +13,19 @@ $(document).ready(function(){
 
 });
 
-
-// CODIGO PARA EL DISEÑO
-let puppetTabla = document.querySelector("#puppet-tabla");
-let sombraTabla = document.querySelector("#sombra_puppet");
-let tabla_contenido = document.querySelector("#tabla_contenido");
-let botones_tabla = document.querySelector("#botones_tabla");
-
-let btn_agregar1 = document.querySelector("#agregar_archivo1");
-let btn_agregar2 = document.querySelector("#agregar_archivo2");
+const puppet_test = document.querySelector("#contenido");
+const btn_cerrarPuppet = document.querySelector("#btn_cerraPuppet");
+const excel_input = document.getElementById("archivo_xlsx");
 
 function visibilidadElementos(estado){
-  puppetTabla.style.display = estado;
-  sombraTabla.style.display = estado;
-  tabla_contenido.style.display = estado;
-  botones_tabla.style.display = estado;
+  puppet_test.style.display = estado;
 }
-// var archivos;
+
 visibilidadElementos("none");
 
-const excel_input = document.getElementById("archivo_xlsx");
+btn_cerrarPuppet.addEventListener("click",function(){
+  visibilidadElementos("none");
+})
 
 excel_input.addEventListener("change",async function(e){
     const elemento = await readXlsxFile(excel_input.files[0]);
@@ -48,20 +41,6 @@ excel_input.addEventListener("change",async function(e){
 //   e.stopPropagation();
 // })
 
-btn_agregar2.addEventListener("click", function(e){
-  visibilidadElementos("flex");
-  e.stopPropagation();
-})
-
-sombraTabla.addEventListener("click", function(e){
-  puppetTabla.style.display = "none";
-  sombraTabla.style.display = "none";
-  e.stopPropagation();
-});
-
-tabla_contenido.addEventListener("click",function(e){
-  e.stopPropagation();
-})
 botones_tabla.addEventListener("click",function(e){
   e.stopPropagation();
   console.log("enviando al servidor");
@@ -99,11 +78,6 @@ botones_tabla.addEventListener("click",function(e){
       }
   });
 })
-puppetTabla.addEventListener("click", function(e){
-  sombraTabla.style.display = "none";
-  puppetTabla.style.display = "none";
-  e.stopPropagation();
-});
 
 
 class Excel{
@@ -149,13 +123,42 @@ function convertidor_datos(datos_excel){
   // console.log(archivos);
 }
 function vista_previa_datos(){
-  let tabla = document.createElement("table");
-  tabla.classList.add("table");
-  tabla.classList.add("tabla_dato")
+  // let tabla = document.createElement("table");
+  // tabla.classList.add("table");
+  // tabla.classList.add("tabla_dato")
+  // let datos = archivos;
+  // let contenido  = `
+                  
+  //                 <thead>
+  //                     <tr>
+  //             `;
+  // for (let i = 0; i < datos[0].length ; i++) {
+  //     contenido +=`<th scope="col">${datos[0][i]}</th>`;
+  // }
+  // contenido += `
+  //         </tr>
+  //     </thead>
+  //     <tbody>
+  // `;
+  // for (let i = 1; i < datos.length; i++){
+  //     let contenido_dato = "<tr>";
+  //     datos[i].forEach(element => {
+  //         contenido_dato += `<td>${(element == "10101z")?"":element }</td>`;  
+  //     });
+  //     contenido_dato += "</tr>";
+  //     contenido += contenido_dato;
+  // }
+  // contenido += "</tbody>"; 
+  // tabla.innerHTML = contenido;
+  // document.getElementById("tabla_contenido").innerHTML = "";
+  // document.getElementById("tabla_contenido").appendChild(tabla); 
+  // visibilidadElementos("flex");
+  document.getElementById("tabla").innerHTML = "";
+  let tabla = document.querySelector("#tabla");
   let datos = archivos;
   let contenido  = `
                   
-                  <thead>
+                  <thead class="table-dark">
                       <tr>
               `;
   for (let i = 0; i < datos[0].length ; i++) {
@@ -176,7 +179,7 @@ function vista_previa_datos(){
   }
   contenido += "</tbody>"; 
   tabla.innerHTML = contenido;
-  document.getElementById("tabla_contenido").innerHTML = "";
-  document.getElementById("tabla_contenido").appendChild(tabla); 
-  visibilidadElementos("flex");
+  document.getElementById("tabla").innerHTML = contenido;
+  // document.getElementById("tabla").appendChild(contenido); 
+  visibilidadElementos("block");
 }

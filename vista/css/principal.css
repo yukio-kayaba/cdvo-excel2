@@ -1,100 +1,35 @@
+/* OTROS */
 body{
   position: relative;
 }
-/*--------------INFO DEL USUARIO------------  */
-.info_usuario{
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  padding: 20px 0px;
-}
-.conteiner-fotoUsuario{
-  width: 70px;
-}
-.conteiner-fotoUsuario img{
-  object-fit: cover;
-  width: 100%;
-}
 
-/* ----------------TABLAS---------------------- */
+/* ESTILOS DE CONTENIDO DEL ARCHIVO PRINCIPAL */
 .tablas_disponibles{
+  width: 100%;
   display: flex;
   justify-content: center;
-  align-items: center;
-  align-content: center;
   flex-wrap: wrap;
   gap: 10px;
-  justify-content: center;
-
-  flex-wrap: wrap;
-  position: unset;
+  padding: 10px 20px;
 }
 
-.btn_flotante{
-  position: absolute;
-  bottom: -30px;
-  right: 15px;
-}
-.icono_agregar{
-  display: flex;
-  align-items: center;
-  background-color: white;
-  border: 1px solid black;
-  border-radius: 50%;
-  padding: 4px;
-  cursor:pointer;
-  width: 30px;
-  height: 30px;
-}
-.icono_agregar:hover{
-  filter:invert(1);
-}
-.icono_agregar img{
-  object-fit: cover;
-  aspect-ratio: 1/1;
-  width: 100%;
-}
+/*  ESTILOS APLICADOS AL PUPPET  */
+#contenido{
+  width: 90vw;
+  background-color:rgb(231, 231, 231) ;
+  box-shadow: 5px 5px 20px black;
+  overflow: auto;
+  height: 90vh;
 
-/* ----------------TABLA OPCIONES---------------------- */
-.tablas_opciones{ 
-  display:flex;
-  flex-direction: row;
-  gap: 5px;
-  position: fixed;
-  top: 50%;
-  bottom: -40px;
+  top: 20px;
   right: 0px;
-  color:white;
-  padding: 0px 20px;
-  flex-direction: column;
-  visibility: hidden;
+  left: 0px;
+  margin: auto;
+
+  position: absolute;
 }
-
-.tablas_opciones a,label{
-  text-transform:capitalize;
-  background-color: rgba(29, 192, 192, 0.692);
-  cursor: pointer;
-  color: rgb(8, 8, 8);
-  padding: 7px 13px;
-  border-radius: 5px;
-  /* visibility: hidden; */
-}
-
-
-.boton_redondo_datos1{
-  position: fixed;
-  color: black;
-  cursor: pointer;
+#btn_cerraPuppet{
   width: 50px;
   height: 50px;
-  background-color: aqua;
-  display: flex;
-  justify-content: center;
-  border-radius : 50%;
-  align-items: center;
-  top: 70%;
-  left: 85%;
-  font-size: 35px;
-  /* visibility: hidden; */
 }
-/* -------------- efectos ------------ */
+

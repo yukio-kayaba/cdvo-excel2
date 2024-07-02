@@ -5,119 +5,79 @@
   <script src="https://unpkg.com/read-excel-file@5.x/bundle/read-excel-file.min.js"></script>
   <script src="https://unpkg.com/tableexport@latest/dist/js/tableexport.min.js"></script>
   <script src="https://unpkg.com/file-saverjs@latest/FileSaver.min.js"></script>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
-  <link rel="stylesheet" href="./vista/css/layout-nav.css">
+  <!-- manejo de los excel -->
+  <script defer src="./vista/js/puppet-principal.js"></script>
+  <script defer src="./vista/js/principal._date.js"></script>
+
   <link rel="stylesheet" href="./vista/css/principal.css">
   <link rel="stylesheet" href="./vista/css/components/vistaTabla.css">
-  <link rel="stylesheet" href="./vista/css/editor.css">
-  <script defer src="./vista/js/principal._date.js"></script>
-  <script defer src="./vista/js/puppet-principal.js"></script>
 </head>
 <body>
     <?php include("./vista/layout/nav.php"); ?>
-    <div id="contenido">
-      <section class="info_usuario">
-        <div class="conteiner-fotoUsuario">
-          <img src="./vista/icon/usuario.png" alt="foto de perfil del usuario">
-        </div>
-        <p id="nombre_user">Nombre Del Usuario</p>
-      </section>
-  
-      <section class="tablas_disponibles">
-        <?php
-          vistaTabla("comida del dia",1);
-          vistaTabla("compras",2);
-          vistaTabla("noticias",4);
-        ?>
-  
-        </section>
-        <div class="tablas_opciones">
-          <label for="archivo_xlsx">
-            <a id="agregar_archivo1">Agregar excel .xlsx</a>
-            <input type="file" id="archivo_xlsx" name="archivo_excel_xlsx" accept=".xlsx" hidden >
-          </label>
 
-          <label for="archivo_csv">
-            <a id="agregar_archivo2">Agregar excel .csv</a>
-            <input type="file" id="archivo_csv" name="archivo_excel_csv" accept=".csv" hidden >
-          </label>
+    <div class="tablas_opciones p-3">
+      <label for="archivo_xlsx">
+        <p class="btn btn-success">
+          Agregar excel .xlsx
+        </p>
+        <!-- <button type="button" class="btn btn-success">Agregar excel .xlsx</button> -->
+        <input type="file" id="archivo_xlsx" name="archivo_excel_xlsx" accept=".xlsx" hidden >
+      </label>
 
-          <label for="archivo_csv">
-            <a id="agregar_archivo3">Crear hoja</a>
-            <!-- <input type="file" id="archivo_csv" name="archivo_excel_csv" accept=".csv" hidden > -->
-          </label>
-        </div>
-        <section class="sombra_puppet" id="sombra_puppet"></section>
-        <section class="tabla_puppet" id="puppet-tabla">
-      <section class="conteiner_auxiliar" id="tabla_contenido">
-        <table class="table tabla_dato">
-          <thead>
-            <tr>
-              <th scope="col">#</th>
-              <th scope="col">First</th>
-              <th scope="col">Last</th>
-              <th scope="col">Handle</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row">1</th>
-              <td>Mark</td>
-              <td>Otto</td>
-              <td>@mdo</td>
-            </tr>
-            <tr>
-              <th scope="row">2</th>
-              <td>Jacob</td>
-              <td>Thornton</td>
-              <td>@fat</td>
-            </tr>
-            <tr>
-              <th scope="row">3</th>
-              <td>Larry the Bird</td>
-              <td>Larry</td>
-              <td>@twitter</td>
-            </tr>
-            <tr>
-              <th scope="row">1</th>
-              <td>Mark</td>
-              <td>Otto</td>
-              <td>@mdo</td>
-            </tr>
-            <tr>
-              <th scope="row">2</th>
-              <td>Jacob</td>
-              <td>Thornton</td>
-              <td>@fat</td>
-            </tr>
-            <tr>
-              <th scope="row">3</th>
-              <td>Larry the Bird</td>
-              <td>Larry</td>
-              <td>@twitter</td>
-            </tr>
-            <tr>
-              <th scope="row">1</th>
-              <td>Mark</td>
-              <td>Otto</td>
-              <td>@mdo</td>
-            </tr>
-            <tr>
-              <th scope="row">2</th>
-              <td>Jacob</td>
-              <td>Thornton</td>
-              <td>@fat</td>
-            </tr>
-    
-          </tbody>
-        </table>
-      </section>
-      <section class="botones_tabla" id="botones_tabla">
-        <a href="#">subir a la nube</a>
-      </section>
-    </section>
-        <div class="boton_redondo_datos1">+</div>
+      <label for="archivo_csv">
+        <p class="btn btn-primary">
+          Agregar excel .csv
+        </p>
+        <!-- <button type="button" class="btn btn-primary">Agregar excel .csv</button> -->
+        <input type="file" id="archivo_csv" name="archivo_excel_csv" accept=".csv" hidden >
+      </label>
     </div>
+
+    <section class="tablas_disponibles">
+      <?php
+        vistaTabla("Ejemplo De tabla 1",1);
+        vistaTabla("Ejemplo De tabla 1",2);
+        vistaTabla("Ejemplo De tabla 1",3);
+        vistaTabla("Ejemplo De tabla 1",4);
+        vistaTabla("Ejemplo De tabla 1",5);
+        vistaTabla("Ejemplo De tabla 1",6);
+      ?>
+    </section>
+
+    <!-- INICIO DEL PUPPET -->
+    <div id="contenido" class="p-2 rounded" style="display:none">
+      <section style="position: sticky; top: 0px; background: rgb(231, 231, 231); box-shadow: 3px 0px 7px black;" class="w-100 d-flex justify-content-between align-items-center rounded">
+        <p style="overflow:auto;" class="fs-6 ps-3 fw-bolder text-nowrap">VISUALIZAR DATOS</p>
+        <button id="btn_cerraPuppet" type="button" class="btn btn-danger">X</button>
+      </section>
+
+      <table id="tabla" class="table tabla_dato" style="flex-direction: column;">
+        <thead class="table-dark">
+          <tr style="position: sticky; top: 50px;">
+            <th scope="col">#</th>
+            <th scope="col">First</th>
+            <th scope="col">Last</th>
+            <th scope="col">Handle</th>
+          </tr>
+        </thead>
+        <tbody>
+          <?php for($i=0; $i < 200; $i++) { ?>
+            <tr>
+            <th scope="row">1</th>
+            <td>Mark</td>
+            <td>Otto</td>
+            <td>@mdo</td>
+            </tr>
+          <?php }; ?>
+        </tbody>
+      </table>
+
+      <section style="position: sticky; bottom: 10px;" class="botones_tabla d-flex justify-content-end me-2" id="botones_tabla">
+        <button type="button" class="btn btn-success fs-5 f-">subir a la nube</button>
+      </section>
+
+    </div>
+    <!-- FIN DEL PUPPET -->
 </body>
 </html>
