@@ -3,7 +3,6 @@ $(document).ready(function(){
     nombre_user();
 
     let activo = true;
-    
     $(document).on("click",".boton_redondo_datos1",function(){
         // (activo)?false:true;
         let dato_info = document.getElementsByClassName("boton_redondo_datos1")[0];
@@ -37,11 +36,11 @@ $(document).ready(function(){
                     datos_tabla.forEach(element => {
                         texto += `
                             <article class="vistaTabla">
-                                <p name="${element[0]}">
+                                <p>
                                 ${element[1]}
                                 </p>
                                 <div name="${element[0]}">
-                                <!-- esto siempre está vacio -->
+                                    <img name="${element[0]}" src="./vista/img/ver_hoha.png" alt="">
                                 </div>
                             </article>
                         `;
@@ -66,4 +65,16 @@ $(document).ready(function(){
             }    
         })
     }
+    $(document).on("click",".boton_agregar_date",function(){
+        let elemento_dato = document.createElement("div");
+        elemento_dato.classList.add("input-group");
+        elemento_dato.classList.add("mb-3");
+        elemento_dato.classList.add("cotenido-date-puppet");
+        elemento_dato.innerHTML = `
+            <input type="text" class="form-control" placeholder="Ingrese el Texto" aria-label="Recipient's username" aria-describedby="button-addon2">
+            <button class="btn btn-outline-danger" type="button" id="button-addon2">Eliminar</button>
+        `;
+        document.getElementsByClassName("contenido_date_agregar")[0].appendChild(elemento_dato);
+        console.log("cliekado");
+    });
 });

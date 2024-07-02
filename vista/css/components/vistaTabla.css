@@ -21,5 +21,48 @@
 .vistaTabla div{
   background-color: #4f5a64;
   height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
+#editable_date{
+  height: 80%;
+  background-color: rgba(29, 23, 110, 0.74);
+  width: 95%;
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+  padding: 10px;
+  border-radius: 10px;
+  backdrop-filter: blur(10px);
+  opacity: 0.8;
+}
+.contenido_date_boton{
+  margin: 10px;
+  display: flex;
+  flex-direction: row-reverse;
+}
+.contenido_date_agregar{
+  display: flex;
+  gap: 10px;
+  background-color: #0000004d;
+  overflow: auto;
+}
+
+.cotenido-date-puppet{
+  display: flex;
+  margin-bottom: 0rem !important;
+  padding: 10px;
+  background-color: #071d49c2;
+}
+::-webkit-scrollbar{
+  width: 0.5px;
+  background: #0a0a0a;
+}
+::-webkit-scrollbar-track{
+  background: #0a0a0a;
+}
+::-webkit-scrollbar:hover{
+  width: 10px;
+}

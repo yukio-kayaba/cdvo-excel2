@@ -1,5 +1,6 @@
 //iniciador de cortaje
 var archivos;
+var pantalla_uso = false;
 $(document).ready(function(){
     console.log("conectado");
     // console.log(archivos);
@@ -7,10 +8,35 @@ $(document).ready(function(){
     $(document).on("click",".vistaTabla",function(e){
       let presionado = e.target;
       let name = presionado.getAttribute('name');
-      console.log("clickeado");
-      location.href=`editor?archivo=${name}`;
+      if(name != null){
+        location.href=`editor?archivo=${name}`;
+      }
     });
 
+    $(document).on("click","#archivo_nuevo",function(){
+      let contenido_d = document.getElementById("contenido");
+      contenido_d.style.display = "block";
+      if(contenido_d.children[1].id == "tabla"){
+        contenido_d.removeChild(contenido_d.children[1]);
+        if(!pantalla_uso){
+            pantalla_uso = true;
+            let div_agregar = document.createElement("div");
+            let texto = "";
+  
+            texto = `
+                <div class="contenido_date_boton">
+                    <button type="button" class="btn btn-primary boton_agregar_date">Agregar</button>
+                </div>
+                <div class="contenido_date_agregar card">
+  
+                </div>
+            `;
+            div_agregar.innerHTML = texto;
+            div_agregar.id = "editable_date";
+            contenido_d.insertBefore(div_agregar,contenido_d.children[1]);
+        }
+      }
+  });
 });
 
 const puppet_test = document.querySelector("#contenido");
@@ -182,4 +208,24 @@ function vista_previa_datos(){
   document.getElementById("tabla").innerHTML = contenido;
   // document.getElementById("tabla").appendChild(contenido); 
   visibilidadElementos("block");
+}
+
+function reader1(){
+  let texto = "";
+  texto = `
+      <section style="position: sticky; top: 0px; background: rgb(231, 231, 231); box-shadow: 3px 0px 7px black;" class="w-100 d-flex justify-content-between align-items-center rounded">
+          <p style="overflow:auto;" class="fs-6 ps-3 fw-bolder text-nowrap">VISUALIZAR DATOS</p>
+          <button id="btn_cerraPuppet" type="button" class="btn btn-danger">X</button>
+      </section>
+  `;
+  return texto;
+}
+function reader2(){
+  let texto = "";
+  texto = `
+      <section style="position: sticky; bottom: 10px;" class="botones_tabla d-flex justify-content-end me-2" id="botones_tabla">
+          <button type="button" class="btn btn-success fs-5 f-">subir a la nube</button>
+      </section>
+  `;
+  return texto;
 }

@@ -32,16 +32,17 @@
         <!-- <button type="button" class="btn btn-primary">Agregar excel .csv</button> -->
         <input type="file" id="archivo_csv" name="archivo_excel_csv" accept=".csv" hidden >
       </label>
+      <label  id="archivo_nuevo">
+          <p class="btn btn-secondary">
+            Nueva Hoja
+          </p>
+      </label>
     </div>
 
     <section class="tablas_disponibles">
       <?php
         vistaTabla("Ejemplo De tabla 1",1);
         vistaTabla("Ejemplo De tabla 1",2);
-        vistaTabla("Ejemplo De tabla 1",3);
-        vistaTabla("Ejemplo De tabla 1",4);
-        vistaTabla("Ejemplo De tabla 1",5);
-        vistaTabla("Ejemplo De tabla 1",6);
       ?>
     </section>
 

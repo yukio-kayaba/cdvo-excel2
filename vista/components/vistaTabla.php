@@ -6,6 +6,7 @@
     </p>
     <div>
       <!-- esto siempre está vacio -->
+      <img src="./vista/img/ver_hoha.png" alt="">
     </div>
   </article>
 
