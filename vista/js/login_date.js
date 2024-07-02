@@ -39,10 +39,11 @@ $(document).ready(function(){
             contrasenia:$("#contra").val()
         };
         let direccion = `./modelo/tareas-date/${(elemento_click)?"logeo_datos.php":"registro_datos.php"}`;
-        // console.log(direccion);
+        console.log(direccion);
+        console.log(postdata);
         // return;
         $.post(direccion,postdata,function(response){
-            console.warn("error al iniciar la secion");
+            // console.warn("error al iniciar la secion");
             const datos = response;
             if(datos > 0){
                 document.getElementsByClassName("border")[0].innerHTML = "Datos Correctos";
@@ -57,7 +58,7 @@ $(document).ready(function(){
             }else if(datos == -5){
                 document.getElementsByClassName("border")[0].innerHTML = "No es un DNI";
             } else{
-                window.location.reload();
+                // window.location.reload();
             }
         });
     });

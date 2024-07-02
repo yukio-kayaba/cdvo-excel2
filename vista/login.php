@@ -9,6 +9,8 @@
     <!-- <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script> -->
     <!-- <script src="./controlador/app.js" defer></script> -->
     <link rel="stylesheet" href="./vista/css/stylos.css">
+    <link rel="stylesheet" href="./vista/css/main.css">
+    <script  src="./vista/js/APP.js" defer></script>
     <script src="./vista/js/login_date.js" defer></script>
 </head>
 <body>
