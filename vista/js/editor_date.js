@@ -95,7 +95,7 @@ function vista_previa_datos(archivos,id_dato){
     tabla.id = "tabla";
     let datos = archivos;
     let contenido  = `
-                    <thead class="table-dark">
+                    <thead class="table-dark tabla_dato_cabecera">
                         <tr>
                 `;
     for (let i = 1; i < datos[0].length ; i++) {
@@ -218,6 +218,9 @@ botones_tabla.addEventListener("click",function(e){
     let valor_aux = localStorage.getItem("valor_aux");
     let dato_activo = false;
     let datos;
+    let notificacion = new notficacion("contenedor-toast_date");
+    console.log(notificacion.get_iconos_date());
+
     botones_tabla.classList.forEach(element => {
         if(element == "datos_escribidos") dato_activo=true;
     });
@@ -232,7 +235,7 @@ botones_tabla.addEventListener("click",function(e){
         };
         datos = datos_2;
         url = './modelo/tareas-date/enviar_datos_per.php';
-        console.log(datos);
+        // console.log(datos);
         botones_tabla.classList.remove("datos_escribidos");
     }else{
         let datos_2 = {
@@ -249,12 +252,15 @@ botones_tabla.addEventListener("click",function(e){
         type: 'POST', 
         data: datos, 
         success: function(response){
-            if(response == "enviado"){
+            if(response == "enviado" || response == "exito"){
                 console.log('Respuesta del servidor:', response);
-                alert("EL ARCHIVO SE SUBIO CON EXITO");
+                // alert("EL ARCHIVO SE SUBIO CON EXITO");
+                notificacion.generador_text_valor({tipo:"exito",titulo:'Exito',descripcion:'El archivo se subio con exito',tiempo:7000,autocierre:true});
             }else{
-                alert("error data");
+                // alert("error data");
+                notificacion.generador_text_valor({tipo:"error",titulo:'Error',descripcion:'Error al subir el archivo',tiempo:7000,autocierre:true});
             }
+            notificacion.event_close_object();
             // location.reload();
         }
     })

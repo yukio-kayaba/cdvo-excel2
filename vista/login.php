@@ -9,6 +9,8 @@
     <!-- <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script> -->
     <!-- <script src="./controlador/app.js" defer></script> -->
     <link rel="stylesheet" href="./vista/css/stylos.css">
+    <link rel="stylesheet" href="./vista/css/main.css">
+    <script  src="./vista/js/APP.js" defer></script>
     <script src="./vista/js/login_date.js" defer></script>
 </head>
 <body>
@@ -18,7 +20,7 @@
                 <img src="./vista/img/CDVO.jpg" alt="">
             </span>
         </div>
-        <div class="container-form">
+        <div class="container-form cuadro_texto">
             <form id="login-form" class="form">
                 <input type="text" name="" id="dni" placeholder="dni">
                 <input type="password" name="" id="contra" placeholder="contraseña">

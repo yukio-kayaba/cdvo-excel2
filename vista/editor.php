@@ -16,10 +16,10 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   <link rel="stylesheet" href="./vista/css/layout-nav.css">
   <link rel="stylesheet" href="./vista/css/editor.css">
-  <!-- <script src="./vista/js/fileSaver.js"></script> -->
-  <!-- <script defer src="./vista/js/puppet-editor.js"></script> -->
+  <link rel="stylesheet" href="./vista/css/ESTYLOS_NOTIFICACIONES.css">
+
   <script defer src="./vista/js/editor_date.js"></script>
-  <!-- <script defer src="./vista/js/editor-ExportarExcel.js"></script> -->
+  <script defer src="./vista/js/notificaciones.js"></script>
 </head>
 <body>
   <?php include_once("./vista/layout/nav.php") ?>
@@ -30,7 +30,7 @@
   
       <div>
         <label class="boton_editar_efecto" for="btn-subirArchivo">Subir archivo</label>
-        <input type="file" name="" id="btn-subirArchivo" hidden>
+        <input type="file" name="" id="btn-subirArchivo" hidden accept=".xlsx">
         <!-- <a id="btn-subirArchivo" class="boton_editar_efecto" href="#">subir archivo</a> -->
       </div>
   
@@ -78,67 +78,7 @@
     <section class="sombra_puppet" id="sombra_puppet"></section>
     <section class="tabla_puppet" id="puppet-tabla">
       <section class="conteiner_auxiliar" id="tabla_contenido">
-        <table class="table tabla_dato">
-          <thead>
-            <tr>
-              <th scope="col">#</th>
-              <th scope="col">First</th>
-              <th scope="col">Last</th>
-              <th scope="col">Handle</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row">1</th>
-              <td>Mark</td>
-              <td>Otto</td>
-              <td>@mdo</td>
-            </tr>
-            <tr>
-              <th scope="row">2</th>
-              <td>Jacob</td>
-              <td>Thornton</td>
-              <td>@fat</td>
-            </tr>
-            <tr>
-              <th scope="row">3</th>
-              <td>Larry the Bird</td>
-              <td>Larry</td>
-              <td>@twitter</td>
-            </tr>
-            <tr>
-              <th scope="row">1</th>
-              <td>Mark</td>
-              <td>Otto</td>
-              <td>@mdo</td>
-            </tr>
-            <tr>
-              <th scope="row">2</th>
-              <td>Jacob</td>
-              <td>Thornton</td>
-              <td>@fat</td>
-            </tr>
-            <tr>
-              <th scope="row">3</th>
-              <td>Larry the Bird</td>
-              <td>Larry</td>
-              <td>@twitter</td>
-            </tr>
-            <tr>
-              <th scope="row">1</th>
-              <td>Mark</td>
-              <td>Otto</td>
-              <td>@mdo</td>
-            </tr>
-            <tr>
-              <th scope="row">2</th>
-              <td>Jacob</td>
-              <td>Thornton</td>
-              <td>@fat</td>
-            </tr>
-    
-          </tbody>
-        </table>
+        <!-- <img src="./vista/img/imagen_logo_cuadro.jpg" alt="">         -->
       </section>
       <section class="botones_tabla" id="botones_tabla">
         <a href="#">subir a la nube</a>
@@ -148,5 +88,7 @@
         +
     </div>
   </div>
-</body>
-</html>
+  <div class="contenedor-toast_date" id="contenedor-toast_date"></div>
+<?php
+  require_once("./vista/layout/footer.php");
+?>
