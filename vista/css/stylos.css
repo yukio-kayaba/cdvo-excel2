@@ -12,10 +12,14 @@ body{
 }
 
 .conteiner-img{
-    width:100%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
-.container img{
+.conteiner-img img{
     object-fit: cover;
+    max-width: 400px;
     width: 100%;
 }
 #create_count{
@@ -105,25 +109,27 @@ body{
 
 .cuadro_texto {
     width: 400px;
-    transition:height 0.3s ease;
+    transition-duration: 0.3s;
+    transition-timing-function: ease;
 }
 @media (width < 400px){
     .cuadro_texto {
         width: 95vw;
-        margin: 0px 10px;
     }
 }
 @media (width < 700px){
     .container{
         display: flex;
         flex-direction: column;
-        align-items: center;
         justify-items: center;
     }
-    .cuadro_texto {
+    .cuadro_texto{
         height: 45vh;
     }
     .conteiner-img{
-        width: 45vh;
+        height: 45vh;
+    }
+    .conteiner-img img{
+        height:100%;
     }
 }
