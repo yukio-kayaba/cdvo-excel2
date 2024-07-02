@@ -79,5 +79,5 @@
 
     </div>
     <!-- FIN DEL PUPPET -->
-</body>
-</html>
+    
+    <?php include("./vista/layout/footer.php");?>
