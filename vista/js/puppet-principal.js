@@ -15,7 +15,8 @@ $(document).ready(function(){
 
     $(document).on("click","#archivo_nuevo",function(){
       let contenido_d = document.getElementById("contenido");
-      contenido_d.style.display = "block";
+      // contenido_d.style.display = "block";
+      visibilidadElementos("block");
       if(contenido_d.children[1].id == "tabla"){
         contenido_d.removeChild(contenido_d.children[1]);
         if(!pantalla_uso){
@@ -39,18 +40,20 @@ $(document).ready(function(){
   });
 });
 
-const puppet_test = document.querySelector("#contenido");
 const btn_cerrarPuppet = document.querySelector("#btn_cerraPuppet");
 const excel_input = document.getElementById("archivo_xlsx");
+const puppet_test = document.querySelector("#contenido");
 
 function visibilidadElementos(estado){
   puppet_test.style.display = estado;
+  if(estado == "block") puppet_test.classList.add("animacion_suave_puppet");
 }
 
 visibilidadElementos("none");
 
 btn_cerrarPuppet.addEventListener("click",function(){
   visibilidadElementos("none");
+  puppet_test.classList.remove("animacion_suave_puppet");
 })
 
 excel_input.addEventListener("change",async function(e){
