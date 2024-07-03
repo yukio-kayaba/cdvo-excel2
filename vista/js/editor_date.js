@@ -83,7 +83,7 @@ excel_input.addEventListener("change",async function(e){
     const datos_excel = excel.content;
     archivos = datos_excel;
     convertidor_datos(datos_excel);
-    vista_previa_datos(datos_excel,"tabla_contenido");
+    vista_previa_datos(datos_excel,"campos_tabla");
     visibilidadElementos("flex");
     botones_tabla1.classList.remove("datos_escribidos");
     botones_tabla1.classList.add("botones_input_grade");
@@ -153,7 +153,6 @@ function guardar_excel(buffer,filename){
 
 let puppetTabla = document.querySelector("#puppet-tabla");
 let sombraTabla = document.querySelector("#sombra_puppet");
-let tabla_contenido = document.querySelector("#puppet-tabla");
 let botones_tabla = document.querySelector("#botones_tabla");
 
 let btn_agregar = document.querySelector("#btn_agregar");
@@ -162,7 +161,6 @@ let seccion_camposTabla = document.querySelector("#campos_tabla");
 function visibilidadElementos(estado){
   puppetTabla.style.display = estado;
   sombraTabla.style.display = estado;
-  tabla_contenido.style.display = estado;
   botones_tabla.style.display = estado;
 }
 
@@ -172,6 +170,7 @@ btn_agregar.addEventListener("click", function(e){
     const element_date = document.createElement("div");
     let titulo_Date = document.getElementById("titulo_archivo_date");
     element_date.classList.add("modales");
+    element_date.style.width = "100%";
 
     let texto = `
         <div class="text-center bg-primary fs-2">${titulo_Date.innerHTML}</div>
@@ -196,7 +195,6 @@ btn_agregar.addEventListener("click", function(e){
     element_date.innerHTML = texto;
     seccion_camposTabla.innerHTML = "";
     seccion_camposTabla.appendChild(element_date);
-    // tabla_contenido.appendChild(element_date);
     botones_tabla.classList.add("datos_escribidos");
     visibilidadElementos("flex");
     autocompletado();
@@ -207,10 +205,6 @@ sombraTabla.addEventListener("click", function(e){
   visibilidadElementos("none");
   e.stopPropagation();
 });
-
-tabla_contenido.addEventListener("click",function(e){
-  e.stopPropagation();
-})
 botones_tabla.addEventListener("click",function(e){
     let dato = document.getElementById("dato_id_archivo");
     let valor_aux = localStorage.getItem("valor_aux");

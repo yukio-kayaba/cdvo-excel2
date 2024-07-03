@@ -79,9 +79,12 @@
     <section class="sombra_puppet" id="sombra_puppet"></section>
 
     <section class="tabla_puppet" id="puppet-tabla">
-      <section id="campos_tabla">
-
+      <section 
+        style="max-height: 90vh; overflow-y: auto;" 
+        class="bg-light" id="campos_tabla">
+        <!-- acá se genera una tabla -->
       </section>
+    
       <section class="botones_tabla" id="botones_tabla">
         <a href="#">subir a la nube</a>
       </section>
