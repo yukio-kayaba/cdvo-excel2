@@ -37,6 +37,9 @@ body{
 .animacion_suave_puppet{
   animation: mover 1s;
 }
+.animacion_cerrar_puppet{
+  animation: eliminar 0.5s;
+}
 @keyframes mover{
   0% {
       width: 70vh;
@@ -44,4 +47,19 @@ body{
   90% {
     width:85vh;
   }
+}
+
+@keyframes eliminar{
+    0%{
+      width: 100vh;
+    }
+    50%{
+      width: 70vh;
+    }
+    70%{
+      width: 50vh;
+    }
+    100%{
+      width: 30vh;
+    }
 }

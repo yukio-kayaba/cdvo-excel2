@@ -1,5 +1,4 @@
 <?php include("./vista/components/vistaTabla.php"); ?>
-
   <?php include_once("./vista/layout/head.php");?>
   <title>CDVO - Saturno</title>
   <script src="https://unpkg.com/read-excel-file@5.x/bundle/read-excel-file.min.js"></script>
@@ -9,9 +8,11 @@
   <!-- manejo de los excel -->
   <script defer src="./vista/js/puppet-principal.js"></script>
   <script defer src="./vista/js/principal._date.js"></script>
+  <script defer src="./vista/js/notificaciones.js"></script>
 
   <link rel="stylesheet" href="./vista/css/principal.css">
   <link rel="stylesheet" href="./vista/css/components/vistaTabla.css">
+  <link rel="stylesheet" href="<?php echo url;?>/vista/css/ESTYLOS_NOTIFICACIONES.css">
 </head>
 <body>
     <?php include("./vista/layout/nav.php"); ?>
@@ -80,5 +81,7 @@
 
     </div>
     <!-- FIN DEL PUPPET -->
-    
+     <!-- CUADRO PARA LAS NOTIFICACIONES -->
+    <div class="contenedor-toast_date" id="contenedor-toast_date"></div>
+    <!-- FIN DE CUADRO DE NOTIFICACIONES -->
     <?php include("./vista/layout/footer.php");?>

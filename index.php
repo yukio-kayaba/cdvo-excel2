@@ -1,5 +1,6 @@
 <?php
     require_once("./controlador/controlador.php");
+    require_once("./config.php");
     session_start();
     if(isset($_SESSION['id_user'])){
         if(isset($_GET['vista'])){

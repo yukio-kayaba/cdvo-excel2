@@ -26,7 +26,8 @@ $(document).ready(function(){
   
             texto = `
                 <div class="contenido_date_boton">
-                    <button type="button" class="btn btn-primary boton_agregar_date">Agregar</button>
+                    
+                    <button type="button" class="btn btn-primary boton_agregar_date">Agregar Campo</button>
                 </div>
                 <div class="contenido_date_agregar card">
   
@@ -72,7 +73,27 @@ excel_input.addEventListener("change",async function(e){
 
 botones_tabla.addEventListener("click",function(e){
   e.stopPropagation();
-  console.log("enviando al servidor");
+  let notificacion = new notficacion("contenedor-toast_date");
+  if(pantalla_uso){
+      let datos1  = document.getElementsByClassName("input_edit_add_value");
+      if(datos1.length == 0) return ;
+      let nuevo_dato = Array();
+      let datos_archivo = Array();
+      for (const key of datos1){
+        if(key.value != ""){
+          nuevo_dato.push(key.value);
+        }else{
+          notificacion.generador_text_valor({tipo:"error",titulo:'Error',descripcion:'No dejes campos vacios',tiempo:7000,autocierre:true});
+          notificacion.event_close_object();
+          return;
+        }
+      }
+      datos_archivo.push(nuevo_dato);
+      archivos = datos_archivo;
+  }
+  // return;
+  // console.log("enviando al servidor");
+  // notificacion.generador_text_valor({tipo:"informacion",titulo:'Subiendo',descripcion:'Se esta subiendo al servidor',tiempo:7000,autocierre:true});
   let nombre_archivo = prompt("Ingrese un nombre para el archivo");
   if(nombre_archivo == null || nombre_archivo == undefined){
     return;
@@ -90,20 +111,25 @@ botones_tabla.addEventListener("click",function(e){
       "opcion":1,
       "user_date":localStorage.getItem("valor_aux")
   };
-  console.log(dato_prueba);
+  // console.log(dato_prueba);
   // return;
+
   $.ajax({
       url: './modelo/tareas-date/convertir_sql.php',
       type: 'POST', 
       data: dato_prueba, 
       success: function(response){
           if(response == "negado"){
-              alert(`El nombre ${nombre_archivo} ya esta en uso , eliga otro por favor`);
+            notificacion.generador_text_valor({tipo:"error",titulo:'Error del nombre',descripcion:`el nombre ${nombre_archivo} ya esta en uso <br> elije otro`,tiempo:7000,autocierre:true});
+              // alert(`El nombre ${nombre_archivo} ya esta en uso , eliga otro por favor`);
           }else if(response == "exito"){
-            alert("Subido con exito");
+            // alert("Subido con exito");
+            notificacion.generador_text_valor({tipo:"exito",titulo:'Congrulations',descripcion:'Se Subio con exito',tiempo:7000,autocierre:true});
             location.reload();
           }
+          notificacion.event_close_object();
           console.log('Respuesta del servidor:', response);
+
       }
   });
 })
@@ -152,38 +178,23 @@ function convertidor_datos(datos_excel){
   // console.log(archivos);
 }
 function vista_previa_datos(){
-  // let tabla = document.createElement("table");
-  // tabla.classList.add("table");
-  // tabla.classList.add("tabla_dato")
-  // let datos = archivos;
-  // let contenido  = `
-                  
-  //                 <thead>
-  //                     <tr>
-  //             `;
-  // for (let i = 0; i < datos[0].length ; i++) {
-  //     contenido +=`<th scope="col">${datos[0][i]}</th>`;
-  // }
-  // contenido += `
-  //         </tr>
-  //     </thead>
-  //     <tbody>
-  // `;
-  // for (let i = 1; i < datos.length; i++){
-  //     let contenido_dato = "<tr>";
-  //     datos[i].forEach(element => {
-  //         contenido_dato += `<td>${(element == "10101z")?"":element }</td>`;  
-  //     });
-  //     contenido_dato += "</tr>";
-  //     contenido += contenido_dato;
-  // }
-  // contenido += "</tbody>"; 
-  // tabla.innerHTML = contenido;
-  // document.getElementById("tabla_contenido").innerHTML = "";
-  // document.getElementById("tabla_contenido").appendChild(tabla); 
-  // visibilidadElementos("flex");
-  document.getElementById("tabla").innerHTML = "";
-  let tabla = document.querySelector("#tabla");
+  let contenido_d =document.getElementById("contenido");
+  let tabla; 
+  let dato_activo = false;
+  if(contenido_d.children[1].id != "tabla"){
+    contenido_d.children[1].remove();
+    // contenido_d.removeChild(contenido_d.children[1]);
+    tabla = document.createElement("table");
+    tabla.classList.add("table");
+    tabla.classList.add("tabla_dato");
+    tabla.id = "tabla";
+    tabla.style.flexDirection = "column";
+    dato_activo = true;
+    pantalla_uso = false;
+  }else{
+    document.getElementById("tabla").innerHTML = "";
+    tabla = document.querySelector("#tabla");
+  }
   let datos = archivos;
   let contenido  = `
                   
@@ -208,7 +219,11 @@ function vista_previa_datos(){
   }
   contenido += "</tbody>"; 
   tabla.innerHTML = contenido;
-  document.getElementById("tabla").innerHTML = contenido;
+  if(dato_activo){
+    contenido_d.insertBefore(tabla,contenido_d.children[1]);
+  }else{
+    document.getElementById("tabla").innerHTML = contenido;
+  }
   // document.getElementById("tabla").appendChild(contenido); 
   visibilidadElementos("block");
 }

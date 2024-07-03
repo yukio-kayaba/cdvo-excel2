@@ -70,11 +70,21 @@ $(document).ready(function(){
         elemento_dato.classList.add("input-group");
         elemento_dato.classList.add("mb-3");
         elemento_dato.classList.add("cotenido-date-puppet");
+        elemento_dato.classList.add("animacion_suave_puppet");
         elemento_dato.innerHTML = `
-            <input type="text" class="form-control" placeholder="Ingrese el Texto" aria-label="Recipient's username" aria-describedby="button-addon2">
-            <button class="btn btn-outline-danger" type="button" id="button-addon2">Eliminar</button>
+            <input type="text" class="form-control input_edit_add_value" placeholder="Ingrese el campo sin espacios" aria-label="Recipient's username" aria-describedby="button-addon2">
+            <button class="btn btn-outline-danger boton_eliminar_edit_date" type="button" >Eliminar</button>
         `;
         document.getElementsByClassName("contenido_date_agregar")[0].appendChild(elemento_dato);
-        console.log("cliekado");
     });
+    $(document).on("click",".boton_eliminar_edit_date",function(e){
+        let objeto_edit = e.target;
+        objeto_edit.parentElement.classList.add("animacion_cerrar_puppet");
+        objeto_edit.parentElement.addEventListener("animationend",function(e){
+            if(e.animationName == "eliminar"){
+                objeto_edit.parentElement.removeEventListener('animationend',this);
+                objeto_edit.parentElement.remove();
+            }
+        });
+    }); 
 });
