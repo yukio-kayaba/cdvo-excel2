@@ -153,10 +153,11 @@ function guardar_excel(buffer,filename){
 
 let puppetTabla = document.querySelector("#puppet-tabla");
 let sombraTabla = document.querySelector("#sombra_puppet");
-let tabla_contenido = document.querySelector("#tabla_contenido");
+let tabla_contenido = document.querySelector("#puppet-tabla");
 let botones_tabla = document.querySelector("#botones_tabla");
 
 let btn_agregar = document.querySelector("#btn_agregar");
+let seccion_camposTabla = document.querySelector("#campos_tabla");
 
 function visibilidadElementos(estado){
   puppetTabla.style.display = estado;
@@ -173,40 +174,37 @@ btn_agregar.addEventListener("click", function(e){
     element_date.classList.add("modales");
 
     let texto = `
-        <div class="mb-3 celda_datos">${titulo_Date.innerHTML}</div>
-        <br/>
+        <div class="text-center bg-primary fs-2">${titulo_Date.innerHTML}</div>
     `;
     // let dato_value = (valores_repeat != "" && indice - 1 == valores_key[indice])? valores_repeat[indice - 1]:"";
     informacion_archivos[0].forEach((element,indice) => {
-        if(indice!= 0){
+        if(indice != 0){
             texto += `
-                <div class="mb-3 celda_datos">
-                    <label for="inputPassword${indice}" class="col-form-label">${element}</label>
+                <div class="campos_de_tabla_rellenar">
+                    <label for="inputPassword${indice}" class="fs-5 col-form-label">${element}</label>
                     <input type="text" id="inputPassword${indice}" name="${indice}" class="form-control datos_input_date" aria-describedby="passwordHelpInline" >
                     <div class="form-check">
-                        <input class="radio_duple_save" class="form-check-input" type="checkbox" name="${indice}" value="" id="flexCheckDefault${indice}">
-                        <label class="form-check-label" for="flexCheckDefault${indice}">
-                            Repetir
+                        <input class="form-check-input" class="form-check-input" type="checkbox" name="${indice}" value="" id="flexCheckDefault${indice}">
+                        <label class="form-check-label radio_duple_save" for="flexCheckDefault${indice}">
+                            Recordar para la siguiente
                         </label>
                     </div>
                 </div>
             `;
         }
     });
-
-
     element_date.innerHTML = texto;
-    tabla_contenido.innerHTML ="";
-    tabla_contenido.appendChild(element_date);
+    seccion_camposTabla.innerHTML = "";
+    seccion_camposTabla.appendChild(element_date);
+    // tabla_contenido.appendChild(element_date);
     botones_tabla.classList.add("datos_escribidos");
-  visibilidadElementos("flex");
-  autocompletado();
-  e.stopPropagation();
+    visibilidadElementos("flex");
+    autocompletado();
+    e.stopPropagation();
 })
 
 sombraTabla.addEventListener("click", function(e){
-  puppetTabla.style.display = "none";
-  sombraTabla.style.display = "none";
+  visibilidadElementos("none");
   e.stopPropagation();
 });
 
@@ -283,8 +281,8 @@ function obtencion_datos_input(){
 }
 puppetTabla.addEventListener("click", function(e){
 
-  sombraTabla.style.display = "none";
-  puppetTabla.style.display = "none";
+//   sombraTabla.style.display = "none";
+//   puppetTabla.style.display = "none";
   e.stopPropagation();
 });
 

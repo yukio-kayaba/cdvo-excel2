@@ -25,28 +25,27 @@
   <?php include_once("./vista/layout/nav.php") ?>
   <div id="contenido">
 
-    <p id="dato_id_archivo" hidden><?php echo $dato; ?></p>
-    <section class="conteiner_btnCambio">
-  
+    <p id="dato_id_archivo" style="display:none;"><?php echo $dato; ?></p>
+
+    <section class="d-flex justify-content-between mx-4">
       <div>
-        <label class="boton_editar_efecto" for="btn-subirArchivo">Subir archivo</label>
+        <a id="btn_guardar" class="btn btn-success" href="inicios">Regresar</a>
+        <label class="btn btn-primary" for="btn-subirArchivo">Subir archivo</label>
         <input type="file" name="" id="btn-subirArchivo" hidden accept=".xlsx">
-        <!-- <a id="btn-subirArchivo" class="boton_editar_efecto" href="#">subir archivo</a> -->
       </div>
   
       <div>
-        <a id="btn_guardar" class="boton_editar_efecto" href="#">guardar</a>
-        <a id="btn_agregar" class="boton_editar_efecto" href="#">Agregar</a>
-        <a id="btnExportar" class="boton_editar_efecto" href="#">exportar</a>
+        <a id="btn_guardar" class="btn btn-primary" href="#">guardar</a>
+        <a id="btn_agregar" class="btn btn-primary" href="#">Agregar</a>
+        <a id="btnExportar" class="btn btn-primary" href="#">exportar</a>
       </div>
     </section>
-    <div class="container px-4 text-center">
-      <div class="row gx-5">
-        <div class="col">
-          <div class="p-3" id="titulo_archivo_date">Titulo del archivo</div>
-        </div>
-      </div>
+
+    <div class="w-100 text-center fw-bold fs-2 mt-2 text-wrap">
+      <div id="titulo_archivo_date">Titulo del archivo</div>
     </div>
+
+    <!-- TABLA DE DATOS -->
     <section id="tabla_datos_principal">
       <table id="tabla" class="table">
         <thead>
@@ -75,15 +74,19 @@
         </tbody>
       </table>
     </section>
+    <!-- FIN TABLA DE DATOS -->
+
     <section class="sombra_puppet" id="sombra_puppet"></section>
+
     <section class="tabla_puppet" id="puppet-tabla">
-      <section class="conteiner_auxiliar" id="tabla_contenido">
-        <!-- <img src="./vista/img/imagen_logo_cuadro.jpg" alt="">         -->
+      <section id="campos_tabla">
+
       </section>
       <section class="botones_tabla" id="botones_tabla">
         <a href="#">subir a la nube</a>
       </section>
     </section>
+
     <div class="boton_redondo_datos">
         +
     </div>
