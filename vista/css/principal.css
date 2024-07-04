@@ -11,8 +11,65 @@ body{
   flex-wrap: wrap;
   gap: 10px;
   padding: 10px 20px;
+  overflow: auto;
+  height: 48vh;
+}
+.datos_input_date{
+  display: flex;
+  height: 100px;
+  width: 100px;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: center;
+  /* background-color: rgba(184, 166, 65, 0.671); */
+  border-radius: 50%;
+  justify-content: center;
+}
+.datos_input_date > img{
+  width: 40px;
+  border-radius: 50%;
+  background-color: rgba(214, 167, 12, 0.808);
+}
+.datos_input_date > p{
+  height: 30px;
+  font-size: 10px;
+}
+.tablas_opciones{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 20%;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  background:linear-gradient(to right, rgb(14, 3, 110) 25%, rgb(1, 1, 53) 70%);
 }
 
+.opciones_datos{
+  display: flex;
+  align-items: center;
+  align-content: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+}
+.buscador_datos{
+  display: flex;
+  flex-wrap: wrap;
+}
+.buscador_datos > div{
+  display: flex;
+  align-content: center;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 30px;
+  width: 100%;
+  justify-content: center;
+  color: aliceblue;
+  font-size: 20px;
+}
 /*  ESTILOS APLICADOS AL PUPPET  */
 #contenido{
   width: 90vw;
@@ -26,7 +83,7 @@ body{
   left: 0px;
   margin: auto;
 
-  position: absolute;
+  position: fixed;
   /* transition: width 0.5s ease; */
 }
 #btn_cerraPuppet{
@@ -62,4 +119,11 @@ body{
     100%{
       width: 30vh;
     }
+}
+
+@media (width < 600px){
+  .tablas_disponibles{
+    height: 60vh;
+  }
+
 }

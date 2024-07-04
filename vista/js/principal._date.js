@@ -37,10 +37,12 @@ $(document).ready(function(){
                         texto += `
                             <article class="vistaTabla">
                                 <p>
-                                ${element[1]}
+                                    <img src="./vista/img/graficos/delete_file.png" alt="" width="20px">
+                                    ${element[1]}
+                                    <img src="./vista/img/graficos/file.png" alt="" width="20px">
                                 </p>
                                 <div name="${element[0]}">
-                                    <img name="${element[0]}" src="./vista/img/ver_hoha.png" alt="">
+                                    <img name="${element[0]}" src="./vista/img/graficos/file_view.png" alt="">
                                 </div>
                             </article>
                         `;

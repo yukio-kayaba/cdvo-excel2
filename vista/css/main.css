@@ -22,6 +22,25 @@ a{
   border-radius: 30px; 
   animation: mover 2s ease-in-out infinite
 }
+.nav_date{
+  width: 40px;
+  background-color: aliceblue;
+  height: 40px;
+  border-radius: 50%;
+  align-content: center;
+  display: grid;
+}
+.nav_date > img{
+  width: 40px;
+}
+.navbar_date_principal{
+  height: 70px;
+  width: 100%;
+}
+
+.nav_date:hover{
+  background-color: rgb(25, 7, 187);
+}
 
 @keyframes mover {
   0% {
@@ -35,7 +54,27 @@ a{
   }
 }
 
-div{
+/* div{
   max-height: 70vh;
   overflow-y: auto;
+} */
+/* no modificar las opciones de las barra desplegable */
+@media (width < 600px){
+  .tablas_opciones{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: nowrap;
+
+  }
+  .navbar_date_principal{
+    display: flex !important;
+    position: absolute;
+    width: 100%;
+    top: 91.7vh;
+    gap: 20px;
+    height: 70px;
+    justify-content: center !important;
+
+  }
 }

@@ -18,26 +18,42 @@
     <?php include("./vista/layout/nav.php"); ?>
 
     <div class="tablas_opciones p-3">
-      <label for="archivo_xlsx">
-        <p class="btn btn-success">
-          Agregar excel .xlsx
-        </p>
-        <!-- <button type="button" class="btn btn-success">Agregar excel .xlsx</button> -->
-        <input type="file" id="archivo_xlsx" name="archivo_excel_xlsx" accept=".xlsx" hidden >
-      </label>
-
-      <label for="archivo_csv">
-        <p class="btn btn-primary">
-          Agregar excel .csv
-        </p>
-        <!-- <button type="button" class="btn btn-primary">Agregar excel .csv</button> -->
-        <input type="file" id="archivo_csv" name="archivo_excel_csv" accept=".csv" hidden >
-      </label>
-      <label  id="archivo_nuevo">
-          <p class="btn btn-secondary">
-            Nueva Hoja
+      <div class="buscador_datos">
+        <div>
+          <img src="<?php echo url;?>/vista/img/graficos/saturno_read.png" alt="">
+          <p>Que realizaremos hoy ? </p>
+        </div>
+        <div class="input-group mb-3">
+          <span class="input-group-text" id="basic-addon1">
+            <img src="<?php echo url; ?>/vista/img/graficos/saturno_seeker.png" alt="Buscador" width="20px">
+          </span>
+          <input type="text" class="form-control" placeholder="Buscar" aria-label="Username" aria-describedby="basic-addon1">
+        </div>
+      </div>
+      <div class="opciones_datos">
+        <label for="archivo_xlsx" class="datos_input_date">
+          <img src="<?php echo url;?>/vista/img/graficos/file_xlsx.png" alt="">
+          <p class="btn btn-success">
+            Subir Excel
           </p>
-      </label>
+          <input type="file" id="archivo_xlsx" name="archivo_excel_xlsx" accept=".xlsx" hidden >
+        </label>
+  
+        <label for="archivo_csv" class="datos_input_date">
+          <img src="<?php echo url;?>/vista/img/graficos/file_csv.png" alt=""> 
+          <p class="btn btn-primary">
+            Subir CSV
+          </p>
+          <!-- <button type="button" class="btn btn-primary">Agregar excel .csv</button> -->
+          <input type="file" id="archivo_csv" name="archivo_excel_csv" accept=".csv" hidden >
+        </label>
+        <label  id="archivo_nuevo" class="datos_input_date">
+          <img src="<?php echo url;?>/vista/img/graficos/file_xlsx.png" alt="">
+            <p class="btn btn-secondary">
+              Nueva Hoja
+            </p>
+        </label>
+      </div>
     </div>
 
     <section class="tablas_disponibles">
