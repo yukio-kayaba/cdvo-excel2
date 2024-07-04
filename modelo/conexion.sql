@@ -44,3 +44,21 @@ END$$
 
 DELIMITER ;
 
+
+
+
+-- ficheros 2
+CREATE TABLE `archivos_ficher_0001_z` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `id_user` INT NULL,
+  `nombre_archivo` VARCHAR(145) NULL,
+  `fecha_ingreso` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP(),
+  PRIMARY KEY (`id`));
+
+CREATE TABLE `ficheros_beta`.`usuarios_ficher_0001_z` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `dni` VARCHAR(9) NULL,
+  `contrasenia` VARCHAR(145) NULL,
+  `nombre_user` VARCHAR(45) NULL,
+  `fecha_registro` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP(),
+  PRIMARY KEY (`id`));
