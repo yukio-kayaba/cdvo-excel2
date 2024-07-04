@@ -57,10 +57,10 @@
     </div>
 
     <section class="tablas_disponibles">
-      <?php
-        vistaTabla("Ejemplo De tabla 1",1);
-        vistaTabla("Ejemplo De tabla 1",2);
-      ?>
+        <div class="muestra_principal">
+            <img src="<?php echo url; ?>/vista/img/graficos/saturno.png" alt="">
+            <p>Tu escritorio Saturno aun esta vacio  </p>
+        </div>
     </section>
 
     <!-- INICIO DEL PUPPET -->

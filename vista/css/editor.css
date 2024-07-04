@@ -52,6 +52,8 @@ body{
   width: 100%;
   display: flex;
   justify-content: center;
+  height: 70vh;
+  overflow: auto;
 }
 
 #tabla{

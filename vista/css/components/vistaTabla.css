@@ -11,7 +11,7 @@
 
 }
 
-.vistaTabla p{
+.vistaTabla .vista_tabla_parrafo{
   text-align: center;
   text-transform: capitalize;
   background:linear-gradient(to right, rgb(14, 3, 110) 25%, rgb(1, 1, 53) 70%);
@@ -22,12 +22,20 @@
   width: 100%;
   flex-wrap: wrap;
   align-items: center;
+  height: 45px;
+  align-items: flex-start;
 }
 
-.vistaTabla p>img{
+.vistaTabla .vista_tabla_parrafo > img{
   background-color: aliceblue;
   border-radius: 50%;
   margin: 3px;
+}
+
+.vistaTabla .vista_tabla_parrafo > p{
+  width: 110px;
+  height: 20px;
+  overflow: hidden;
 }
 
 .vistaTabla div{

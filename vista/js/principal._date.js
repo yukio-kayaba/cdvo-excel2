@@ -33,23 +33,24 @@ $(document).ready(function(){
                     const datos_tabla = JSON.parse(response);
                     // console.log(datos_tabla);
                     let texto = "";
-                    datos_tabla.forEach(element => {
-                        texto += `
-                            <article class="vistaTabla">
-                                <p>
-                                    <img src="./vista/img/graficos/delete_file.png" alt="" width="20px">
-                                    ${element[1]}
-                                    <img src="./vista/img/graficos/file.png" alt="" width="20px">
-                                </p>
-                                <div name="${element[0]}">
-                                    <img name="${element[0]}" src="./vista/img/graficos/file_view.png" alt="">
-                                </div>
-                            </article>
-                        `;
-                    });
-                    // console.log(texto);
-                    
-                    datos_tablas.innerHTML = texto;
+                    if(datos_tabla.length != 0){
+                        datos_tabla.forEach(element => {
+                            texto += `
+                                <article class="vistaTabla">
+                                    <div class="vista_tabla_parrafo">
+                                        <img src="./vista/img/graficos/delete_file.png" alt="" width="20px">
+                                        <p>${element[1]}</p>
+                                        <img src="./vista/img/graficos/file.png" alt="" width="20px">
+                                    </div>
+                                    <div name="${element[0]}">
+                                        <img name="${element[0]}" src="./vista/img/graficos/file_view.png" alt="">
+                                    </div>
+                                </article>
+                            `;
+                        });
+                        
+                        datos_tablas.innerHTML = texto;
+                    }
                 }
             }    
         })
