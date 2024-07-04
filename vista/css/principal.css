@@ -44,6 +44,14 @@ body{
   justify-content: space-between;
   background:linear-gradient(to right, rgb(14, 3, 110) 25%, rgb(1, 1, 53) 70%);
 }
+.aplicandoSticky1{
+  position: sticky;
+  top: 0px;
+}
+.aplicandoSticky2{
+  position: sticky;
+  top:130px;
+}
 
 .opciones_datos{
   display: flex;
@@ -130,6 +138,15 @@ body{
     100%{
       width: 30%;
     }
+}
+@media (width < 600px){
+  .aplicandoSticky1{
+    position: relative;
+  }
+  .aplicandoSticky2{
+    top:0px;
+  }
+  
 }
 
 @media (width < 600px){

@@ -17,7 +17,7 @@
 <body>
     <?php include("./vista/layout/nav.php"); ?>
 
-    <div class="tablas_opciones px-2">
+    <div class="aplicandoSticky1 tablas_opciones px-2">
       <div class="buscador_datos">
         <div>
           <img src="<?php echo url;?>/vista/img/graficos/saturno_read.png" alt="">
@@ -36,14 +36,14 @@
       </div>
     </div>
 
-    <div class="tablas_opciones p-1 botones_opciones">
+    <div class="aplicandoSticky2 tablas_opciones p-1 botones_opciones">
       <div class="opciones_datos">
         <label for="archivo_xlsx" class="datos_input_date">
           <img src="<?php echo url;?>/vista/img/graficos/file_xlsx.png" alt="">
           <p class="btn btn-success m-0">
             Subir Excel
           </p>
-          <input type="file" id="archivo_xlsx" name="archivo_excel_xlsx" accept=".xlsx" hidden >
+          <input type="file" id="archivo_xlsx" name="archivo_excel_xlsx" accept=".xlsx" style="display: none;">
         </label>
   
         <label for="archivo_csv" class="datos_input_date">
@@ -51,7 +51,7 @@
           <p class="btn btn-primary m-0">
             Subir CSV
           </p>
-          <input type="file" id="archivo_csv" name="archivo_excel_csv" accept=".csv" hidden >
+          <input type="file" id="archivo_csv" name="archivo_excel_csv" accept=".csv" style="display: none;">
         </label>
         
         <label  id="archivo_nuevo" class="datos_input_date">
