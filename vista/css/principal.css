@@ -42,7 +42,12 @@ body{
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  background:linear-gradient(to right, rgb(14, 3, 110) 25%, rgb(1, 1, 53) 70%);
+  background:linear-gradient(to right, rgb(14, 4, 110) 25%, rgb(5, 25, 138) 70%);
+  background-size: 400% 400%;
+  animation-name: movimientoBackground;
+  animation-duration: 8s;
+  animation-timing-function: ease-in;
+  animation-iteration-count: infinite;
 }
 .aplicandoSticky1{
   position: sticky;
@@ -139,6 +144,19 @@ body{
       width: 30%;
     }
 }
+
+@keyframes movimientoBackground{
+  0%{
+    background-position-x: -100px;
+  }
+  60%{
+    background-position-x: calc(100% + 100px);
+  }
+  100%{
+    background-position-x: -100px;
+  }
+}
+
 @media (width < 600px){
   .aplicandoSticky1{
     position: relative;
@@ -154,3 +172,4 @@ body{
     width: 90%;
   }
 }
+
