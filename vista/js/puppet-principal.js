@@ -83,7 +83,7 @@ botones_tabla.addEventListener("click",function(e){
         if(key.value != ""){
           nuevo_dato.push(key.value);
         }else{
-          notificacion.generador_text_valor({tipo:"error",titulo:'Error',descripcion:'No dejes campos vacios',tiempo:7000,autocierre:true});
+          notificacion.generador_text_valor({tipo:"error",titulo:'Error',descripcion:'No dejes campos vacios',tiempo:7000});
           notificacion.event_close_object();
           return;
         }
@@ -125,7 +125,7 @@ botones_tabla.addEventListener("click",function(e){
           }else if(response == "exito"){
             // alert("Subido con exito");
             notificacion.generador_text_valor({tipo:"exito",titulo:'Congrulations',descripcion:'Se Subio con exito',tiempo:7000,autocierre:true});
-            location.reload();
+            // location.reload();
           }
           notificacion.event_close_object();
           console.log('Respuesta del servidor:', response);

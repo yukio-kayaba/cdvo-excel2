@@ -15,15 +15,21 @@
         $cantidad_max_date = 0;
         $codigo_parametro = "";
         $acceso = true;
+        $titulo = str_replace(" ","_",$titulo);
         $titulo_t = $titulo.$id_user."z";
+        // print("el titulo nuevo es ::  ".$titulo_t);
         if($opcion == 1){
             $validador = $conexion->get_tabla_colum("SELECT id FROM $titulo_t WHERE id = 1;");
             if($validador == -1){
                 // print("acceso");
                 $acceso = true;
-                $datos_titulo = $datos[0];
+                $datos_titulo = [];
                 $cantidad_max_date = 0;
-                $conexion->crear_tabla($titulo_t,$datos[0],$id_user);
+                foreach($datos[0] as $key => $valor){
+                    $datos_titulo[] = str_replace(" ","_",$valor);
+                }
+                
+                $conexion->crear_tabla($titulo_t,$datos_titulo,$id_user);
                 foreach ($datos_titulo as $key => $value){
                     if(is_numeric($key)){
                         $codigo_parametro .= "`".$value."`,";
