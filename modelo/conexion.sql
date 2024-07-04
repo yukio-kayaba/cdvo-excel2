@@ -1,22 +1,22 @@
-CREATE SCHEMA ficheros;
-use ficheros;
-CREATE TABLE `ficheros`.`usuarios_ficher_0001_z` (
+create schema ficheros;
+USE `ficheros`;
+
+-- ficheros 2
+CREATE TABLE `archivos_ficher_0001_z` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `id_user` INT NULL,
+  `nombre_archivo` VARCHAR(145) NULL,
+  `fecha_ingreso` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP(),
+  PRIMARY KEY (`id`));
+
+CREATE TABLE `usuarios_ficher_0001_z` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `dni` VARCHAR(9) NULL,
   `contrasenia` VARCHAR(145) NULL,
   `nombre_user` VARCHAR(45) NULL,
-  fecha_ingreso timestamp not null default current_timestamp(), 
+  `fecha_registro` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP(),
   PRIMARY KEY (`id`));
 
-CREATE TABLE `ficheros`.`archivos_ficher_0001_z` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `id_user` INT NULL,
-  `nombre_archivo` VARCHAR(145) NULL,
-  fecha_creacion timestamp not null default current_timestamp(), 
-  PRIMARY KEY (`id`));
-
-
-USE `ficheros`;
 DROP function IF EXISTS `validador_cuenta`;
 
 DELIMITER $$
@@ -43,22 +43,3 @@ RETURN valor;
 END$$
 
 DELIMITER ;
-
-
-
-
--- ficheros 2
-CREATE TABLE `archivos_ficher_0001_z` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `id_user` INT NULL,
-  `nombre_archivo` VARCHAR(145) NULL,
-  `fecha_ingreso` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP(),
-  PRIMARY KEY (`id`));
-
-CREATE TABLE `ficheros_beta`.`usuarios_ficher_0001_z` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `dni` VARCHAR(9) NULL,
-  `contrasenia` VARCHAR(145) NULL,
-  `nombre_user` VARCHAR(45) NULL,
-  `fecha_registro` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP(),
-  PRIMARY KEY (`id`));
