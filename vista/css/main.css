@@ -67,7 +67,7 @@ a{
     flex-wrap: nowrap;
 
   }
-  .navbar_date_principal{
+  #navbar_date{
     display: flex !important;
     position: absolute;
     width: 100%;
