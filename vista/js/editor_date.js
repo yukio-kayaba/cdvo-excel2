@@ -37,13 +37,15 @@ $(document).ready(function(){
     $(document).on("click",".boton_redondo_datos",function(){
         // (activo)?false:true;
         let dato_info = document.getElementsByClassName("boton_redondo_datos")[0];
-        let casillas = document.getElementsByClassName("conteiner_btnCambio");
+        let casillas = document.getElementsByClassName("botones_opciones");
         if(activo){
             dato_info.innerHTML = "-";
+            casillas[0].style.height = "60%";
             casillas[0].style.visibility = "visible";
             activo = false;
         }else{
             dato_info.innerHTML = "+";
+            casillas[0].style.height = "20%";
             casillas[0].style.visibility = "hidden";
             activo = true;
         }

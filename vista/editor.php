@@ -27,17 +27,29 @@
 
     <p id="dato_id_archivo" style="display:none;"><?php echo $dato; ?></p>
 
-    <section class="d-flex justify-content-between mx-4">
+    <section class="d-flex justify-content-between mx-4 botones_opciones">
       <div>
         <a id="btn_guardar" class="btn btn-success" href="inicios">Regresar</a>
-        <label class="btn btn-primary" for="btn-subirArchivo">Subir archivo</label>
+        <label class="btn btn-primary btn_opc_date" for="btn-subirArchivo">
+          <img src="<?php echo url;?>/vista/img/graficos/file_xlsx.png" alt="" width="40px">
+          <p>Subir</p>
+        </label>
         <input type="file" name="" id="btn-subirArchivo" hidden accept=".xlsx">
       </div>
   
       <div>
-        <a id="btn_guardar" class="btn btn-primary" href="#">guardar</a>
-        <a id="btn_agregar" class="btn btn-primary" href="#">Agregar</a>
-        <a id="btnExportar" class="btn btn-primary" href="#">exportar</a>
+        <a id="btn_guardar" class="btn btn-primary btn_opc_date" href="#">
+          <img src="<?php echo url;?>/vista/img/graficos/file.png" alt="Guardar" width="40px">
+          <p>Guardar</p>
+        </a>
+        <a id="btn_agregar" class="btn btn-primary btn_opc_date" href="#">
+          <img src="<?php echo url;?>/vista/img/graficos/add_file_date.png" alt="Agregar" width="40px">
+          <p>Agregar</p>
+        </a>
+        <a id="btnExportar" class="btn btn-primary btn_opc_date" href="#">
+          <img src="<?php echo url;?>/vista/img/graficos/dowload_file.png" alt="Subir" width="40px">
+          <p>Descargar</p>
+        </a>
       </div>
     </section>
 

@@ -52,8 +52,9 @@ body{
   width: 100%;
   display: flex;
   justify-content: center;
-  height: 70vh;
+  height: 65vh;
   overflow: auto;
+  margin-top: 10px;
 }
 
 #tabla{
@@ -69,7 +70,7 @@ body{
   justify-content: center;
   border-radius : 50%;
   align-items: center;
-  top: 90%;
+  top: 83%;
   left: 75%;
   font-size: 35px;
   visibility: hidden;
@@ -123,4 +124,41 @@ body{
 }
 .table > tbody{
   color: rgb(90, 90, 90);
+}
+.btn_opc_date{
+  border-radius: 50%;
+  height: 70px;
+}
+.btn_opc_date > p{
+  font-size: 10px;
+}
+
+#titulo_archivo_date{
+  background:linear-gradient(to right, rgb(14, 3, 110) 25%, rgb(1, 1, 53) 70%);
+  color: aliceblue;
+}
+
+/* modificacion de botones */
+
+@media (width < 600px){
+  .botones_opciones{
+    position: absolute;
+    top: 50%;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: flex-end;
+    height: 20%;
+    width: 85%;
+    flex-direction: column;
+    visibility: hidden;
+    overflow: hidden;
+    transition: all 0.5s ease;
+  }
+  .botones_opciones > div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
 }
