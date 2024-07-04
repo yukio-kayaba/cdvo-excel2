@@ -20,7 +20,7 @@ a{
 }
 #carga_dato_archivo > img{
   border-radius: 30px; 
-  animation: mover 2s ease-in-out infinite
+  animation: mover_objeto 2s ease-in-out infinite
 }
 .nav_date{
   width: 40px;
@@ -42,7 +42,7 @@ a{
   background-color: rgb(25, 7, 187);
 }
 
-@keyframes mover {
+@keyframes mover_objeto {
   0% {
     transform: translateX(0);
   }

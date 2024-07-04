@@ -72,12 +72,11 @@ body{
 }
 /*  ESTILOS APLICADOS AL PUPPET  */
 #contenido{
-  width: 90vw;
-  background-color:rgb(231, 231, 231) ;
+  width: 70%;
+  background:linear-gradient(to right, rgb(15 8 63) 25%, rgb(0 0 107) 70%);
   box-shadow: 5px 5px 20px black;
   overflow: auto;
   height: 90vh;
-
   top: 20px;
   right: 0px;
   left: 0px;
@@ -111,25 +110,25 @@ body{
 }
 @keyframes mover{
   0% {
-      width: 70vh;
+      width: 70%;
   }
   90% {
-    width:85vh;
+    width:85%;
   }
 }
 
 @keyframes eliminar{
     0%{
-      width: 100vh;
+      width: 100%;
     }
     50%{
-      width: 70vh;
+      width: 70%;
     }
     70%{
-      width: 50vh;
+      width: 50%;
     }
     100%{
-      width: 30vh;
+      width: 30%;
     }
 }
 
@@ -137,5 +136,7 @@ body{
   .tablas_disponibles{
     height: 60vh;
   }
-
+  #contenido{
+    width: 90%;
+  }
 }
