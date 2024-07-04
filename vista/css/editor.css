@@ -60,6 +60,11 @@ body{
 #tabla{
   width: 90%;
 }
+
+#tabla  th{
+  width: 140px;
+  text-align: center;
+}
 .boton_redondo_datos{
   position: fixed;
   color: black;
@@ -138,7 +143,14 @@ body{
   color: aliceblue;
 }
 
+.botones_tabla_edit{
+  display: flex;
+  gap: 10px;
+}
+
+
 /* modificacion de botones */
+
 
 @media (width < 600px){
   .botones_opciones{
@@ -159,6 +171,9 @@ body{
     flex-direction: column;
     align-items: center;
     gap: 10px;
+  }
+  #tabla_datos_principal{
+    flex-direction: column;
   }
 
 }
