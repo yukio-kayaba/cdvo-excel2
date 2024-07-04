@@ -1,4 +1,4 @@
-<nav id="navbar_date" class="d-flex justify-content-end navbar navbar_date_principal navbar-expand-lg bg-dark p-3 navbar-hover" data-bs-theme="dark">
+<nav id="navbar_date" class="d-flex justify-content-end navbar navbar_date_principal navbar-expand-lg bg-dark p-1 navbar-hover" data-bs-theme="dark">
   <a class="navbar-brand nav_date" href="">
       <img src="<?php echo url;?>/vista/img/graficos/reload.png" alt="Recargar">
   </a>

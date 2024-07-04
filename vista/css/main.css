@@ -33,7 +33,7 @@ a{
 .nav_date > img{
   width: 40px;
 }
-.navbar_date_principal{
+#navbar_date{
   height: 70px;
   width: 100%;
 }
@@ -64,7 +64,7 @@ a{
   }
   #navbar_date{
     display: flex !important;
-    position: absolute;
+    position: fixed;
     width: 100%;
     bottom: 0px;
     gap: 20px;
