@@ -24,10 +24,15 @@
           <p>Que realizaremos hoy ? </p>
         </div>
         <div class="input-group mb-3">
-          <span class="input-group-text" id="basic-addon1">
-            <img src="<?php echo url; ?>/vista/img/graficos/saturno_seeker.png" alt="Buscador" width="20px">
-          </span>
-          <input type="text" class="form-control" placeholder="Buscar" aria-label="Username" aria-describedby="basic-addon1">
+          <div class="input-group flex-nowrap">
+            <span class="input-group-text" id="addon-wrapping">
+              <span id="basic-addon1"> 
+                <img src="<?php echo url; ?>/vista/img/graficos/saturno_seeker.png" alt="Buscador" width="30px">
+              </span>
+            </span>
+            <input type="text" class="form-control" placeholder="Buscar" aria-label="Username" aria-describedby="addon-wrapping">
+          </div>
+          <!-- <input type="text" class="form-control" placeholder="Buscar" aria-label="Username" aria-describedby="basic-addon1"> -->
         </div>
       </div>
       <div class="opciones_datos">

@@ -1,6 +1,7 @@
 /* OTROS */
 body{
   position: relative;
+  min-height: 100vh;
 }
 
 /* ESTILOS DE CONTENIDO DEL ARCHIVO PRINCIPAL */

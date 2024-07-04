@@ -54,10 +54,6 @@ a{
   }
 }
 
-/* div{
-  max-height: 70vh;
-  overflow-y: auto;
-} */
 /* no modificar las opciones de las barra desplegable */
 @media (width < 600px){
   .tablas_opciones{
@@ -65,13 +61,12 @@ a{
     justify-content: center;
     align-items: center;
     flex-wrap: nowrap;
-
   }
   #navbar_date{
     display: flex !important;
     position: absolute;
     width: 100%;
-    top: 91.7vh;
+    bottom: 0px;
     gap: 20px;
     height: 70px;
     justify-content: center !important;

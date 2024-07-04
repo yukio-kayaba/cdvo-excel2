@@ -21,7 +21,7 @@
     <script  src="./vista/js/APP.js" defer></script>
     <script src="./vista/js/login_date.js" defer></script>
 </head>
-<body>
+<body id="cuerpo">
     <div class="container">
         <section class="conteiner-img">
             <img src="./vista/img/CDVO.jpg" alt="">
