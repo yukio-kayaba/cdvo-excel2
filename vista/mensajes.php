@@ -5,13 +5,14 @@
   <link rel="stylesheet" href="<?php echo url;?>/vista/css/mensajes_e.css">
   <link rel="stylesheet" href="<?php echo url;?>/vista/css/components/mensajes_estylos.css">
   <script defer src="./vista/js/notificaciones.js"></script>
-  <script defer src="./vista/js/mensajes.js"></script>
+  <script defer src="./vista/js/mensajes_vista.js"></script>
 </head>
 <body>
 <?php include("./vista/layout/nav.php"); ?>
 <div id="contenedor_principal">
     <div class="cuadro_data_me">
         <div id="tabla_mensajes">
+
           <div class="mensajes_data" name="">
             <div class="card">
               <div class="card-header">
@@ -23,15 +24,16 @@
               </div>
             </div>
           </div>
+
+          
         </div>
         <div id="envio_mensajes">
           <div class="input-group mb-3">
             <div class="input-group-text">
-              <input class="form-check-input mt-0" type="checkbox" value="" aria-label="Checkbox for following text input">
+              <input class="form-check-input mt-0" id="date_pu_pri" type="checkbox" value="" aria-label="Checkbox for following text input">
             </div>
             <textarea name="" id="mensaje_texto" placeholder="Ingrese texto"></textarea>
-            <!-- <input type="text" class="form-control" aria-label="Text input with checkbox"> -->
-            <button type="button" class="btn btn-success">
+            <button type="button" class="btn btn-success" id="load_message_date">
               <img src="./vista/img/graficos/enviar.png" alt="" width="30px">
             </button>
           </div>

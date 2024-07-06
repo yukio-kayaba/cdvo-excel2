@@ -13,11 +13,20 @@
     justify-content: center;
     flex-direction: column;
     flex-wrap: nowrap;
-    align-items: flex-start;
+    align-items: center;
     overflow: auto;
+    gap: 15px;
 }
 .mensajes_data{
     width: 60%;
+}
+.cuadro_data_me{
+    background-color: rgb(38, 36, 153);
+    backdrop-filter: blur(10px);
+    image-orientation: initial;
+    background-size: 200px;
+    background-position: center;
+    width: 70vh;
 }
 #mensaje_texto{
     width: 70%;
@@ -29,3 +38,12 @@
     display: flex;
     justify-content: center;
 }
+
+@media (width < 600px){
+    #tabla_mensajes{
+        height: 85%;
+    }
+    #navbar_date{
+        position: relative !important;
+    }
+  }

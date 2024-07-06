@@ -1,4 +1,5 @@
 $(document).ready(function(){
+
     $(document).on("click","#btn_load_mensaje",function(){
         let dato = document.getElementsByClassName("valor_radio");
         let mensaje = document.getElementById("message-text");

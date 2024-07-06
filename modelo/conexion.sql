@@ -26,6 +26,7 @@ CREATE TABLE `ficheros`.`mensajes_ficher_001_z` (
   PRIMARY KEY (`id`));
 
 
+create view mensajes_totales_publicos_001_z as SELECT m.id,m.comentario,u.nombre_user FROM ficheros.mensajes_ficher_001_z m, usuarios_ficher_0001_z u where tipo = "publico";
 -- ejecutando funciones
 DROP function IF EXISTS `validador_cuenta`;
 
