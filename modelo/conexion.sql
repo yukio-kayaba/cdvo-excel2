@@ -25,8 +25,10 @@ CREATE TABLE `mensajes_ficher_001_z` (
   `fecha_envio` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP(),
   PRIMARY KEY (`id`));
 
-
-create view mensajes_totales_publicos_001_z as SELECT m.id,m.comentario,u.nombre_user FROM mensajes_ficher_001_z m, usuarios_ficher_0001_z u where tipo = "publico";
+-- actualizando vista por error de repetcion
+create view mensajes_totales_publicos_001_z as SELECT m.id,m.comentario,u.nombre_user FROM mensajes_ficher_001_z m, usuarios_ficher_0001_z u where tipo="publico" and m.id_usuario = u.id; 
+  -- vista erronea
+-- create view mensajes_totales_publicos_001_z as SELECT m.id,m.comentario,u.nombre_user FROM mensajes_ficher_001_z m, usuarios_ficher_0001_z u where tipo = "publico";
 -- ejecutando funciones
 DROP function IF EXISTS `validador_cuenta`;
 

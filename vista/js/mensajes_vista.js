@@ -15,6 +15,7 @@ $(document).ready(function(){
             success:function(respuesta){
                 if(respuesta == 1){
                     mensaje.value = "";
+                    cargar_mensajes();
                     // comprobador.innerHTML = "enviado";
                 }else{
                     // comprobador.innerHTML = "Error al enviar";
