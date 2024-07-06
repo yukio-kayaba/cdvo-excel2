@@ -5,10 +5,12 @@
   <a class="navbar-brand nav_date" href="inicios">
     <img src="<?php echo url;?>/vista/img/graficos/home.png" alt="Inicio">
   </a>
+  <a class="navbar-brand nav_date" href="mensajes">
+    <img src="<?php echo url;?>/vista/img/graficos/saturno_read.png" alt="mensajes">
+  </a>
   <a class="navbar-brand nav_date" href="cerrar">
     <img src="<?php echo url;?>/vista/img/graficos/exit_date.png" alt="Cerrar_secion">
   </a>
-
   <article class="d-none nav-item dropdown">
     <a class="nav-link dropdown-toggle text-light " href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
       Dropdown

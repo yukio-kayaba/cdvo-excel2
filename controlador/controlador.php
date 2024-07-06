@@ -19,5 +19,8 @@
         static function cerrar(){
             require_once("./vista/cerrar_secion.php");
         }
+        static function mensajes(){
+            require_once("./vista/mensajes.php");
+        }
     }
 ?>

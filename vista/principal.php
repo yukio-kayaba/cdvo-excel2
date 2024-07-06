@@ -9,10 +9,13 @@
   <script defer src="./vista/js/puppet-principal.js"></script>
   <script defer src="./vista/js/principal._date.js"></script>
   <script defer src="./vista/js/notificaciones.js"></script>
+  <script defer src="./vista/js/mensajes.js"></script>
 
   <link rel="stylesheet" href="./vista/css/principal.css">
   <link rel="stylesheet" href="./vista/css/components/vistaTabla.css">
   <link rel="stylesheet" href="<?php echo url;?>/vista/css/ESTYLOS_NOTIFICACIONES.css">
+  <link rel="stylesheet" href="<?php echo url;?>/vista/css/components/mensajes_estylos.css">
+
 </head>
 <body>
     <?php include("./vista/layout/nav.php"); ?>
@@ -60,6 +63,16 @@
               Nueva Hoja
             </p>
         </label>
+        <button type="button" class="btn btn-primary boton_mensaje_date" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">
+          <img src="<?php echo url;?>/vista/img/graficos/mensaje.png" alt="" width="40px">
+          <p>mensaje</p>
+        </button>
+
+        <!-- <label  id="mensaje_date" class="datos_input_date">
+            <p class="btn btn-primary m-0">
+              Mensaje
+            </p>
+        </label> -->
       </div>
     </div>
 
@@ -105,7 +118,8 @@
 
     </div>
     <!-- FIN DEL PUPPET -->
-     <!-- CUADRO PARA LAS NOTIFICACIONES -->
     <div class="contenedor-toast_date" id="contenedor-toast_date"></div>
+    <?php require_once("./vista/layout/mensajes.php"); ?>
+     <!-- CUADRO PARA LAS NOTIFICACIONES -->
     <!-- FIN DE CUADRO DE NOTIFICACIONES -->
     <?php include("./vista/layout/footer.php");?>

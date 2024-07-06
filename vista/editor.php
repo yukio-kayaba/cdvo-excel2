@@ -16,10 +16,14 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   <link rel="stylesheet" href="./vista/css/layout-nav.css">
   <link rel="stylesheet" href="./vista/css/editor.css">
+  <link rel="stylesheet" href="./vista/css/components/mensajes_estylos.css">
+
   <link rel="stylesheet" href="./vista/css/ESTYLOS_NOTIFICACIONES.css">
 
   <script defer src="./vista/js/editor_date.js"></script>
   <script defer src="./vista/js/notificaciones.js"></script>
+  <script defer src="./vista/js/mensajes.js"></script>
+
 </head>
 <body>
   <?php include_once("./vista/layout/nav.php") ?>
@@ -29,12 +33,15 @@
 
     <section class="d-flex justify-content-between mx-4 botones_opciones">
       <div>
-        <a id="btn_guardar" class="btn btn-success" href="inicios">Regresar</a>
         <label class="btn btn-primary btn_opc_date" for="btn-subirArchivo">
           <img src="<?php echo url;?>/vista/img/graficos/file_xlsx.png" alt="" width="40px">
           <p>Subir</p>
         </label>
         <input type="file" name="" id="btn-subirArchivo" hidden accept=".xlsx">
+        <button type="button" class="btn btn-primary boton_mensaje_date" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">
+          <img src="<?php echo url;?>/vista/img/graficos/mensaje.png" alt="" width="40px">
+          <p>mensaje</p>
+        </button>
       </div>
   
       <div>
@@ -107,6 +114,7 @@
     </div>
   </div>
   <div class="contenedor-toast_date" id="contenedor-toast_date"></div>
+  <?php require_once("./vista/layout/mensajes.php"); ?>
 <?php
   require_once("./vista/layout/footer.php");
 ?>

@@ -17,6 +17,16 @@ CREATE TABLE `usuarios_ficher_0001_z` (
   `fecha_registro` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP(),
   PRIMARY KEY (`id`));
 
+CREATE TABLE `ficheros`.`mensajes_ficher_001_z` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `id_usuario` INT NULL,
+  `comentario` VARCHAR(345) NULL,
+  `tipo` VARCHAR(45) NULL DEFAULT 'publico',
+  `fecha_envio` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP(),
+  PRIMARY KEY (`id`));
+
+
+-- ejecutando funciones
 DROP function IF EXISTS `validador_cuenta`;
 
 DELIMITER $$

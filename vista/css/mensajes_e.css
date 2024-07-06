@@ -1,0 +1,27 @@
+#contenedor_principal{
+    width: 100%;
+    display: flex;
+    position: fixed;
+    justify-content: center;
+    background:linear-gradient(to right, rgb(14, 3, 110) 25%, rgb(1, 1, 53) 70%);
+    height: 100vh;
+    z-index: -1;
+}
+#tabla_mensajes{
+    height: 80%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: flex-start;
+    overflow: auto;
+}
+.mensajes_data{
+    width: 60%;
+}
+#mensaje_texto{
+    width: 80%;
+    resize: vertical;
+    max-height: 50px;
+    min-height: 50px;
+}
