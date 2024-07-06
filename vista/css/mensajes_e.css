@@ -20,8 +20,12 @@
     width: 60%;
 }
 #mensaje_texto{
-    width: 80%;
+    width: 70%;
     resize: vertical;
     max-height: 50px;
     min-height: 50px;
+}
+#envio_mensajes > .input-group {
+    display: flex;
+    justify-content: center;
 }
