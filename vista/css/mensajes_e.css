@@ -11,14 +11,13 @@
     background:linear-gradient(to right, rgb(14, 3, 110) 25%, rgb(1, 1, 53) 70%);
 }
 #tabla_mensajes{
-    max-width: 85vw;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 15px;
 }
 .mensajes_data{
-    width: 700px;
+    min-width: 80%;
 }
 .cuadro_data_me{
     background-color: rgb(38, 36, 153);
@@ -26,7 +25,7 @@
     image-orientation: initial;
     background-size: 200px;
     background-position: center;
-    width: 70vh;
+    width: 70vw;
 }
 #mensaje_texto{
     width: 70%;
@@ -52,3 +51,9 @@
         position: relative !important;
     }
   }
+
+@media (width < 500px){
+    .cuadro_data_me{
+        width: 100vw;
+    }
+}
