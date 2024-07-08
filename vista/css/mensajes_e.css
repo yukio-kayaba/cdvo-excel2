@@ -1,24 +1,24 @@
-#contenedor_principal{
-    width: 100%;
-    display: flex;
+#navbar_date{
     position: fixed;
+    top:0px;
+    z-index: 1;
+}
+#contenedor_principal{
+    padding-top: 100px;
+    padding-bottom: 100px;
+    display: flex;
     justify-content: center;
     background:linear-gradient(to right, rgb(14, 3, 110) 25%, rgb(1, 1, 53) 70%);
-    height: 100vh;
-    z-index: -1;
 }
 #tabla_mensajes{
-    height: 80%;
+    max-width: 85vw;
     display: flex;
-    justify-content: center;
     flex-direction: column;
-    flex-wrap: nowrap;
     align-items: center;
-    overflow: auto;
     gap: 15px;
 }
 .mensajes_data{
-    width: 60%;
+    width: 700px;
 }
 .cuadro_data_me{
     background-color: rgb(38, 36, 153);
@@ -33,6 +33,11 @@
     resize: vertical;
     max-height: 50px;
     min-height: 50px;
+}
+#envio_mensajes{
+    width: 100%;
+    position: fixed;
+    bottom: 0px;
 }
 #envio_mensajes > .input-group {
     display: flex;

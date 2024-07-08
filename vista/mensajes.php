@@ -12,33 +12,21 @@
 <div id="contenedor_principal">
     <div class="cuadro_data_me">
         <div id="tabla_mensajes">
-
-          <div class="mensajes_data" name="">
-            <div class="card">
-              <div class="card-header">
-                Featured
-              </div>
-              <div class="card-body">
-                <h5 class="card-title">Special title treatment</h5>
-                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-              </div>
-            </div>
-          </div>
-
-          
-        </div>
-        <div id="envio_mensajes">
-          <div class="input-group mb-3">
-            <div class="input-group-text">
-              <input class="form-check-input mt-0" id="date_pu_pri" type="checkbox" value="" aria-label="Checkbox for following text input">
-            </div>
-            <textarea name="" id="mensaje_texto" placeholder="Ingrese texto"></textarea>
-            <button type="button" class="btn btn-success" id="load_message_date">
-              <img src="./vista/img/graficos/enviar.png" alt="" width="30px">
-            </button>
-          </div>
+          <!-- acá van todas las cartas -->
         </div>
     </div>
+</div>
+
+<div id="envio_mensajes">
+  <div class="input-group mb-3">
+    <div class="input-group-text">
+      <input class="form-check-input mt-0" id="date_pu_pri" type="checkbox" value="" aria-label="Checkbox for following text input">
+    </div>
+    <textarea name="" id="mensaje_texto" placeholder="Ingrese texto"></textarea>
+    <button type="button" class="btn btn-success" id="load_message_date">
+      <img src="./vista/img/graficos/enviar.png" alt="" width="30px">
+    </button>
+  </div>
 </div>
 
 <?php require_once("./vista/layout/mensajes.php"); ?>
