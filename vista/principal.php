@@ -63,10 +63,11 @@
               Nueva Hoja
             </p>
         </label>
-        <button type="button" class="btn btn-primary boton_mensaje_date" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">
+        <!-- INHABILITADO TEMPORALMENTE -->
+        <!-- <button type="button" class="btn btn-primary boton_mensaje_date" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">
           <img src="<?php echo url;?>/vista/img/graficos/mensaje.png" alt="" width="40px">
           <p>mensaje</p>
-        </button>
+        </button> -->
 
         <!-- <label  id="mensaje_date" class="datos_input_date">
             <p class="btn btn-primary m-0">
