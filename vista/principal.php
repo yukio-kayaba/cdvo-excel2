@@ -13,8 +13,8 @@
 
   <link rel="stylesheet" href="./vista/css/principal.css">
   <link rel="stylesheet" href="./vista/css/components/vistaTabla.css">
-  <link rel="stylesheet" href="<?php echo url;?>/vista/css/ESTYLOS_NOTIFICACIONES.css">
-  <link rel="stylesheet" href="<?php echo url;?>/vista/css/components/mensajes_estylos.css">
+  <link rel="stylesheet" href="./vista/css/ESTYLOS_NOTIFICACIONES.css">
+  <link rel="stylesheet" href="./vista/css/components/mensajes_estylos.css">
 
 </head>
 <body>
