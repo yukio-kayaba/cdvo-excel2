@@ -11,7 +11,9 @@
         static function login(){
             require_once("./vista/login.php");
         }
-        static function error_pagina(){}
+        static function error_pagina(){
+            
+        }
         
         static function editor(){
             require_once("./vista/editor.php");
@@ -21,6 +23,9 @@
         }
         static function mensajes(){
             require_once("./vista/mensajes.php");
+        }
+        static function reglineal(){
+            require_once("./vista/regresion_lineal.php");
         }
     }
 ?>
