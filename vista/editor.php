@@ -26,7 +26,7 @@
 
 </head>
 <body>
-  <?php include_once("./vista/layout/nav.php") ?>
+  <?php include_once("./vista/layout/nav.php"); ?>
   <div id="contenido">
 
     <p id="dato_id_archivo" style="display:none;"><?php echo $dato; ?></p>

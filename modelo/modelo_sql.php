@@ -99,5 +99,11 @@
             $resultado->closeCursor();
             return $this->dbdatos->lastInsertId();
         }
+        public function Actualizar_datos($codigo){
+            $this->sql = $codigo;
+            $resultado = $this->dbdatos->prepare($this->sql);
+            $resultado->execute();
+            $resultado->closeCursor();
+        }
     };
 ?>

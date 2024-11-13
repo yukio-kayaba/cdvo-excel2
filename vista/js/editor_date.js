@@ -34,6 +34,48 @@ $(document).ready(function(){
         console.log("clikeado");
     });
 
+    $(document).on("dblclick",".etiqueta_prueba",function(e){
+        let elemento = $(this);
+        // console.log();
+        let posicion = elemento[0].parentElement.classList[0];
+        let nombre = elemento[0].attributes.name.value;
+        // console.log(nombre);
+        let etiqueta = elemento.find("div");
+        let contenido = etiqueta.text();
+        let input = $("<input>").val(contenido);
+        etiqueta.replaceWith(input);
+        let dato1 = document.getElementById("titulo_archivo_date");
+        input.focus();
+        
+        input.blur(function(){
+            let nuevo_texto = input.val();
+            let nuevo_div = $("<div>").text(nuevo_texto);
+            input.replaceWith(nuevo_div);
+            let notificacion = new notficacion("contenedor-toast_date");
+            console.log(notificacion.get_iconos_date());
+            const valores = {
+                "archivo": dato1.innerHTML,
+                "fila":posicion,
+                "columna":nombre,
+                "contenido":nuevo_texto
+            }
+            console.log(valores);
+            if(nuevo_texto != contenido){
+                $.ajax({
+                    url: './modelo/tareas-date/actualizar_tabla.php',
+                    type: 'POST', 
+                    data: valores, 
+                    success: function(response){
+                        console.log('Respuesta del servidor:', response);
+                        if(response == "listo"){
+                            notificacion.generador_text_valor({tipo:"exito",titulo:'Exito',descripcion:'Se actualizo ' + nuevo_texto,tiempo:3000,autocierre:true});
+                        }
+                    }
+                });
+            }
+        })
+    });
+
     $(document).on("click",".boton_redondo_datos",function(){
         // (activo)?false:true;
         let dato_info = document.getElementsByClassName("boton_redondo_datos")[0];
@@ -113,7 +155,7 @@ function vista_previa_datos(archivos,id_dato){
         let contenido_dato = `<tr class='${datos[i][0]}'>`;
         datos[i].forEach((element,indice)=> {
             if(indice != 0){
-                contenido_dato += `<td>${(element == "10101z")?"":element }</td>`;  
+                contenido_dato += `<td name="${datos[0][indice]}" class="etiqueta_prueba"><div>${(element == "10101z")?"":element }</div></td>`;  
             }
         });
         contenido_dato += `

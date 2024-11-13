@@ -1,9 +1,9 @@
 :root{
-    --exito:#3ab65c;
-    --error:#bf333b;
+    --exito:#3ab65bde;
+    --error:#bf333ae5;
     --informacion:#1898c0;
     --peligro:#bc8c12;
-    --exito-hover:#2d8a46;
+    --exito-hover:#2d8a46d7;
     --error-hover:#962a31;
     --informacion-hover:#147fa0;
     --peligro-hover:#9b7512;
@@ -32,6 +32,7 @@
     animation-duration: 200ms;
     animation-timing-function: ease-out;
     position: relative;
+    border: 2px solid rgb(0 0 107);
     overflow: hidden;
 }
 
@@ -50,9 +51,9 @@
     display: grid;
     grid-template-columns: 30px auto;
     align-items: center;
+    align-content: center;
     gap: 15px;
     padding: 15px;
-
 }
 
 .notificacion .icono{

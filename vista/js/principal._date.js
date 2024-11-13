@@ -75,7 +75,7 @@ $(document).ready(function(){
         elemento_dato.classList.add("cotenido-date-puppet");
         elemento_dato.classList.add("animacion_suave_puppet");
         elemento_dato.innerHTML = `
-            <input type="text" class="form-control input_edit_add_value" placeholder="Ingrese el campo sin espacios" aria-label="Recipient's username" aria-describedby="button-addon2">
+            <input type="text" class="form-control input_edit_add_value" placeholder="Ingrese el campo " aria-label="Recipient's username" aria-describedby="button-addon2">
             <button class="btn btn-outline-danger boton_eliminar_edit_date" type="button" >Eliminar</button>
         `;
         document.getElementsByClassName("contenido_date_agregar")[0].appendChild(elemento_dato);
@@ -89,5 +89,6 @@ $(document).ready(function(){
                 objeto_edit.parentElement.remove();
             }
         });
-    }); 
+    });
+     
 });
