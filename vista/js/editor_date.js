@@ -228,7 +228,7 @@ btn_agregar.addEventListener("click", function(e){
     element_date.style.width = "100%";
 
     let texto = `
-        <div class="text-center bg-primary fs-2">${titulo_Date.innerHTML}</div>
+        <div class="texto_centrado  fs-2">${titulo_Date.innerHTML}</div>
     `;
     // let dato_value = (valores_repeat != "" && indice - 1 == valores_key[indice])? valores_repeat[indice - 1]:"";
     informacion_archivos[0].forEach((element,indice) => {
@@ -275,6 +275,7 @@ botones_tabla.addEventListener("click",function(e){
     let url = "";
     if(dato_activo){
         datos = obtencion_datos_input();
+        
         let datos_2 = {
             "archivo":dato.innerHTML,
             "informacion":JSON.stringify(datos),
@@ -302,6 +303,30 @@ botones_tabla.addEventListener("click",function(e){
             if(response == "enviado" || response == "exito"){
                 console.log('Respuesta del servidor:', response);
                 // alert("EL ARCHIVO SE SUBIO CON EXITO");
+                console.log(datos);
+                let celda = document.createElement("tr");
+                for (let index = 0; index < datos.length; index++) {
+                    let cantidad = document.getElementById("tabla").rows.length;
+                    let td = document.createElement("td"); // Crear la celda
+                    td.setAttribute("name", cantidad);
+                    td.className = "etiqueta_prueba";
+                    td.innerHTML = `<div>${(datos[index] == "10101z") ? "" : datos[index]}</div>`;
+                    
+                    celda.appendChild(td); // Agrega la celda a la fila
+                }
+                celda.innerHTML += `
+                    <td class="botones_tabla_edit">
+                    <button type="button" class="btn btn-info">
+                        <img src="./vista/img/graficos/edit_file_date.png" alt="" width="15px">
+                    </button>
+                    <button type="button" class="btn btn-danger">
+                        <img src="./vista/img/graficos/delete.png" alt="" width="15px">
+                    </button>
+                    </td>
+                `;
+                let tabla_aux = document.getElementById("tabla").getElementsByTagName("tbody")[0];
+                tabla_aux.appendChild(celda);
+
                 notificacion.generador_text_valor({tipo:"exito",titulo:'Exito',descripcion:'El archivo se subio con exito',tiempo:7000,autocierre:true});
             }else{
                 // alert("error data");

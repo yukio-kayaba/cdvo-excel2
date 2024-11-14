@@ -99,7 +99,7 @@
 
     <section class="tabla_puppet" id="puppet-tabla">
       <section 
-        style="max-height: 90vh; overflow-y: auto;" 
+        style="max-height: 90vh;border:3px solid #55cfce; padding:1px; border-radius:10px" 
         class="bg-light" id="campos_tabla">
         <!-- acá se genera una tabla -->
       </section>
