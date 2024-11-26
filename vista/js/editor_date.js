@@ -33,6 +33,9 @@ $(document).ready(function(){
         descargar_archivos();
         console.log("clikeado");
     });
+    $(document).on("click","#btnExportar_arff",()=>{
+        descargarARFF();
+    });
 
     $(document).on("dblclick",".etiqueta_prueba",function(e){
         let elemento = $(this);
@@ -204,6 +207,30 @@ function guardar_excel(buffer,filename){
 
     const data = new Blob([buffer],{type:EXCEL_TYPE});
     saveAs(data,filename +EXCEL_EXTENCION);
+}
+
+function descargarARFF(){
+    let titulo_Date = document.getElementById("titulo_archivo_date");
+    let valores = "@relation Predecir \n";
+    for (let i = 0; i < informacion_archivos.length; i++) {
+        let cant_datos = informacion_archivos[i].length;
+        for (let j = 1; j < cant_datos; j++) {
+            if(i == 0){
+                valores += `@attribute ${informacion_archivos[i][j]} integer \n`;
+                continue;
+            }
+            valores += (j == cant_datos - 1)? `${informacion_archivos[i][j]} \n`:`${informacion_archivos[i][j]},`;
+        }
+        if(i == 0) valores+= "@data \n";
+    }
+    // console.log(valores);
+    let enlace  = document.createElement('a');
+    enlace.setAttribute("href","data:text/plain;charset=utf-8,"+ encodeURIComponent(valores));
+    enlace.setAttribute("download",`${titulo_Date.innerHTML}.arff`);
+    enlace.style.display = "none";
+    document.body.appendChild(enlace);
+    enlace.click();
+    document.body.removeChild(enlace);
 }
 
 let puppetTabla = document.querySelector("#puppet-tabla");

@@ -55,7 +55,11 @@
         </a>
         <a id="btnExportar" class="btn btn-primary btn_opc_date" href="#">
           <img src="<?php echo url;?>/vista/img/graficos/dowload_file.png" alt="Subir" width="40px">
-          <p>Descargar</p>
+          <p>Excel DOWL</p>
+        </a>
+        <a id="btnExportar_arff" class="btn btn-primary btn_opc_date" href="#">
+          <img src="<?php echo url;?>/vista/img/graficos/logo_weka2.png" alt="Subir" width="40px">
+          <p>ARFF DOWL</p>
         </a>
       </div>
     </section>
