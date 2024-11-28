@@ -19,6 +19,7 @@
         $titulo_t = $titulo.$id_user."z";
         // print("el titulo nuevo es ::  ".$titulo_t);
         if($opcion == 1){
+            $opciones_user = json_decode($_POST['opciones_user']);
             $validador = $conexion->get_tabla_colum("SELECT id FROM $titulo_t WHERE id = 1;");
             if($validador == -1){
                 // print("acceso");
@@ -29,7 +30,7 @@
                     $datos_titulo[] = str_replace(" ","_",$valor);
                 }
                 
-                $conexion->crear_tabla($titulo_t,$datos_titulo,$id_user);
+                $conexion->crear_tabla($titulo_t,$datos_titulo,$id_user,$opciones_user);
                 foreach ($datos_titulo as $key => $value){
                     if(is_numeric($key)){
                         $codigo_parametro .= "`".$value."`,";

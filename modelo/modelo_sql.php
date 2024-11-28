@@ -24,18 +24,25 @@
             $resultado->execute();
             return $resultado->fetchAll(PDO::FETCH_COLUMN);
         }
-        public function crear_tabla($titulo,$datos,$id){
+        public function crear_tabla($titulo,$datos,$id,$tipo_variable = null){
             try {
+                $tipos = ["VARCHAR(345)","INT(11)","DECIMAL","DATE","TINYINT"];
+                $activo = true;
+                if($tipo_variable === null)  $activo = false;
                 $datos_1 = "CREATE TABLE $titulo(`id` INT NOT NULL AUTO_INCREMENT,";
                 $codigo_valores = "";
                 $codigo_parametros = "";
+                $posicion = 0;
                 foreach ($datos as $key => $value){
-                    $datos_1 .= "`$value` VARCHAR(345) NULL,";
+                    $opcion_select = ($activo)? $tipos[$tipo_variable[$posicion]] : "VARCHAR(345)";
+                    $posicion += 1; 
+                    $datos_1 .= "`$value` ".$opcion_select." NULL,";
                     $codigo_valores .= "`".$value."`,";
                     $codigo_parametros .= "'".$value."',";
                 }
                 $datos_1 .= "PRIMARY KEY (`id`));";
-                // $this->sql = "CREATE TABLE $titulo(`id` INT NOT NULL AUTO_INCREMENT,PRIMARY KEY (`id`));";
+                // print($datos_1);
+    // $this->sql = "CREATE TABLE $titulo(`id` INT NOT NULL AUTO_INCREMENT,PRIMARY KEY (`id`));";
                 $this->sql = $datos_1;
                 $this->ejecutar();
 // INSERT INTO `ficheros`.`archivo_excel` (`time`, `carrera`, `acepta`, `positivo`, `negativo`, `edad`, `sexo`, `trabajo`) VALUES ('time', 'carrera', 'acepta', 'positivo', 'negativo', 'edad', 'sexo', 'trabajo');

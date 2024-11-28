@@ -74,11 +74,16 @@ excel_input.addEventListener("change",async function(e){
 botones_tabla.addEventListener("click",function(e){
   e.stopPropagation();
   let notificacion = new notficacion("contenedor-toast_date");
+  let opciones_user = Array();
   if(pantalla_uso){
       let datos1  = document.getElementsByClassName("input_edit_add_value");
+      let opciones = document.getElementsByClassName("opcion_selecionada_pop_up");
       if(datos1.length == 0) return ;
       let nuevo_dato = Array();
       let datos_archivo = Array();
+      for(const elemento of  opciones){
+        opciones_user.push(elemento.selectedIndex);
+      }
       for (const key of datos1){
         if(key.value != ""){
           nuevo_dato.push(key.value);
@@ -94,6 +99,7 @@ botones_tabla.addEventListener("click",function(e){
   // return;
   // console.log("enviando al servidor");
   // notificacion.generador_text_valor({tipo:"informacion",titulo:'Subiendo',descripcion:'Se esta subiendo al servidor',tiempo:7000,autocierre:true});
+  // return;
   let nombre_archivo = prompt("Ingrese un nombre para el archivo");
   if(nombre_archivo == null || nombre_archivo == undefined){
     return;
@@ -104,16 +110,16 @@ botones_tabla.addEventListener("click",function(e){
     return;
   }
   const elementos = JSON.stringify(archivos);
-
+  const opciones = JSON.stringify(opciones_user);
   let dato_prueba = {
       "datos":elementos,
       "titulo":nombre_archivo,
       "opcion":1,
-      "user_date":localStorage.getItem("valor_aux")
+      "user_date":localStorage.getItem("valor_aux"),
+      "opciones_user":opciones
   };
   // console.log(dato_prueba);
   // return;
-
   $.ajax({
       url: './modelo/tareas-date/convertir_sql.php',
       type: 'POST', 

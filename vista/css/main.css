@@ -37,7 +37,10 @@ a{
   height: 70px;
   width: 100%;
 }
-
+.quit_border{
+  border-radius: unset;
+  
+}
 .nav_date:hover{
   background-color: rgb(25, 7, 187);
 }

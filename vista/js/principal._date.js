@@ -70,12 +70,14 @@ $(document).ready(function(){
     }
     $(document).on("click",".boton_agregar_date",function(){
         let elemento_dato = document.createElement("div");
+        let tipos_datos = ["string","integer","real","date","boolean"];
         elemento_dato.classList.add("input-group");
         elemento_dato.classList.add("mb-3");
         elemento_dato.classList.add("cotenido-date-puppet");
         elemento_dato.classList.add("animacion_suave_puppet");
         elemento_dato.innerHTML = `
             <input type="text" class="form-control input_edit_add_value" placeholder="Ingrese el campo " aria-label="Recipient's username" aria-describedby="button-addon2">
+            ${opciones_text(tipos_datos)}
             <button class="btn btn-outline-danger boton_eliminar_edit_date" type="button" >Eliminar</button>
         `;
         document.getElementsByClassName("contenido_date_agregar")[0].appendChild(elemento_dato);
@@ -90,5 +92,22 @@ $(document).ready(function(){
             }
         });
     });
-     
+    function opciones_text(valores = null){
+        let texto = "";
+        if(!Array.isArray(valores)) return false;
+        texto += `
+            <div>
+            <select  class="form-select quit_border opcion_selecionada_pop_up" aria-label="Large select example">
+        `;
+        valores.forEach(dato1 => {
+            texto += `
+                <option value="${dato1}" >${dato1}</option> 
+            `;
+        });
+        texto += `
+                </select>
+            </div>
+        `;
+        return texto;
+    }
 });
