@@ -42,11 +42,21 @@ $(document).ready(function(){
         // console.log();
         let posicion = elemento[0].parentElement.classList[0];
         let nombre = elemento[0].attributes.name.value;
-        console.log(nombre);
+        let tipo = elemento[0].dataset.type;
+        let posicion2 = 0;
+        let valores_di = ["text","number","number","date","checkbox"];
+        let respuesta_di = ["text","number","number","date","checkbox"];
+        for(let i = 0;i < valores_di.length;i++){
+            if(valores_di[i] == tipo){
+                posicion2 = i;
+                break;
+            }
+        }
+        console.log(tipo);
         console.log(posicion);
         let etiqueta = elemento.find("div");
         let contenido = etiqueta.text();
-        let input = $("<input>").attr("type", "text").val(contenido);
+        let input = $("<input>").attr("type", `${respuesta_di[posicion2]}`).val(contenido);
         etiqueta.replaceWith(input);
         let dato1 = document.getElementById("titulo_archivo_date");
         input.focus();
@@ -147,7 +157,7 @@ function vista_previa_datos(archivos,id_dato){
                         <tr>
                 `;
     for (let i = 1; i < datos[0].length ; i++) {
-        contenido +=`<th scope="col">${datos[1][i]}</th>`;
+        contenido +=`<th scope="col">${datos[0][i]}</th>`;
     }
     contenido += `
             <th scope="col">Opciones</th>
@@ -159,7 +169,7 @@ function vista_previa_datos(archivos,id_dato){
         let contenido_dato = `<tr class='${datos[i][0]}'>`;
         datos[i].forEach((element,indice)=> {
             if(indice != 0){
-                contenido_dato += `<td name="${datos[0][indice]}" class="etiqueta_prueba"><div>${(element == "10101z")?"":element }</div></td>`;  
+                contenido_dato += `<td data-type="${datos[1][indice]}"  name="${datos[0][indice]}" class="etiqueta_prueba"><div>${(element == "10101z")?"":element }</div></td>`;  
             }
         });
         contenido_dato += `
@@ -269,12 +279,22 @@ btn_agregar.addEventListener("click", function(e){
         <div class="texto_centrado  fs-2">${titulo_Date.innerHTML}</div>
     `;
     // let dato_value = (valores_repeat != "" && indice - 1 == valores_key[indice])? valores_repeat[indice - 1]:"";
+    let valores_di = ["varchar(345)","int(11)","decimal","date","tinyint"];
+    let respuesta_di = ["text","number","number","date","checkbox"];
+    let posicion2 = 0;
+    let iterador = 0;
     informacion_archivos[0].forEach((element,indice) => {
+        for(let i = 0;i < valores_di.length;i++){
+            if(valores_di[i] == informacion_archivos[1][iterador]){
+                posicion2 = i;
+                break;
+            }
+        }
         if(indice != 0){
             texto += `
                 <div class="campos_de_tabla_rellenar">
                     <label for="inputPassword${indice}" class="fs-5 col-form-label">${element}</label>
-                    <input type="text" id="inputPassword${indice}" name="${indice}" class="form-control datos_input_date" aria-describedby="passwordHelpInline" >
+                    <input type="${respuesta_di[posicion2]}" id="inputPassword${indice}" name="${indice}" class="form-control datos_input_date" aria-describedby="passwordHelpInline" >
                     <div class="form-check">
                         <input class="form-check-input" class="form-check-input" type="checkbox" name="${indice}" value="" id="flexCheckDefault${indice}">
                         <label class="form-check-label radio_duple_save" for="flexCheckDefault${indice}">
@@ -284,6 +304,7 @@ btn_agregar.addEventListener("click", function(e){
                 </div>
             `;
         }
+        iterador ++;
     });
     element_date.innerHTML = texto;
     seccion_camposTabla.innerHTML = "";
@@ -313,7 +334,6 @@ botones_tabla.addEventListener("click",function(e){
     let url = "";
     if(dato_activo){
         datos = obtencion_datos_input();
-        
         let datos_2 = {
             "archivo":dato.innerHTML,
             "informacion":JSON.stringify(datos),
@@ -321,7 +341,7 @@ botones_tabla.addEventListener("click",function(e){
         };
         datos = datos_2;
         url = './modelo/tareas-date/enviar_datos_per.php';
-        // console.log(datos);
+        console.log(datos_2);
         botones_tabla.classList.remove("datos_escribidos");
     }else{
         let datos_2 = {

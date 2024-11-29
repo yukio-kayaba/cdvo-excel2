@@ -37,8 +37,6 @@
                     $opcion_select = ($activo)? $tipos[$tipo_variable[$posicion]] : "VARCHAR(345)";
                     $posicion += 1; 
                     $datos_1 .= "`$value` ".$opcion_select." NULL,";
-                    $codigo_valores .= "`".$value."`,";
-                    $codigo_parametros .= "'".$value."',";
                 }
                 $datos_1 .= "PRIMARY KEY (`id`));";
                 // print($datos_1);
@@ -49,8 +47,8 @@
                 $codigo_valores = substr($codigo_valores,0,-1);
                 $codigo_parametros = substr($codigo_parametros,0,-1);
 
-                $this->sql = "INSERT INTO $titulo ($codigo_valores) VALUES ($codigo_parametros);";
-                $this->ejecutar();
+                // $this->sql = "INSERT INTO $titulo ($codigo_valores) VALUES ($codigo_parametros);";
+                // $this->ejecutar();
 
                 $this->sql = "INSERT INTO archivos_ficher_0001_z (`id_user`,`nombre_archivo`) VALUES ('$id','$titulo')";
                 $this->ejecutar();
