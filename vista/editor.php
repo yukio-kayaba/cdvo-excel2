@@ -67,7 +67,6 @@
     <div class="w-100 text-center fw-bold fs-2 mt-2 text-wrap">
       <div id="titulo_archivo_date">Titulo del archivo</div>
     </div>
-
     <!-- TABLA DE DATOS -->
     <section id="tabla_datos_principal">
       <table id="tabla" class="table">

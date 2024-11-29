@@ -42,10 +42,11 @@ $(document).ready(function(){
         // console.log();
         let posicion = elemento[0].parentElement.classList[0];
         let nombre = elemento[0].attributes.name.value;
-        // console.log(nombre);
+        console.log(nombre);
+        console.log(posicion);
         let etiqueta = elemento.find("div");
         let contenido = etiqueta.text();
-        let input = $("<input>").val(contenido);
+        let input = $("<input>").attr("type", "text").val(contenido);
         etiqueta.replaceWith(input);
         let dato1 = document.getElementById("titulo_archivo_date");
         input.focus();
@@ -146,7 +147,7 @@ function vista_previa_datos(archivos,id_dato){
                         <tr>
                 `;
     for (let i = 1; i < datos[0].length ; i++) {
-        contenido +=`<th scope="col">${datos[0][i]}</th>`;
+        contenido +=`<th scope="col">${datos[1][i]}</th>`;
     }
     contenido += `
             <th scope="col">Opciones</th>
@@ -154,7 +155,7 @@ function vista_previa_datos(archivos,id_dato){
         </thead>
         <tbody>
     `;
-    for (let i = 1; i < datos.length; i++){
+    for (let i = 2; i < datos.length; i++){
         let contenido_dato = `<tr class='${datos[i][0]}'>`;
         datos[i].forEach((element,indice)=> {
             if(indice != 0){
@@ -212,11 +213,21 @@ function guardar_excel(buffer,filename){
 function descargarARFF(){
     let titulo_Date = document.getElementById("titulo_archivo_date");
     let valores = "@relation Predecir \n";
+    let valores_select = ["string","integer","real","date","{true,false}"];
+    let valores_di = ["VARCHAR(345)","INT(11)","DECIMAL","DATE","TINYINT"];
     for (let i = 0; i < informacion_archivos.length; i++) {
         let cant_datos = informacion_archivos[i].length;
+        if(i == 1) continue;
         for (let j = 1; j < cant_datos; j++) {
             if(i == 0){
-                valores += `@attribute ${informacion_archivos[i][j]} integer \n`;
+                let tipo_var;
+                for (let u = 0; u < valores_di.length; u++) {
+                    if(informacion_archivos[1][j] == valores_di[u]){
+                        tipo_var = valores_select[u];
+                        break;
+                    }
+                }
+                valores += `@attribute ${informacion_archivos[i][j]} ${tipo_var} \n`;
                 continue;
             }
             valores += (j == cant_datos - 1)? `${informacion_archivos[i][j]} \n`:`${informacion_archivos[i][j]},`;

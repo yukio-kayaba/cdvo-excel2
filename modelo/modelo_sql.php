@@ -80,6 +80,10 @@
             $this->sql = "SELECT * FROM $tabla $condicion;";
             return $this->ejecutar1();
         }
+        public function get_describe_table($tabla){
+            $this->sql = "DESCRIBE $tabla";
+            return $this->ejecutar1();
+        }
         public function agregar_valores($tabla,$datos,$parametros){
             $codigo_parametros = "";
             foreach ($datos as $key => $value) {
