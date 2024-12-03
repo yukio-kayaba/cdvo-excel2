@@ -28,14 +28,21 @@
             try {
                 $tipos = ["VARCHAR(345)","INT(11)","DECIMAL","DATE","TINYINT"];
                 $activo = true;
-                if($tipo_variable === null)  $activo = false;
+                if(count($tipo_variable) > 1){
+                    $activo = false;
+                    $tipo_variable = [0];
+                } 
                 $datos_1 = "CREATE TABLE $titulo(`id` INT NOT NULL AUTO_INCREMENT,";
                 $codigo_valores = "";
                 $codigo_parametros = "";
                 $posicion = 0;
                 foreach ($datos as $key => $value){
-                    $opcion_select = ($activo)? $tipos[$tipo_variable[$posicion]] : "VARCHAR(345)";
-                    $posicion += 1; 
+                    if(isset($tipo_variable[$posicion])){
+                        $opcion_select = $tipos[$tipo_variable[$posicion]];
+                    }else{
+                        $opcion_select = "VARCHAR(345)";
+                    }
+                    // $opcion_select = ($activo)? $tipos[$tipo_variable[$posicion]] : "VARCHAR(345)";
                     $datos_1 .= "`$value` ".$opcion_select." NULL,";
                 }
                 $datos_1 .= "PRIMARY KEY (`id`));";
