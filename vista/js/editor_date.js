@@ -319,11 +319,12 @@ sombraTabla.addEventListener("click", function(e){
   visibilidadElementos("none");
   e.stopPropagation();
 });
+//boton de envio de datos
 botones_tabla.addEventListener("click",function(e){
     let dato = document.getElementById("dato_id_archivo");
     let valor_aux = localStorage.getItem("valor_aux");
     let dato_activo = false;
-    let datos;
+    let datos,informacio;
     let notificacion = new notficacion("contenedor-toast_date");
     console.log(notificacion.get_iconos_date());
 
@@ -339,10 +340,11 @@ botones_tabla.addEventListener("click",function(e){
             "informacion":JSON.stringify(datos),
             "date_user":valor_aux
         };
+        informacio = datos;
         datos = datos_2;
         url = './modelo/tareas-date/enviar_datos_per.php';
-        console.log(datos_2);
-        botones_tabla.classList.remove("datos_escribidos");
+        // console.log(datos_2);
+        // botones_tabla.classList.remove("datos_escribidos");
     }else{
         let datos_2 = {
             "titulo":dato.innerHTML,
@@ -361,14 +363,14 @@ botones_tabla.addEventListener("click",function(e){
             if(response == "enviado" || response == "exito"){
                 console.log('Respuesta del servidor:', response);
                 // alert("EL ARCHIVO SE SUBIO CON EXITO");
-                console.log(datos);
+                console.log(informacio);
                 let celda = document.createElement("tr");
-                for (let index = 0; index < datos.length; index++) {
+                for (let index = 0; index < informacio.length; index++) {
                     let cantidad = document.getElementById("tabla").rows.length;
                     let td = document.createElement("td"); // Crear la celda
                     td.setAttribute("name", cantidad);
                     td.className = "etiqueta_prueba";
-                    td.innerHTML = `<div>${(datos[index] == "10101z") ? "" : datos[index]}</div>`;
+                    td.innerHTML = `<div>${(informacio[index] == "10101z") ? "" : informacio[index]}</div>`;
                     
                     celda.appendChild(td); // Agrega la celda a la fila
                 }

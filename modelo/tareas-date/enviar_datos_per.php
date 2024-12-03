@@ -16,17 +16,16 @@
         $cant_cod_valores = 0;
         if($id_user == $id_valuable){
             $datos1 = $conexion->get_tabla_colum("SELECT nombre_archivo FROM archivos_ficher_0001_z where id_user = $id_valuable and id = $titulo");
-            $datos_titulo = $conexion->get_datos($datos1[0],"WHERE id=1;")[0];
+            $datos_titulo = $conexion->get_describe_table($datos1[0]);
             foreach ($datos_titulo as $key => $value){
-                if($key != 0){
-                    if(is_numeric($key)){
-                        $codigo_parametro .= "`".$value."`,";
-                        $cantidad_max_date += 1;
-                    }
+                if($value[0] == 'id') continue;
+                if(is_numeric($key)){
+                    $codigo_parametro .= "`".$value[0]."`,";
+                    $cantidad_max_date += 1;
                 }
             }
             $codigo_parametro = substr($codigo_parametro,0,-1);
-
+            // print_r($codigo_parametro);
             foreach ($datos as $key => $value) {
                 $codigo_valores .= "'".$value."',";
                 $cant_cod_valores += 1;

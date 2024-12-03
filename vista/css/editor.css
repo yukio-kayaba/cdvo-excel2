@@ -52,7 +52,8 @@ body{
   width: 100%;
   display: flex;
   justify-content: center;
-  height: 65vh;
+  /* height: 65vh; */
+  max-height: 65vh;
   overflow: auto;
   margin-top: 10px;
 }
