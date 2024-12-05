@@ -228,12 +228,12 @@ function descargarARFF(){
     let valores_di = ["VARCHAR(345)","INT(11)","DECIMAL","DATE","TINYINT"];
     for (let i = 0; i < informacion_archivos.length; i++) {
         let cant_datos = informacion_archivos[i].length;
-        if(i == 1) continue;
+        if(i == 0) continue;
         for (let j = 1; j < cant_datos; j++) {
-            if(i == 0){
+            if(i == 1){
                 let tipo_var;
                 for (let u = 0; u < valores_di.length; u++) {
-                    if(informacion_archivos[1][j] == valores_di[u]){
+                    if(informacion_archivos[0][j] == valores_di[u]){
                         tipo_var = valores_select[u];
                         break;
                     }
@@ -245,14 +245,14 @@ function descargarARFF(){
         }
         if(i == 0) valores+= "@data \n";
     }
-    // console.log(valores);
-    let enlace  = document.createElement('a');
-    enlace.setAttribute("href","data:text/plain;charset=utf-8,"+ encodeURIComponent(valores));
-    enlace.setAttribute("download",`${titulo_Date.innerHTML}.arff`);
-    enlace.style.display = "none";
-    document.body.appendChild(enlace);
-    enlace.click();
-    document.body.removeChild(enlace);
+    console.log(valores);
+    // let enlace  = document.createElement('a');
+    // enlace.setAttribute("href","data:text/plain;charset=utf-8,"+ encodeURIComponent(valores));
+    // enlace.setAttribute("download",`${titulo_Date.innerHTML}.arff`);
+    // enlace.style.display = "none";
+    // document.body.appendChild(enlace);
+    // enlace.click();
+    // document.body.removeChild(enlace);
 }
 
 let puppetTabla = document.querySelector("#puppet-tabla");

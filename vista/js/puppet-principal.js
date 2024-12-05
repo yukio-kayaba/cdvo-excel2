@@ -177,6 +177,7 @@ botones_tabla.addEventListener("click",function(e){
   //pra volver editable un objeto
   $(document).on("dblclick",".editable_title",(e)=>{
       let elemento = $(this);
+      console.log("se ha cliekado el objeto");
       let posicion = elemento[0].parentElement.classList[0];
       let nombre = elemento[0].attributes.name.value;
       let tipo = elemento[0].dataset.type;
@@ -190,7 +191,8 @@ botones_tabla.addEventListener("click",function(e){
           }
       }
       if(!posicion && !nombre ){
-         return console.log("falta mas datos para ser editable");
+          console.log("falta mas datos para ser editable");
+         return;
       }
 
       let etiqueta = elemento.find("div");
@@ -200,7 +202,7 @@ botones_tabla.addEventListener("click",function(e){
       input.focus();
   });
   
-})
+});
 
 
 class Excel{
