@@ -56,7 +56,15 @@
           </p>
           <input type="file" id="archivo_csv" name="archivo_excel_csv" accept=".csv" style="display: none;">
         </label>
-        
+
+        <label for="archivo_arff" class="datos_input_date">
+          <img src="<?php echo url;?>/vista/img/graficos/file_csv.png" alt=""> 
+          <p class="btn btn-primary m-0">
+            Subir arff
+          </p>
+          <input type="file" id="archivo_arff" name="archivo_excel_csv" accept=".arff,.data" style="display: none;">
+        </label>
+
         <label  id="archivo_nuevo" class="datos_input_date">
           <img src="<?php echo url;?>/vista/img/graficos/file_xlsx.png" alt="">
             <p class="btn btn-secondary m-0">

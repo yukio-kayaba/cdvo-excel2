@@ -44,7 +44,43 @@ $(document).ready(function(){
 const btn_cerrarPuppet = document.querySelector("#btn_cerraPuppet");
 const excel_input = document.getElementById("archivo_xlsx");
 const puppet_test = document.querySelector("#contenido");
+const archivo_arff = document.getElementById("archivo_arff");
 
+archivo_arff.addEventListener("change",(event)=>{
+    let archivo = event.target;
+    if(archivo.files.length == 0) return console.log("ningun archivo cargado");
+
+    let archivo2 = archivo.files[0];
+    var reader = new FileReader();
+    let elementos = Array();
+    let principal = Array();
+    reader.onload = async function(e) {
+      let datos = e.target.result;
+      let texto_aux = "";
+      for(let i = 0;i < datos.length;i++){
+
+        if(datos[i] == '\n' || (datos[i] === '\r' && datos[i + 1] === '\n' )){
+          elementos.push(texto_aux);
+          principal.push(elementos);
+          texto_aux = "";
+          elementos = Array();
+        }else{
+          if(datos[i] == ','){
+            elementos.push(texto_aux);
+            texto_aux = "";
+          }else{
+            texto_aux += datos[i];
+          }
+        }
+
+      }
+      archivos = principal;
+      console.log(archivos[0]);
+      vista_previa_datos();
+
+    };
+    reader.readAsText(archivo2); 
+});
 function visibilidadElementos(estado){
   puppet_test.style.display = estado;
   if(estado == "block") puppet_test.classList.add("animacion_suave_puppet");
@@ -138,6 +174,32 @@ botones_tabla.addEventListener("click",function(e){
 
       }
   });
+  //pra volver editable un objeto
+  $(document).on("dblclick",".editable_title",(e)=>{
+      let elemento = $(this);
+      let posicion = elemento[0].parentElement.classList[0];
+      let nombre = elemento[0].attributes.name.value;
+      let tipo = elemento[0].dataset.type;
+      let posicion2 = 0;
+      let valores_di = ["text","number","number","date","checkbox"];
+      let respuesta_di = ["text","number","number","date","checkbox"];
+      for(let i = 0;i < valores_di.length;i++){
+          if(valores_di[i] == tipo){
+              posicion2 = i;
+              break;
+          }
+      }
+      if(!posicion && !nombre ){
+         return console.log("falta mas datos para ser editable");
+      }
+
+      let etiqueta = elemento.find("div");
+      let contenido = etiqueta.text();
+      let input = $("<input>").attr("type", `${respuesta_di[posicion2]}`).val(contenido);
+      etiqueta.replaceWith(input);
+      input.focus();
+  });
+  
 })
 
 
@@ -208,14 +270,14 @@ function vista_previa_datos(){
                       <tr>
               `;
   for (let i = 0; i < datos[0].length ; i++) {
-      contenido +=`<th scope="col">${datos[0][i]}</th>`;
+      contenido +=`<th scope="col" class="editable_title" >${datos[0][i]}</th>`;
   }
   contenido += `
           </tr>
       </thead>
       <tbody>
   `;
-  for (let i = 1; i < datos.length; i++){
+  for (let i = 0; i < datos.length; i++){
       let contenido_dato = "<tr>";
       datos[i].forEach(element => {
           contenido_dato += `<td>${(element == "10101z")?"":element }</td>`;  

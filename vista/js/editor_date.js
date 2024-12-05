@@ -58,8 +58,9 @@ $(document).ready(function(){
         let contenido = etiqueta.text();
         let input = $("<input>").attr("type", `${respuesta_di[posicion2]}`).val(contenido);
         etiqueta.replaceWith(input);
-        let dato1 = document.getElementById("titulo_archivo_date");
         input.focus();
+        
+        let dato1 = document.getElementById("titulo_archivo_date");
         
         input.blur(function(){
             let nuevo_texto = input.val();
