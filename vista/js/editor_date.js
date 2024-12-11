@@ -364,8 +364,11 @@ botones_tabla.addEventListener("click",function(e){
             if(response == "enviado" || response == "exito"){
                 console.log('Respuesta del servidor:', response);
                 // alert("EL ARCHIVO SE SUBIO CON EXITO");
+
                 console.log(informacio);
                 let celda = document.createElement("tr");
+                let cantidad_aux = informacion_archivos.length - 1;
+                celda.setAttribute('class',`${cantidad_aux}`);
                 for (let index = 0; index < informacio.length; index++) {
                     let cantidad = document.getElementById("tabla").rows.length;
                     let td = document.createElement("td"); // Crear la celda
@@ -374,7 +377,7 @@ botones_tabla.addEventListener("click",function(e){
                     td.innerHTML = `<div>${(informacio[index] == "10101z") ? "" : informacio[index]}</div>`;
                     celda.appendChild(td); // Agrega la celda a la fila
                 }
-                informacio.unshift(`${informacion_archivos.length - 1}`);
+                informacio.unshift(`${cantidad_aux}`);
                 informacion_archivos.push(informacio);
                 celda.innerHTML += `
                     <td class="botones_tabla_edit">
