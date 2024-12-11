@@ -52,8 +52,8 @@ $(document).ready(function(){
                 break;
             }
         }
-        console.log(tipo);
-        console.log(posicion);
+        // console.log(tipo);
+        // console.log(posicion);
         let etiqueta = elemento.find("div");
         let contenido = etiqueta.text();
         let input = $("<input>").attr("type", `${respuesta_di[posicion2]}`).val(contenido);
@@ -67,7 +67,7 @@ $(document).ready(function(){
             let nuevo_div = $("<div>").text(nuevo_texto);
             input.replaceWith(nuevo_div);
             let notificacion = new notficacion("contenedor-toast_date");
-            console.log(notificacion.get_iconos_date());
+            // console.log(notificacion.get_iconos_date());
             const valores = {
                 "archivo": dato1.innerHTML,
                 "fila":posicion,
