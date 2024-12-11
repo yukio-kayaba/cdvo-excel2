@@ -225,15 +225,15 @@ function descargarARFF(){
     let titulo_Date = document.getElementById("titulo_archivo_date");
     let valores = "@relation Predecir \n";
     let valores_select = ["string","integer","real","date","{true,false}"];
-    let valores_di = ["VARCHAR(345)","INT(11)","DECIMAL","DATE","TINYINT"];
+    let valores_di = ["varchar(345)","int(11)","decimal","date","TINYINT"];
     for (let i = 0; i < informacion_archivos.length; i++) {
         let cant_datos = informacion_archivos[i].length;
-        if(i == 0) continue;
-        for (let j = 1; j < cant_datos; j++) {
-            if(i == 1){
+        if(i == 1) continue;
+        for (let j = 0; j < cant_datos; j++) {
+            if(i == 0){
                 let tipo_var;
                 for (let u = 0; u < valores_di.length; u++) {
-                    if(informacion_archivos[0][j] == valores_di[u]){
+                    if(informacion_archivos[1][j] == valores_di[u]){
                         tipo_var = valores_select[u];
                         break;
                     }
@@ -372,9 +372,10 @@ botones_tabla.addEventListener("click",function(e){
                     td.setAttribute("name", cantidad);
                     td.className = "etiqueta_prueba";
                     td.innerHTML = `<div>${(informacio[index] == "10101z") ? "" : informacio[index]}</div>`;
-                    
                     celda.appendChild(td); // Agrega la celda a la fila
                 }
+                informacio.unshift(`${informacion_archivos.length - 1}`);
+                informacion_archivos.push(informacio);
                 celda.innerHTML += `
                     <td class="botones_tabla_edit">
                     <button type="button" class="btn btn-info">
