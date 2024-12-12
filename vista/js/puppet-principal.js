@@ -1,6 +1,7 @@
 //iniciador de cortaje
 var archivos;
 var pantalla_uso = false;
+var titulo_archivo = "";
 $(document).ready(function(){
     console.log("conectado");
     // console.log(archivos);
@@ -57,6 +58,7 @@ archivo_arff.addEventListener("change",(event)=>{
     reader.onload = async function(e) {
       let datos = e.target.result;
       let texto_aux = "";
+      console.log(datos);
       for(let i = 0;i < datos.length;i++){
 
         if(datos[i] == '\n' || (datos[i] === '\r' && datos[i + 1] === '\n' )){
@@ -74,7 +76,25 @@ archivo_arff.addEventListener("change",(event)=>{
         }
 
       }
+      let activador = false;
+      let titulos = Array();
+      let prueba_datos = ParseARFF(datos);
+      // principal.forEach(elemento => {
+      //   if(!activador){
+      //     if(typeof(elemento[0]) === 'string' && elemento[0][0]  === '@'){
+      //         let letra = elemento[0];
+      //         if(letra.slice(0,9) == '@relation'){
+      //             titulo_archivo = letra.slice(9);
+      //         }else if(letra.slice(0,10) === '@attribute'){
+
+      //         }
+      //     }
+      //   }else{
+
+      //   }
+      // });
       archivos = principal;
+      console.log(prueba_datos);
       console.log(archivos[0]);
       vista_previa_datos();
 
@@ -316,4 +336,38 @@ function reader2(){
       </section>
   `;
   return texto;
+}
+
+function ParseARFF(content){
+    const lines = content.split("\n");
+    const data = {
+        attributes: [],
+        instances: []
+    };
+
+    let inDataSection = false;
+    let attributeSectionEnded = false;
+
+    lines.forEach(line => {
+        line = line.trim();
+        if (line.startsWith("%")) {
+            return;
+        }
+
+        if (inDataSection && line.length > 0) {
+          const values = line.split(",");
+          data.instances.push(values);
+        }
+
+        if (line.toLowerCase().startsWith("@attribute")) {
+            const parts = line.split(/\s+/);
+            const attributeName = [parts[1],parts[2]];
+            data.attributes.push(attributeName);
+        }else if (line.toLowerCase().startsWith("@data")) {
+            inDataSection = true;
+            attributeSectionEnded = true;
+        }
+    });
+
+    return data;
 }
