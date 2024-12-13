@@ -59,45 +59,27 @@ archivo_arff.addEventListener("change",(event)=>{
       let datos = e.target.result;
       let texto_aux = "";
       console.log(datos);
-      for(let i = 0;i < datos.length;i++){
-
-        if(datos[i] == '\n' || (datos[i] === '\r' && datos[i + 1] === '\n' )){
-          elementos.push(texto_aux);
-          principal.push(elementos);
-          texto_aux = "";
-          elementos = Array();
-        }else{
-          if(datos[i] == ','){
-            elementos.push(texto_aux);
-            texto_aux = "";
-          }else{
-            texto_aux += datos[i];
-          }
-        }
-
+      const prueba_datos = ParseARFF(datos);
+      titulo_archivo = prueba_datos.titulo[0][0];
+      if(prueba_datos.attributes.length != 0){
+        let aux_datos = Array();
+        prueba_datos.attributes.forEach(element => {
+          aux_datos.push(element[0]);
+        });
+        principal.push(aux_datos);
       }
-      let activador = false;
-      let titulos = Array();
-      let prueba_datos = ParseARFF(datos);
-      // principal.forEach(elemento => {
-      //   if(!activador){
-      //     if(typeof(elemento[0]) === 'string' && elemento[0][0]  === '@'){
-      //         let letra = elemento[0];
-      //         if(letra.slice(0,9) == '@relation'){
-      //             titulo_archivo = letra.slice(9);
-      //         }else if(letra.slice(0,10) === '@attribute'){
-
-      //         }
-      //     }
-      //   }else{
-
-      //   }
-      // });
-      archivos = principal;
-      console.log(prueba_datos);
-      console.log(archivos[0]);
+      if(prueba_datos.instances.length != 0){
+        prueba_datos.instances.forEach(datos => {
+          elementos.push(datos);
+        });
+      }
+      // archivos = principal;
+      archivos = principal.concat(elementos);
+      // console.log(prueba_datos);
+      // console.log(principal);
+      // console.log(elementos);
+      console.log(archivos);
       vista_previa_datos();
-
     };
     reader.readAsText(archivo2); 
 });
@@ -292,17 +274,19 @@ function vista_previa_datos(){
                       <tr>
               `;
   for (let i = 0; i < datos[0].length ; i++) {
-      contenido +=`<th scope="col" class="editable_title" >${datos[0][i]}</th>`;
+      contenido +=`<th scope="col" class="editable_title formato-editable" data-x="${0}" data-y="${i}" >${datos[0][i]}</th>`;
   }
   contenido += `
           </tr>
       </thead>
       <tbody>
   `;
-  for (let i = 0; i < datos.length; i++){
+  for (let i = 1; i < datos.length; i++){
       let contenido_dato = "<tr>";
+      let posicion_aux = 0;
       datos[i].forEach(element => {
-          contenido_dato += `<td>${(element == "10101z")?"":element }</td>`;  
+          posicion_aux ++;
+          contenido_dato += `<td class="formato-editable" data-x="${i}" data-y="${posicion_aux}" >${(element == "10101z")?"":element }</td>`;  
       });
       contenido_dato += "</tr>";
       contenido += contenido_dato;
@@ -341,6 +325,7 @@ function reader2(){
 function ParseARFF(content){
     const lines = content.split("\n");
     const data = {
+        titulo:[],
         attributes: [],
         instances: []
     };
@@ -358,12 +343,16 @@ function ParseARFF(content){
           const values = line.split(",");
           data.instances.push(values);
         }
-
-        if (line.toLowerCase().startsWith("@attribute")) {
+        let dato = line.toLowerCase(); 
+        if(dato.startsWith("@relation")){
+            const parts = line.split(/\s+/);
+            const attributeName = [parts[1]];
+            data.titulo.push(attributeName);
+        }else if (dato.startsWith("@attribute")) {
             const parts = line.split(/\s+/);
             const attributeName = [parts[1],parts[2]];
             data.attributes.push(attributeName);
-        }else if (line.toLowerCase().startsWith("@data")) {
+        }else if (dato.startsWith("@data")) {
             inDataSection = true;
             attributeSectionEnded = true;
         }
