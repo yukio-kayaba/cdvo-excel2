@@ -4,7 +4,8 @@
   <script src="https://unpkg.com/read-excel-file@5.x/bundle/read-excel-file.min.js"></script>
   <script src="https://unpkg.com/tableexport@latest/dist/js/tableexport.min.js"></script>
   <script src="https://unpkg.com/file-saverjs@latest/FileSaver.min.js"></script>
-
+  <!-- <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js" defer></script> -->
+  <script src="https://cdn.jsdelivr.net/npm/dragula@3.7.3/dist/dragula.min.js"></script>
   <!-- manejo de los excel -->
   <script defer src="./vista/js/puppet-principal.js"></script>
   <script defer src="./vista/js/principal._date.js"></script>
@@ -15,7 +16,8 @@
   <link rel="stylesheet" href="./vista/css/components/vistaTabla.css">
   <link rel="stylesheet" href="./vista/css/ESTYLOS_NOTIFICACIONES.css">
   <link rel="stylesheet" href="./vista/css/components/mensajes_estylos.css">
-
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="https://raw.githubusercontent.com/bevacqua/dragula/refs/heads/master/dist/dragula.min.css">
 </head>
 <body>
     <?php include("./vista/layout/nav.php"); ?>

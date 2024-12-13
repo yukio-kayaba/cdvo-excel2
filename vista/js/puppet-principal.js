@@ -18,7 +18,15 @@ $(document).ready(function(){
       console.log("se ah tratado de editar");
       let elemento = $(this);
       let etiqueta = elemento.find("div");
+      if(! etiqueta.is('div') ){
+        console.log("no div");
+        return;
+      }
+      let pos_x = elemento[0].dataset.x;
+      let pos_y = elemento[0].dataset.y; 
       let contenido = etiqueta.text();
+      console.log(`pos x ${pos_x} - pos y ${pos_y}`);
+
       let input = $("<input>").attr("type", `text`).val(contenido);
       etiqueta.replaceWith(input);
       input.focus();
@@ -29,6 +37,7 @@ $(document).ready(function(){
       })
     });
     
+
     $(document).on("click","#archivo_nuevo",function(){
       let contenido_d = document.getElementById("contenido");
       // contenido_d.style.display = "block";
@@ -55,6 +64,15 @@ $(document).ready(function(){
         }
       }
   });
+
+  // $("#tabla tbody").sortable({
+  //   items:"tr",
+  //   cursor:"move",
+  //   update:function(event,ui){
+  //     console.log("Se a movido la fila");
+  //   }
+  // });
+  // $("#tabla tbody").disableSelection();
 });
 
 const btn_cerrarPuppet = document.querySelector("#btn_cerraPuppet");
@@ -294,7 +312,7 @@ function vista_previa_datos(){
   contenido += `
           </tr>
       </thead>
-      <tbody>
+      <tbody id="dragula">
   `;
   for (let i = 1; i < datos.length; i++){
       let contenido_dato = "<tr>";
@@ -314,6 +332,7 @@ function vista_previa_datos(){
     document.getElementById("tabla").innerHTML = contenido;
   }
   // document.getElementById("tabla").appendChild(contenido); 
+  dragula([document.getElementById('dragula')]);
   visibilidadElementos("block");
 }
 
@@ -375,3 +394,5 @@ function ParseARFF(content){
 
     return data;
 }
+
+
