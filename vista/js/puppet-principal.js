@@ -14,6 +14,21 @@ $(document).ready(function(){
       }
     });
 
+    $(document).on("dblclick",".formato-editable",function(e){
+      console.log("se ah tratado de editar");
+      let elemento = $(this);
+      let etiqueta = elemento.find("div");
+      let contenido = etiqueta.text();
+      let input = $("<input>").attr("type", `text`).val(contenido);
+      etiqueta.replaceWith(input);
+      input.focus();
+      input.blur(function () {
+        let nuevo_texto = input.val();
+        let nuevo_div = $("<div>").text(nuevo_texto);
+        input.replaceWith(nuevo_div);
+      })
+    });
+    
     $(document).on("click","#archivo_nuevo",function(){
       let contenido_d = document.getElementById("contenido");
       // contenido_d.style.display = "block";
@@ -274,7 +289,7 @@ function vista_previa_datos(){
                       <tr>
               `;
   for (let i = 0; i < datos[0].length ; i++) {
-      contenido +=`<th scope="col" class="editable_title formato-editable" data-x="${0}" data-y="${i}" >${datos[0][i]}</th>`;
+      contenido +=`<th scope="col" class="editable_title formato-editable" data-x="${0}" data-y="${i}" ><div>${datos[0][i]}</div></th>`;
   }
   contenido += `
           </tr>
@@ -286,7 +301,7 @@ function vista_previa_datos(){
       let posicion_aux = 0;
       datos[i].forEach(element => {
           posicion_aux ++;
-          contenido_dato += `<td class="formato-editable" data-x="${i}" data-y="${posicion_aux}" >${(element == "10101z")?"":element }</td>`;  
+          contenido_dato += `<td class="formato-editable" data-x="${i}" data-y="${posicion_aux}" ><div>${(element == "10101z")?"":element }</div></td>`;  
       });
       contenido_dato += "</tr>";
       contenido += contenido_dato;
