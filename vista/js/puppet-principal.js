@@ -33,6 +33,9 @@ $(document).ready(function(){
       input.blur(function () {
         let nuevo_texto = input.val();
         let nuevo_div = $("<div>").text(nuevo_texto);
+        if(nuevo_texto != contenido){
+          archivos[pos_x][pos_y] = nuevo_texto;
+        }
         input.replaceWith(nuevo_div);
       })
     });
@@ -332,7 +335,18 @@ function vista_previa_datos(){
     document.getElementById("tabla").innerHTML = contenido;
   }
   // document.getElementById("tabla").appendChild(contenido); 
-  dragula([document.getElementById('dragula')]);
+  const drake = dragula([document.getElementById('dragula')]);
+  drake.on('drop', (el, target, source, sibling) => {
+    console.log('Elemento arrastrado:', el); 
+    console.log('Nuevo contenedor:', target);
+    console.log('Contenedor original:', source);
+    console.log('Elemento siguiente:', sibling);
+    
+    // Determinar la nueva posición del elemento
+    const children = Array.from(target.children);
+    const newPosition = children.indexOf(el); 
+    console.log('Nueva posición:', newPosition);
+  });
   visibilidadElementos("block");
 }
 

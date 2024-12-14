@@ -58,6 +58,14 @@ body{
   top:130px;
 }
 
+#dragula{
+  border-style: groove;
+}
+
+#tabla tr:hover{
+  border: 2px solid #000;
+}
+
 .opciones_datos{
   display: flex;
   align-items: center;
