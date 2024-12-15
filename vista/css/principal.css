@@ -132,6 +132,21 @@ body{
 .animacion_cerrar_puppet{
   animation: eliminar 0.5s;
 }
+#tabla tbody tr:hover{
+  background-color: rgba(50, 243, 243, 0.582);
+}
+
+#tabla tbody tr td:hover{
+  background-color: rgba(115, 247, 247, 0.664);
+}
+
+.formato-editable{
+  max-width: 10px;
+  width: 40%;
+  height: 15px;
+}
+
+
 @keyframes mover{
   0% {
       width: 70%;

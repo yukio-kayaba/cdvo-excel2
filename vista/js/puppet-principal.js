@@ -39,6 +39,11 @@ $(document).ready(function(){
         input.replaceWith(nuevo_div);
       })
     });
+
+    $(document).on("contextmenu",".formato-editable",function(e){
+        e.preventDefault();
+        console.warn("opciones");
+    });
     
 
     $(document).on("click","#archivo_nuevo",function(){
@@ -318,7 +323,7 @@ function vista_previa_datos(){
       <tbody id="dragula">
   `;
   for (let i = 1; i < datos.length; i++){
-      let contenido_dato = "<tr>";
+      let contenido_dato = `<tr data-posicion_a ="${i}">`;
       let posicion_aux = 0;
       datos[i].forEach(element => {
           posicion_aux ++;
@@ -340,12 +345,15 @@ function vista_previa_datos(){
     console.log('Elemento arrastrado:', el); 
     console.log('Nuevo contenedor:', target);
     console.log('Contenedor original:', source);
-    console.log('Elemento siguiente:', sibling);
+    // console.log('Elemento siguiente:', sibling);
     
     // Determinar la nueva posición del elemento
     const children = Array.from(target.children);
     const newPosition = children.indexOf(el); 
-    console.log('Nueva posición:', newPosition);
+    let pos_anterior = el.getAttribute("data-posicion_a");
+    console.log('Nueva posición:', newPosition + 1,`pos anterior : ${pos_anterior}`);
+    el.setAttribute("data-posicion_a",newPosition + 1);
+    cambiar_ubicacion(pos_anterior,newPosition + 1);
   });
   visibilidadElementos("block");
 }
@@ -409,4 +417,16 @@ function ParseARFF(content){
     return data;
 }
 
+
+function cambiar_ubicacion(pos_anterior,pos_nueva){
+    if(!Array.isArray(archivos) || archivos.length == 0){
+      return "error";
+    }
+    console.log(`anterior : ${pos_anterior} - nueva : ${pos_nueva} `);
+    for (let i = Number(pos_anterior); i < Number(pos_nueva); i++) {
+      let aux_datos = archivos[i];
+      archivos[i] = archivos[i + 1];
+      archivos[i + 1] = aux_datos;
+    }
+}
 

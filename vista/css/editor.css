@@ -91,8 +91,9 @@ body{
 #tabla tbody tr td input:focus{
   outline: none;
   border-color: blue;
-
 }
+
+
 
 #tabla tbody tr:hover{
   background-color: rgba(50, 243, 243, 0.582);
