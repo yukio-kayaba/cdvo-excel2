@@ -57,8 +57,16 @@
     /* overflow: auto; */
 }
 
+.datos_trabajo_modal tr{
+    height: 10px;
+}
+
 #tabla_datos_aux thead{
     position: sticky;
     top: 0;
+}
+
+tbody, thead{
+    text-align: center;
 }
 

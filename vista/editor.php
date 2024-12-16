@@ -15,12 +15,14 @@
 
   <script src="https://unpkg.com/file-saverjs@latest/FileSaver.min.js"></script>
   <script src="https://unpkg.com/tableexport@latest/dist/js/tableexport.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/dragula@3.7.3/dist/dragula.min.js"></script>
+
 
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   <link rel="stylesheet" href="./vista/css/layout-nav.css">
   <link rel="stylesheet" href="<?php echo url;?>/vista/css/editor.css">
   <link rel="stylesheet" href="./vista/css/components/mensajes_estylos.css">
-  <link rel="stylesheet" href="style.css">
+  <!-- <link rel="stylesheet" href="style.css"> -->
   <link rel="stylesheet" href="<?php echo url;?>/vista/css/components/edit_table.css">
 
   <link rel="stylesheet" href="./vista/css/ESTYLOS_NOTIFICACIONES.css">
@@ -28,6 +30,9 @@
   <script defer src="./vista/js/editor_date.js"></script>
   <script defer src="./vista/js/notificaciones.js"></script>
   <script defer src="./vista/js/mensajes.js"></script>
+  <script defer src="<?php echo url;?>/vista/js/tasks/manejo_datos.js"></script>
+  <script defer src="<?php echo url;?>/vista/js/modal_edit.js"></script>
+
 
 </head>
 <body>

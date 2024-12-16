@@ -34,8 +34,8 @@ $(document).ready(function(){
         console.log("clikeado");
     });
     $(document).on("click","#btnExportar_arff",()=>{
-        
-        descargarARFF();
+        vista_previa_datos2(informacion_archivos);
+        // descargarARFF();
     });
 
     $(document).on("dblclick",".etiqueta_prueba",function(e){
