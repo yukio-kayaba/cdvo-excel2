@@ -56,3 +56,9 @@
     padding: 15px;
     /* overflow: auto; */
 }
+
+#tabla_datos_aux thead{
+    position: sticky;
+    top: 0;
+}
+
