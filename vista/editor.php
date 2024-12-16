@@ -5,7 +5,10 @@
       $dato = $_GET['archivo'];
     }
 ?>
-<?php include_once("./vista/layout/head.php") ?>
+<?php 
+  include_once("./vista/layout/head.php");
+  include_once("./config.php");
+ ?>
   <title>CDVO || EDITAR</title>
   <script src="https://unpkg.com/xlsx@0.16.9/dist/xlsx.full.min.js"></script>
   <script src="https://unpkg.com/read-excel-file@5.x/bundle/read-excel-file.min.js"></script>
@@ -17,6 +20,8 @@
   <link rel="stylesheet" href="./vista/css/layout-nav.css">
   <link rel="stylesheet" href="./vista/css/editor.css">
   <link rel="stylesheet" href="./vista/css/components/mensajes_estylos.css">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="<?php echo url;?>/vista/css/components/edit_table.css">
 
   <link rel="stylesheet" href="./vista/css/ESTYLOS_NOTIFICACIONES.css">
 
@@ -118,6 +123,7 @@
   </div>
   <div class="contenedor-toast_date" id="contenedor-toast_date"></div>
   <?php require_once("./vista/layout/mensajes.php"); ?>
+  <?php require_once("./vista/layout/modal_edit.php"); ?>
 <?php
   require_once("./vista/layout/footer.php");
 ?>
