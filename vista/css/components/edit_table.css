@@ -70,3 +70,8 @@ tbody, thead{
     text-align: center;
 }
 
+.cabecera_tabla{
+    width: auto;
+    align-content: center;
+}
+

@@ -24,7 +24,6 @@
   <link rel="stylesheet" href="./vista/css/components/mensajes_estylos.css">
   <!-- <link rel="stylesheet" href="style.css"> -->
   <link rel="stylesheet" href="<?php echo url;?>/vista/css/components/edit_table.css">
-
   <link rel="stylesheet" href="./vista/css/ESTYLOS_NOTIFICACIONES.css">
 
   <script defer src="./vista/js/editor_date.js"></script>
