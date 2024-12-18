@@ -42,4 +42,25 @@ class datos_control{
     get_control_ubdate(){
         return this.control_ubdate;
     }
+    conversion_datos(posicion,tipo = 1){
+        if(typeof(posicion) != "number"){
+            console.error("Para realizar el cambio , la posicion es un numero");
+            return;
+        }
+
+        if(posicion > this.datos[0].length && posicion < 0){
+            console.warn("Posicion erronea");
+            return;
+        }
+        if(tipo == 1){
+            this.datos.forEach(elementos => {
+                elementos[posicion] = Number(elementos[posicion]);
+            });
+        }else if(tipo == 2){
+            this.datos.forEach(elementos => {
+                elementos[posicion] = Number(elementos[posicion]);
+            });
+        }
+
+    }
 };

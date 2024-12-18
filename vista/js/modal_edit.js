@@ -133,15 +133,19 @@ function eliminar_eventos(classes,funcion,tipo_evento = "change"){
 function habilitar_editable(id_dato){
   const drake = dragula([document.getElementById(id_dato)]);
     drake.on('drop', (el, target, source, sibling) => {
-      console.log('Elemento arrastrado:', el); 
-      console.log('Nuevo contenedor:', target);
-      console.log('Contenedor original:', source);
+      // console.log('Elemento arrastrado:', el); 
+      // console.log('Nuevo contenedor:', target);
+      // console.log('Contenedor original:', source);
       
       const children = Array.from(target.children);
       const newPosition = children.indexOf(el); 
       let pos_anterior = el.getAttribute("data-posicion_a");
-      console.log('Nueva posición:', newPosition + 1,`pos anterior : ${pos_anterior}`);
-      el.setAttribute("data-posicion_a",newPosition + 1);
-      datos1.cambiar_hubicacion(pos_anterior,newPosition + 1);
+      console.log('Nueva posición:', newPosition + 2,`pos anterior : ${pos_anterior}`);
+      el.setAttribute("data-posicion_a",newPosition + 2);
+      datos1.cambiar_hubicacion(pos_anterior,newPosition + 2);
     });
+}
+
+function conversion_numeros(){
+
 }
