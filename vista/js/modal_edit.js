@@ -18,19 +18,11 @@ function vista_previa_datos2(informacion){
     tabla.innerHTML = generador_tabla_datos(datos);
     document.getElementsByClassName("datos_trabajo_modal")[0].innerHTML = "";
     document.getElementsByClassName("datos_trabajo_modal")[0].appendChild(tabla);
-    const drake = dragula([document.getElementById('dragula')]);
-    drake.on('drop', (el, target, source, sibling) => {
-      console.log('Elemento arrastrado:', el); 
-      console.log('Nuevo contenedor:', target);
-      console.log('Contenedor original:', source);
-      
-      const children = Array.from(target.children);
-      const newPosition = children.indexOf(el); 
-      let pos_anterior = el.getAttribute("data-posicion_a");
-      console.log('Nueva posición:', newPosition + 1,`pos anterior : ${pos_anterior}`);
-      el.setAttribute("data-posicion_a",newPosition + 1);
-      datos1.cambiar_hubicacion(pos_anterior,newPosition + 1);
-    });
+
+    cargar_eventos("selector_head_ubdate",evento_etiqueta);
+
+    habilitar_editable("dragula");
+
     // visibilidadElementos("block");
   }
 
@@ -52,13 +44,16 @@ boton_reiniciador_modal.addEventListener("click",()=>{
   tabla.classList.add("table");
   tabla.id = "tabla_datos_aux";
   datos = datos1.get_datos();
+  eliminar_eventos("selector_head_ubdate",evento_etiqueta);
   tabla.innerHTML = generador_tabla_datos(datos);
   document.getElementsByClassName("datos_trabajo_modal")[0].innerHTML = "";
   document.getElementsByClassName("datos_trabajo_modal")[0].appendChild(tabla);
+  cargar_eventos("selector_head_ubdate",evento_etiqueta);
+
 });
 
 function generador_tabla_datos(datos){
-  let elementos_var = ["string","integer","real","date","class"];
+  let elementos_var = ["String","Numeric","Date","Class"];
   let contenido  = `
                   
                   <thead>
@@ -67,7 +62,7 @@ function generador_tabla_datos(datos){
   for (let i = 1; i < datos[0].length ; i++) {
       contenido +=`<th scope="col" class="editable_title formato-editable" data-x="${0}" data-y="${i}" >
                   <div style="font-size:20px;">${datos[0][i]}</div>
-                  ${select_options(elementos_var,"selector_head_ubdate")}
+                  ${select_options(elementos_var,"selector_head_ubdate",i)}
       </th>`;
   }
   contenido += `<th scope="col"> * </th>`;
@@ -97,10 +92,10 @@ function generador_tabla_datos(datos){
   contenido += "</tbody>"; 
   return contenido;
 }
-function select_options(lista=[],identificador = ""){
+function select_options(lista=[],identificador = "",posicion = 0){
   let valores = `
       <div style="display:flex;justify-content:center;" >
-          <select data-identify="${identificador}" class="form-select ${identificador} form-select-sm" aria-label="Small select example" style="width: 120px;" >
+          <select data-identify="${posicion}" class="form-select ${identificador} form-select-sm" aria-label="Small select example" style="width: 120px;" >
   `;
   lista.forEach(element => {
       valores += `
@@ -112,4 +107,41 @@ function select_options(lista=[],identificador = ""){
       </div>
   `;
   return valores;
+}
+function evento_etiqueta(e){
+  let etiqueta = e.target;
+  let identificador = etiqueta.attributes["data-identify"].value;
+  let opcion_selecionada = etiqueta.selectedIndex;
+  console.log(etiqueta);
+  console.log(identificador);
+}
+
+function cargar_eventos(classes,funcion,tipo_evento = "change") {
+  let prueba_generador = document.getElementsByClassName(classes);
+  for (let i = 0; i < prueba_generador.length; i++) {
+      prueba_generador[i].addEventListener(tipo_evento,funcion);
+  }
+}
+
+function eliminar_eventos(classes,funcion,tipo_evento = "change"){
+  let prueba_generador = document.getElementsByClassName(classes);
+  for (let i = 0; i < prueba_generador.length; i++) {
+      prueba_generador[i].removeEventListener(tipo_evento,funcion);
+  }
+}
+
+function habilitar_editable(id_dato){
+  const drake = dragula([document.getElementById(id_dato)]);
+    drake.on('drop', (el, target, source, sibling) => {
+      console.log('Elemento arrastrado:', el); 
+      console.log('Nuevo contenedor:', target);
+      console.log('Contenedor original:', source);
+      
+      const children = Array.from(target.children);
+      const newPosition = children.indexOf(el); 
+      let pos_anterior = el.getAttribute("data-posicion_a");
+      console.log('Nueva posición:', newPosition + 1,`pos anterior : ${pos_anterior}`);
+      el.setAttribute("data-posicion_a",newPosition + 1);
+      datos1.cambiar_hubicacion(pos_anterior,newPosition + 1);
+    });
 }
