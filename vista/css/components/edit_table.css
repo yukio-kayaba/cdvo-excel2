@@ -45,10 +45,24 @@
     align-items: center;
     background: #06086fe3;
     color: #fff;
-    justify-content: space-evenly;
+    justify-content:space-around;
     transition: width 1s ease;
     position: sticky;
     top: 0;
+}
+
+.opciones_modal p{
+    display: flex;
+    height: 50px;
+    margin: 0;
+    align-items: center;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+.opciones_modal p:hover{
+    transform: scale(1.2);
+    border-radius: 20px;
+    background: #000;
 }
 
 .datos_trabajo_modal{
@@ -75,5 +89,19 @@ tbody, thead{
 .cabecera_tabla{
     width: auto;
     align-content: center;
+}
+.eliminar_dato{
+    animation: eliminar 0.5s forwards;
+}
+
+@keyframes eliminar{
+    from{
+        opacity: 1;
+        background: #b3b3b3;
+    }
+    to{
+        opacity: 0;
+        background: #555454;
+    }
 }
 

@@ -164,7 +164,7 @@ function vista_previa_datos(archivos,id_dato){
         contenido +=`<th scope="col">${datos[0][i]}</th>`;
     }
     contenido += `
-            <th scope="col">Opciones</th>
+
             </tr>
         </thead>
         <tbody>
@@ -176,16 +176,7 @@ function vista_previa_datos(archivos,id_dato){
                 contenido_dato += `<td data-type="${datos[1][indice]}"  name="${datos[0][indice]}" class="etiqueta_prueba"><div>${(element == "10101z")?"":element }</div></td>`;  
             }
         });
-        contenido_dato += `
-            <td class="botones_tabla_edit">
-            <button type="button" class="btn btn-info">
-                <img src="./vista/img/graficos/edit_file_date.png" alt="" width="15px">
-            </button>
-            <button type="button" class="btn btn-danger">
-                <img src="./vista/img/graficos/delete.png" alt="" width="15px">
-            </button>
-            </td>
-        `;
+
         contenido_dato += "</tr>";
         contenido += contenido_dato;
     }

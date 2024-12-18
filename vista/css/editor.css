@@ -74,8 +74,9 @@ body{
 
 #tabla tbody tr td{
   height: 40px;
-  background-color: rgb(50 243 243 / 53%);
+  background-color: #4727fd;
   text-align: center;
+  color: #fff;
   cursor: pointer;
 }
 #tabla tbody tr td input{
@@ -99,7 +100,7 @@ body{
   background-color: rgba(50, 243, 243, 0.582);
 }
 #tabla tbody tr td:hover{
-  background-color: rgba(115, 247, 247, 0.664);
+  background-color: #6239fe;
 }
 
 

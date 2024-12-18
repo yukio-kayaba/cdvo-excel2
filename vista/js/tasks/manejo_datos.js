@@ -34,9 +34,8 @@ class datos_control{
         this.control_ubdate += 1;
     }
     eliminar_valor(posicion){
-        this.datos.splice(1,posicion);
+        this.datos.splice(posicion,1);
         this.control_ubdate += 1;
-
     }
     modificar_datos(posicion,valores){
         this.datos[posicion] = valores;

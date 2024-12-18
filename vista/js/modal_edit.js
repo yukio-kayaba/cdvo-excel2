@@ -20,7 +20,7 @@ function vista_previa_datos2(informacion){
     document.getElementsByClassName("datos_trabajo_modal")[0].appendChild(tabla);
 
     cargar_eventos("selector_head_ubdate",evento_etiqueta);
-
+    cargar_eventos("modal_eliminar_item",delete_items,"click");
     habilitar_editable("dragula");
     $(document).ready(function(){
         $(document).on("dblclick",".formato-editable",function(e){
@@ -72,10 +72,12 @@ boton_reiniciador_modal.addEventListener("click",()=>{
   tabla.id = "tabla_datos_aux";
   datos = datos1.get_datos();
   eliminar_eventos("selector_head_ubdate",evento_etiqueta);
+  eliminar_eventos("modal_eliminar_item",delete_items,"click");
   tabla.innerHTML = generador_tabla_datos(datos);
   document.getElementsByClassName("datos_trabajo_modal")[0].innerHTML = "";
   document.getElementsByClassName("datos_trabajo_modal")[0].appendChild(tabla);
   cargar_eventos("selector_head_ubdate",evento_etiqueta);
+  cargar_eventos("modal_eliminar_item",delete_items,"click");
   document.getElementsByClassName("datos_trabajo_modal")[0].style.filter = "none";
 });
 
@@ -108,10 +110,10 @@ function generador_tabla_datos(datos){
           posicion_aux ++;
       });
       contenido_dato += `
-      <td data-btn_item_delete="${i}">
-        <div class="modal_eliminar_item">
-            <svg fill="#000000" width="31px" height="31px" viewBox="0 0 24 24" id="delete-alt" data-name="Flat Line" xmlns="http://www.w3.org/2000/svg" class="icon flat-line"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path id="secondary" d="M5,8H18a1,1,0,0,1,1,1V19a1,1,0,0,1-1,1H5a0,0,0,0,1,0,0V8A0,0,0,0,1,5,8Z" transform="translate(26 2) rotate(90)" style="fill: #f85454; stroke-width: 2;"></path><path id="primary" d="M16,7V4a1,1,0,0,0-1-1H9A1,1,0,0,0,8,4V7" style="fill: none; stroke: #030635; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;"></path><path id="primary-2" data-name="primary" d="M10,11v6m4-6v6M4,7H20M18,20V7H6V20a1,1,0,0,0,1,1H17A1,1,0,0,0,18,20Z" style="fill: none; stroke: #030635; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;"></path></g></svg>
-        </div>
+      <td >
+        <button class="modal_eliminar_item" data-btn_item_delete="${i}">
+            <svg fill="#000000" width="31px" height="31px" style="pointer-events: none;" viewBox="0 0 24 24" id="delete-alt" data-name="Flat Line" xmlns="http://www.w3.org/2000/svg" class="icon flat-line"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path id="secondary" d="M5,8H18a1,1,0,0,1,1,1V19a1,1,0,0,1-1,1H5a0,0,0,0,1,0,0V8A0,0,0,0,1,5,8Z" transform="translate(26 2) rotate(90)" style="fill: #f85454; stroke-width: 2;"></path><path id="primary" d="M16,7V4a1,1,0,0,0-1-1H9A1,1,0,0,0,8,4V7" style="fill: none; stroke: #030635; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;"></path><path id="primary-2" data-name="primary" d="M10,11v6m4-6v6M4,7H20M18,20V7H6V20a1,1,0,0,0,1,1H17A1,1,0,0,0,18,20Z" style="fill: none; stroke: #030635; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;"></path></g></svg>
+        </button>
       </td> `;  
       contenido_dato += "</tr>";
       contenido += contenido_dato;
@@ -153,6 +155,20 @@ function evento_etiqueta(e){
       notificacion.generador_text_valor({tipo:"peligro",titulo:'ERRONEA CONVERSION',descripcion:'Existe un valor no apto para la conversion ',tiempo:3000,autocierre:true});
     }
   }
+}
+
+//funcion para eliminar los datos
+function delete_items(e){
+  let etiqueta = e.target;
+  let posicion = etiqueta.attributes["data-btn_item_delete"].value;
+  const fila = etiqueta.closest('tr');
+  console.log(`pos : ${posicion}`);
+  console.log(fila);
+  datos1.eliminar_valor(Number(posicion));
+  fila.classList.add("eliminar_dato");
+  setTimeout(()=>{
+    fila.remove();
+  },500);
 }
 
 function cargar_eventos(classes,funcion,tipo_evento = "change") {
