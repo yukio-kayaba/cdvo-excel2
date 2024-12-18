@@ -19,6 +19,7 @@
     max-width: 350px;
     display: flex;
     flex-direction: column;
+    z-index: 10;
     gap: 20px;
     top: 20px;
 }

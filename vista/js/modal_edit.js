@@ -22,8 +22,34 @@ function vista_previa_datos2(informacion){
     cargar_eventos("selector_head_ubdate",evento_etiqueta);
 
     habilitar_editable("dragula");
+    $(document).ready(function(){
+        $(document).on("dblclick",".formato-editable",function(e){
+          let elemento = $(this);
+          console.log(elemento);
+          let pos_x = elemento[0].dataset.x;
+          let pos_y = elemento[0].dataset.y;
+          console.log(`x : ${pos_x} - y : ${pos_y}`);
+          let etiqueta = elemento.find("div");
+          let contenido = etiqueta.text();
+          let notificacion = new notficacion("contenedor-toast_date");
 
-    // visibilidadElementos("block");
+          let input = $("<input>").attr("type", `${typeof(datos1.get_dato())}`).val(contenido);
+          etiqueta.replaceWith(input);
+          input.focus();
+          input.blur(function(){
+            let nuevo_texto = input.val();
+            let nuevo_div = $("<div>").text(nuevo_texto);
+            input.replaceWith(nuevo_div);
+            datos1.reemplazar_valor(pos_x,pos_y,nuevo_texto);
+            if(nuevo_texto != contenido){
+              notificacion.generador_text_valor({tipo:"exito",titulo:'Exito',descripcion:'Se actualizo ' + nuevo_texto,tiempo:3000,autocierre:true});
+            }
+          });
+        });
+    });
+    $(document).on("contextmenu",".formato-editable",function(e){
+      e.preventDefault();
+    });
   }
 
 cerrar_modal_editar.addEventListener("click",()=>{
@@ -39,6 +65,7 @@ cuerpo_editador.addEventListener("click",function(e){
   e.stopPropagation();
 })
 boton_reiniciador_modal.addEventListener("click",()=>{
+  document.getElementsByClassName("datos_trabajo_modal")[0].style.filter = "blur(10px)";
   datos1.agregar_valores_nuevos(informacion_archivos);
   tabla = document.createElement("table");
   tabla.classList.add("table");
@@ -49,7 +76,7 @@ boton_reiniciador_modal.addEventListener("click",()=>{
   document.getElementsByClassName("datos_trabajo_modal")[0].innerHTML = "";
   document.getElementsByClassName("datos_trabajo_modal")[0].appendChild(tabla);
   cargar_eventos("selector_head_ubdate",evento_etiqueta);
-
+  document.getElementsByClassName("datos_trabajo_modal")[0].style.filter = "none";
 });
 
 function generador_tabla_datos(datos){
@@ -108,12 +135,24 @@ function select_options(lista=[],identificador = "",posicion = 0){
   `;
   return valores;
 }
+
+//funcion para el evento de change , es decir cuando cambie de opcion
 function evento_etiqueta(e){
   let etiqueta = e.target;
   let identificador = etiqueta.attributes["data-identify"].value;
   let opcion_selecionada = etiqueta.selectedIndex;
-  console.log(etiqueta);
-  console.log(identificador);
+  console.log(`posicion : ${identificador }  -  opcion : ${opcion_selecionada}`);
+  let inf_opc = 0;
+  if(opcion_selecionada == 1 || opcion_selecionada == 2){
+    inf_opc = (opcion_selecionada == 1)? 1 : 0;
+    let resultado = datos1.conversion_datos(Number(identificador),inf_opc);
+    let notificacion = new notficacion("contenedor-toast_date");
+    if(resultado == 1){
+      notificacion.generador_text_valor({tipo:"exito",titulo:'Exito',descripcion:'CONVERSION EXITOSA ',tiempo:3000,autocierre:true});
+    }else if(resultado == -2){
+      notificacion.generador_text_valor({tipo:"peligro",titulo:'ERRONEA CONVERSION',descripcion:'Existe un valor no apto para la conversion ',tiempo:3000,autocierre:true});
+    }
+  }
 }
 
 function cargar_eventos(classes,funcion,tipo_evento = "change") {
@@ -144,8 +183,4 @@ function habilitar_editable(id_dato){
       el.setAttribute("data-posicion_a",newPosition + 2);
       datos1.cambiar_hubicacion(pos_anterior,newPosition + 2);
     });
-}
-
-function conversion_numeros(){
-
 }

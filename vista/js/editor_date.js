@@ -22,6 +22,7 @@ $(document).ready(function(){
                     const datos1 = JSON.parse(response);
                     informacion_archivos = datos1;
                     vista_previa_datos(datos1,"tabla_datos_principal"); 
+                    document.getElementsByClassName("datos_trabajo_modal")[0].style.filter = "none";
                 }
             }
         })
