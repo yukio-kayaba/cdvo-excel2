@@ -80,6 +80,7 @@ boton_reiniciador_modal.addEventListener("click",()=>{
   cargar_eventos("selector_head_ubdate",evento_etiqueta);
   cargar_eventos("modal_eliminar_item",delete_items,"click");
   document.getElementsByClassName("datos_trabajo_modal")[0].style.filter = "none";
+  habilitar_editable("dragula");
 });
 
 function generador_tabla_datos(datos){
@@ -90,9 +91,16 @@ function generador_tabla_datos(datos){
                       <tr>
               `;
   for (let i = 1; i < datos[0].length ; i++) {
+      let pos_activa = 0;
+      for(let i = 0;i < elementos_var.length;i++){
+        if(elementos_var[i] == datos[1][i]){
+          pos_activa = i;
+          break;
+        }
+      }
       contenido +=`<th scope="col" class="editable_title formato-editable" data-x="${0}" data-y="${i}" >
                   <div style="font-size:20px;">${datos[0][i]}</div>
-                  ${select_options(elementos_var,"selector_head_ubdate",i)}
+                  ${select_options(elementos_var,"selector_head_ubdate",i,pos_activa)}
       </th>`;
   }
   contenido += `<th scope="col"> * </th>`;
@@ -122,19 +130,27 @@ function generador_tabla_datos(datos){
   contenido += "</tbody>"; 
   return contenido;
 }
-function select_options(lista=[],identificador = "",posicion = 0){
+function select_options(lista=[],identificador = "",posicion = 0,pos_select = 0){
   let valores = `
-      <div style="display:flex;justify-content:center;" >
+      <span style="display:flex;justify-content:center;" >
           <select data-identify="${posicion}" class="form-select ${identificador} form-select-sm" aria-label="Small select example" style="width: 120px;" >
   `;
+  let pos_avance = 0;
   lista.forEach(element => {
-      valores += `
-        <option>${element}</option>
-      `;
+      if(pos_avance == pos_select){
+        valores += `
+          <option selected>${element}</option>
+        `;
+      }else{
+        valores += `
+          <option>${element}</option>
+        `;
+      }
+      pos_avance ++;
   });
   valores += `
           </select>
-      </div>
+      </span>
   `;
   return valores;
 }
@@ -142,6 +158,7 @@ function select_options(lista=[],identificador = "",posicion = 0){
 //funcion para el evento de change , es decir cuando cambie de opcion
 function evento_etiqueta(e){
   let etiqueta = e.target;
+  let elementos_var = ["String","Numeric","Date","Class"];
   let identificador = etiqueta.attributes["data-identify"].value;
   let opcion_selecionada = etiqueta.selectedIndex;
   console.log(`posicion : ${identificador }  -  opcion : ${opcion_selecionada}`);
@@ -151,6 +168,7 @@ function evento_etiqueta(e){
     let resultado = datos1.conversion_datos(Number(identificador),inf_opc);
     let notificacion = new notficacion("contenedor-toast_date");
     if(resultado == 1){
+      datos1.reemplazar_valor(1,identificador,elementos_var[Number(opcion_selecionada)]);
       notificacion.generador_text_valor({tipo:"exito",titulo:'Exito',descripcion:'CONVERSION EXITOSA ',tiempo:3000,autocierre:true});
     }else if(resultado == -2){
       notificacion.generador_text_valor({tipo:"peligro",titulo:'ERRONEA CONVERSION',descripcion:'Existe un valor no apto para la conversion ',tiempo:3000,autocierre:true});
