@@ -7,7 +7,7 @@ class datos_control{
         if(!Array.isArray(nuevo_datos) || nuevo_datos < 1){
             return console.warn("datos no permitidos");
         }
-        this.datos = nuevo_datos;
+        this.datos = [...nuevo_datos];
         this.control_ubdate = 0;
     }
     get_datos(){
@@ -23,6 +23,29 @@ class datos_control{
         }
         this.datos.push(valores_nuevos);
         this.control_ubdate += 1;
+    }
+
+    convertir_clases(posicion){
+        let datos_aux = new Array();
+        this.datos.forEach(elemento => {
+            for (let i = posicion; i < (elemento.length - 1); i++){
+                let aux = elemento[i];
+                elemento[i] = elemento[i + 1];
+                elemento[i + 1] = aux;
+                let bol = true;
+                datos_aux.forEach(element => {
+                    if(aux == element){
+                        bol = false;
+                    }
+                });
+
+                if(bol){
+                    datos_aux.push(aux);
+                }
+
+            }
+        });
+        return datos_aux;
     }
 
     cambiar_hubicacion(pos_anterior,pos_nueva){
