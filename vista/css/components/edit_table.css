@@ -80,6 +80,7 @@
 #tabla_datos_aux thead{
     position: sticky;
     top: 0;
+    backdrop-filter: blur(5px);
 }
 
 tbody, thead{
