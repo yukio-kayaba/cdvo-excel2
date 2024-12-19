@@ -241,6 +241,7 @@ body{
     flex-direction: column;
     align-items: center;
     gap: 10px;
+    overflow-y: scroll;
   }
   #tabla_datos_principal{
     flex-direction: column;
