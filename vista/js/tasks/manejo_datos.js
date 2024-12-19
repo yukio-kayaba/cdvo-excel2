@@ -1,7 +1,8 @@
 class datos_control{
     constructor(){
-        this.datos = [];
+        this.datos = new Array();
         this.control_ubdate = 0;
+        this.val_clases = new Array();
     }
     agregar_valores_nuevos(nuevo_datos){
         if(!Array.isArray(nuevo_datos) || nuevo_datos < 1){
@@ -25,26 +26,43 @@ class datos_control{
         this.control_ubdate += 1;
     }
 
-    convertir_clases(posicion){
-        let datos_aux = new Array();
+    convertir_clases(posicion,ignorar = 0){
+        let contador = 0;
         this.datos.forEach(elemento => {
-            for (let i = posicion; i < (elemento.length - 1); i++){
-                let aux = elemento[i];
-                elemento[i] = elemento[i + 1];
-                elemento[i + 1] = aux;
-                let bol = true;
-                datos_aux.forEach(element => {
-                    if(aux == element){
+            if(contador >= ignorar){
+                for (let i = posicion; i < (elemento.length - 1); i++){
+                    let aux = elemento[i];
+                    elemento[i] = elemento[i + 1];
+                    elemento[i + 1] = aux;
+                }
+            }
+            contador ++;
+        });
+        // return datos_aux;
+    }
+    get_clases(posicion,ignorar = 0){
+        if(typeof(posicion) != "number"){
+            if(!Number(posicion)){
+                console.error("Para realizar el cambio , la posicion debe ser un numero");
+                return -1;
+            }
+        }
+        let datos_aux = new Array();
+        let bol = true
+        let contador = 0;
+        this.datos.forEach(elemento => {
+            bol = true;
+            if(contador >= ignorar){
+                datos_aux.forEach(classd => {
+                    if(elemento[posicion] == classd){
                         bol = false;
                     }
                 });
-
-                if(bol){
-                    datos_aux.push(aux);
-                }
-
+                if(bol) datos_aux.push(elemento[posicion]) ; 
             }
+            contador ++;
         });
+
         return datos_aux;
     }
 
