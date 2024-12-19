@@ -4,6 +4,7 @@ const modal_editador = document.getElementById("edit_modal_control");
 const cerrar_modal_editar = document.getElementById("cerrar_modal_editar");
 const cuerpo_editador = document.getElementsByClassName("edit_cuerpo_modal")[0];
 const boton_reiniciador_modal = document.getElementById("boton_reiniciador_modal");
+let datos;
 function vista_previa_datos2(informacion){
     modal_editador.style.display = "flex";
     let tabla; 
@@ -199,4 +200,20 @@ function habilitar_editable(id_dato){
       el.setAttribute("data-posicion_a",newPosition + 2);
       datos1.cambiar_hubicacion(pos_anterior,newPosition + 2);
     });
+}
+
+function recargar_datos(){
+    document.getElementsByClassName("datos_trabajo_modal")[0].style.filter = "blur(10px)";
+    tabla = document.createElement("table");
+    tabla.classList.add("table");
+    tabla.id = "tabla_datos_aux";
+    const datos = datos1.get_datos();
+    eliminar_eventos("selector_head_ubdate",evento_etiqueta);
+    eliminar_eventos("modal_eliminar_item",delete_items,"click");
+    tabla.innerHTML = generador_tabla_datos(datos);
+    document.getElementsByClassName("datos_trabajo_modal")[0].innerHTML = "";
+    document.getElementsByClassName("datos_trabajo_modal")[0].appendChild(tabla);
+    cargar_eventos("selector_head_ubdate",evento_etiqueta);
+    cargar_eventos("modal_eliminar_item",delete_items,"click");
+    document.getElementsByClassName("datos_trabajo_modal")[0].style.filter = "none";   
 }

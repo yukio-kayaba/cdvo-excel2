@@ -8,7 +8,7 @@ class datos_control{
         if(!Array.isArray(nuevo_datos) || nuevo_datos < 1){
             return console.warn("datos no permitidos");
         }
-        this.datos = [...nuevo_datos];
+        this.datos = JSON.parse(JSON.stringify(nuevo_datos)) ;
         this.control_ubdate = 0;
     }
     get_datos(){
