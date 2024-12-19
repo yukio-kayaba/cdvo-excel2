@@ -38,7 +38,27 @@ class datos_control{
             }
             contador ++;
         });
+        
         // return datos_aux;
+    }
+    conversion_fecha(posicion,ignorar = 0){
+        let contador = 0;
+        try {
+            this.datos.forEach(elementos => {
+                if(contador > ignorar){
+                    let valor = new Date(elementos[posicion]);
+                    elementos[posicion]  = valor.toISOString().split('T')[0];
+                }
+                contador ++;
+            });
+            return 1;
+        } catch (error) {
+            console.warn(error);
+            return -1;
+        }
+    }
+    get_cant_datos(){
+        return this.datos[1].length;
     }
     get_clases(posicion,ignorar = 0){
         if(typeof(posicion) != "number"){
@@ -52,7 +72,7 @@ class datos_control{
         let contador = 0;
         this.datos.forEach(elemento => {
             bol = true;
-            if(contador >= ignorar){
+            if(contador >= ignorar && contador != 1){
                 datos_aux.forEach(classd => {
                     if(elemento[posicion] == classd){
                         bol = false;
@@ -99,13 +119,17 @@ class datos_control{
             return -1;
         }
         if(tipo == 1){
+            let contador = 0;
             this.datos.forEach(elementos => {
-                if(Number(elementos[posicion])){
-                    elementos[posicion] = Number(elementos[posicion]);
-                }else{
-                    console.warn("error de conversion");
-                    valor_retorno = -2;
+                if(contador > 1){
+                    if(Number(elementos[posicion])){
+                        elementos[posicion] = Number(elementos[posicion]);
+                    }else{
+                        console.warn("error de conversion");
+                        valor_retorno = -2;
+                    }
                 }
+                contador ++;
             });
             this.datos[1][posicion] = "numeric";
         }else if(tipo == 2){

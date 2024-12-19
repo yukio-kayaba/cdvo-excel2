@@ -4,6 +4,8 @@ const modal_editador = document.getElementById("edit_modal_control");
 const cerrar_modal_editar = document.getElementById("cerrar_modal_editar");
 const cuerpo_editador = document.getElementsByClassName("edit_cuerpo_modal")[0];
 const boton_reiniciador_modal = document.getElementById("boton_reiniciador_modal");
+const boton_recargar_datos = document.getElementById("recargar_datos");
+const descargar_archivo_arrff1 = document.getElementById("descargar_archivo_arrff");
 let datos;
 function vista_previa_datos2(informacion){
     modal_editador.style.display = "flex";
@@ -62,6 +64,14 @@ modal_editador.addEventListener("click",()=>{
 
 });
 
+boton_recargar_datos.addEventListener("click",()=>{
+  recargar_datos();
+});
+
+descargar_archivo_arrff1.addEventListener("click",()=>{
+  downloadArff2(datos1.get_datos());
+});
+
 cuerpo_editador.addEventListener("click",function(e){
   e.stopPropagation();
 })
@@ -83,7 +93,7 @@ boton_reiniciador_modal.addEventListener("click",()=>{
   habilitar_editable("dragula");
 });
 
-function generador_tabla_datos(datos){
+function generador_tabla_datos(datos,reiniciar = 0){
   let elementos_var = ["String","Numeric","Date","Class"];
   let contenido  = `
                   
@@ -93,9 +103,11 @@ function generador_tabla_datos(datos){
   for (let i = 1; i < datos[0].length ; i++) {
       let pos_activa = 0;
       for(let i = 0;i < elementos_var.length;i++){
-        if(elementos_var[i] == datos[1][i]){
+        if(reiniciar == 0){
+          datos1.reemplazar_valor(1,i,elementos_var[0]);
+        }
+        if(elementos_var[i] === datos[1][i]){
           pos_activa = i;
-          break;
         }
       }
       contenido +=`<th scope="col" class="editable_title formato-editable" data-x="${0}" data-y="${i}" >
@@ -130,6 +142,7 @@ function generador_tabla_datos(datos){
   contenido += "</tbody>"; 
   return contenido;
 }
+
 function select_options(lista=[],identificador = "",posicion = 0,pos_select = 0){
   let valores = `
       <span style="display:flex;justify-content:center;" >
@@ -163,15 +176,30 @@ function evento_etiqueta(e){
   let opcion_selecionada = etiqueta.selectedIndex;
   console.log(`posicion : ${identificador }  -  opcion : ${opcion_selecionada}`);
   let inf_opc = 0;
-  if(opcion_selecionada == 1 || opcion_selecionada == 2){
+  let notificacion = new notficacion("contenedor-toast_date");
+  if(opcion_selecionada == 0 || opcion_selecionada == 1){
     inf_opc = (opcion_selecionada == 1)? 1 : 0;
     let resultado = datos1.conversion_datos(Number(identificador),inf_opc);
-    let notificacion = new notficacion("contenedor-toast_date");
     if(resultado == 1){
-      datos1.reemplazar_valor(1,identificador,elementos_var[Number(opcion_selecionada)]);
       notificacion.generador_text_valor({tipo:"exito",titulo:'Exito',descripcion:'CONVERSION EXITOSA ',tiempo:3000,autocierre:true});
     }else if(resultado == -2){
       notificacion.generador_text_valor({tipo:"peligro",titulo:'ERRONEA CONVERSION',descripcion:'Existe un valor no apto para la conversion ',tiempo:3000,autocierre:true});
+    }
+    datos1.reemplazar_valor(1,identificador,elementos_var[Number(opcion_selecionada)]);
+  }else if(opcion_selecionada == 3){
+      datos1.convertir_clases(Number(identificador));
+      datos1.reemplazar_valor(1,(datos1.get_cant_datos() - 1),elementos_var[Number(opcion_selecionada)]);
+      recargar_datos();
+      let contantes = datos1.get_clases(datos1.get_cant_datos() - 1);
+      notificacion.generador_text_valor({tipo:"exito",titulo:'Conversion exitosa',descripcion:`Se conviritio en clases \n ${contantes}`,tiempo:3000});
+      notificacion.event_close_object();
+  }else if(opcion_selecionada == 2){
+    let resultado = datos1.conversion_fecha();
+    if(resultado == 1){
+        datos1.reemplazar_valor(1,identificador,elementos_var[Number(opcion_selecionada)]);
+        notificacion.generador_text_valor({tipo:"exito",titulo:'Datos a fecha exitoso',descripcion:'Se Ha convertido los datos con exito',tiempo:3000,autocierre:true});
+    }else{
+        notificacion.generador_text_valor({tipo:"peligro",titulo:'Error de conversion ',descripcion:' Ocurrio un error al momento de convertir los datos',tiempo:3000,autocierre:true});
     }
   }
 }
@@ -228,10 +256,48 @@ function recargar_datos(){
     const datos = datos1.get_datos();
     eliminar_eventos("selector_head_ubdate",evento_etiqueta);
     eliminar_eventos("modal_eliminar_item",delete_items,"click");
-    tabla.innerHTML = generador_tabla_datos(datos);
+    tabla.innerHTML = generador_tabla_datos(datos,1);
     document.getElementsByClassName("datos_trabajo_modal")[0].innerHTML = "";
     document.getElementsByClassName("datos_trabajo_modal")[0].appendChild(tabla);
     cargar_eventos("selector_head_ubdate",evento_etiqueta);
     cargar_eventos("modal_eliminar_item",delete_items,"click");
-    document.getElementsByClassName("datos_trabajo_modal")[0].style.filter = "none";   
-}
+    document.getElementsByClassName("datos_trabajo_modal")[0].style.filter = "none";  
+    habilitar_editable("dragula"); 
+};
+
+function downloadArff2(datos){
+  let titulo_Date = document.getElementById("titulo_archivo_date");
+  let valores = "@relation Predecir \n";
+  for (let i = 0; i < datos.length; i++) {
+    let cant_datos = datos[i].length;
+    if(i == 1) continue;
+    for (let j = 0; j < cant_datos; j++) {
+        if(i == 0){
+          let datos_aux = "";
+            if(datos[1][j] == "Class"){
+              datos_aux = "{";
+              datos1.get_clases(j).forEach(element => {
+                datos_aux += `${element},`;
+              });
+              datos_aux = datos_aux.slice(0,-1);
+              datos_aux += "}"; 
+            }else{
+              datos_aux = datos[1][j].toLowerCase();
+            }
+
+            valores += `@attribute ${datos[i][j]} ${datos_aux} \n`;
+            continue;
+        }
+        valores += (j == cant_datos - 1)? `${datos[i][j]} \n`:`${datos[i][j]},`;
+    }
+    if(i == 0) valores+= "@data \n";
+  }
+  console.log(valores);
+  let enlace  = document.createElement('a');
+    enlace.setAttribute("href","data:text/plain;charset=utf-8,"+ encodeURIComponent(valores));
+    enlace.setAttribute("download",`${titulo_Date.innerHTML}.arff`);
+    enlace.style.display = "none";
+    document.body.appendChild(enlace);
+    enlace.click();
+    document.body.removeChild(enlace);
+};
