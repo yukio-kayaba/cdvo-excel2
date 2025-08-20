@@ -4,7 +4,7 @@
     session_start();
     if(isset($_SESSION['id_user'])){
         if(isset($_GET['vista'])){
-            // print_r($_GET['vista']);
+            print_r($_GET['vista']);
             $url = explode("/",$_GET['vista']);
         
             if(method_exists("ModeloControlador",$url[0])){

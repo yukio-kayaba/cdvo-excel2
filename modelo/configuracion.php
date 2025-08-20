@@ -1,7 +1,7 @@
 <?php
 // SERVIDOR LOCAL
-define("password","");
-define("user","root");
+define("password","master123");
+define("user","yukio");
 define("bd_date","ficheros");
 // SERVIDOR 000webhost
 // define("password","LaContraseniaQueQuieras123$");
